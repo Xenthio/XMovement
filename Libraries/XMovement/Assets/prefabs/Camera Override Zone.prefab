@@ -1,0 +1,155 @@
+{
+  "RootObject": {
+    "__guid": "b501fef3-f91b-4e76-b183-b3306cbf0879",
+    "Flags": 0,
+    "Name": "camera override zone",
+    "Scale": "4.592528,7.674084,5.287672",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "5459dd2a-6f5c-40af-92d8-2de3313676ec",
+        "__enabled": false,
+        "BodyGroups": 18446744073709551615,
+        "CreateAttachments": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/dev/box.vmdl",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "d4a5509c-57b1-4dd5-8ee6-2c87e5532162",
+        "Center": "0,0,0",
+        "Friction": null,
+        "IsTrigger": true,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "OnObjectTriggerEnter": null,
+        "OnObjectTriggerExit": null,
+        "OnTriggerEnter": null,
+        "OnTriggerExit": null,
+        "Scale": "50,50,50",
+        "Static": false,
+        "Surface": null,
+        "SurfaceVelocity": "0,0,0"
+      },
+      {
+        "__type": "CameraOverrideZoneController",
+        "__guid": "1b83b565-744c-44aa-9916-ea6d15e809f4",
+        "Distance": -1,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Pitch": 20,
+        "Priority": 0,
+        "Yaw": -1
+      }
+    ],
+    "Children": [],
+    "__variables": [
+      {
+        "Id": "Yaw",
+        "Title": "Yaw",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
+        "Targets": [
+          {
+            "Id": "1b83b565-744c-44aa-9916-ea6d15e809f4",
+            "Property": "Yaw"
+          }
+        ]
+      },
+      {
+        "Id": "Pitch",
+        "Title": "Pitch",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
+        "Targets": [
+          {
+            "Id": "1b83b565-744c-44aa-9916-ea6d15e809f4",
+            "Property": "Pitch"
+          }
+        ]
+      },
+      {
+        "Id": "Distance",
+        "Title": "Distance",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
+        "Targets": [
+          {
+            "Id": "1b83b565-744c-44aa-9916-ea6d15e809f4",
+            "Property": "Distance"
+          }
+        ]
+      },
+      {
+        "Id": "Priority",
+        "Title": "Priority",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
+        "Targets": [
+          {
+            "Id": "1b83b565-744c-44aa-9916-ea6d15e809f4",
+            "Property": "Priority"
+          }
+        ]
+      }
+    ],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

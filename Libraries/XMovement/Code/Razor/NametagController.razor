@@ -1,0 +1,19 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class="@((!IsParentValid() || GameObject.Parent.Network.IsProxy) ? "" : "hidden")">
+	<div class="title">&nbsp;&nbsp;&nbsp;@(IsParentValid() ? GameObject.Parent.Network.Owner.DisplayName : "") &nbsp;&nbsp;&nbsp;</div>
+</root>
+
+@code
+{
+	bool IsParentValid()
+	{
+		return (GameObject != null && GameObject.IsValid &&
+				GameObject.Parent != null && GameObject.Parent.IsValid &&
+				GameObject.Parent.Network.Owner != null);
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine(IsParentValid() ? GameObject.Parent.Network.Owner.DisplayName : " ");
+}

@@ -1,5 +1,6 @@
 ﻿using Sandbox;
 using System;
+using System.Diagnostics;
 namespace XMovement;
 
 public partial class PlayerMovement : Component
@@ -53,6 +54,9 @@ public partial class PlayerMovement : Component
 	public Vector3 GroundNormal { get; set; }
 	public float SurfaceFriction { get; set; } = 1.0f;
 
+	public float TimeLastJumped = -1f;
+	public float TimeLastGrounded = -1f;
+
 	protected override void DrawGizmos()
 	{
 		Gizmo.Draw.LineBBox( BoundingBox );
@@ -63,9 +67,23 @@ public partial class PlayerMovement : Component
 	/// </summary>
 	public void LaunchUpwards( float amount )
 	{
+		if (Velocity.z < 0)
+		{
+			Velocity = Velocity.WithZ( 0 );
+		}
 		ClearGround();
 		Velocity += Vector3.Up * amount;
 		Velocity -= Gravity * Time.Delta * 0.5f;
+	}
+
+	/// <summary>
+	/// Jump upwards. Uses LaunchUpwards, but also logs timeLastJumped, for use with variable jump height.
+	/// </summary>
+	public void Jump (float strength)
+	{
+		LaunchUpwards( strength );
+		TimeLastGrounded = -1;
+		TimeLastJumped = Time.Now;
 	}
 
 	/// <summary>
@@ -87,7 +105,7 @@ public partial class PlayerMovement : Component
 		// if ( !CanAccelerate() )
 		//     return; 
 
-		var wishdir = vector.Normal;
+		/*var wishdir = vector.Normal;
 		var wishspeed = vector.Length;
 
 		// See if we are changing direction a bit
@@ -107,7 +125,42 @@ public partial class PlayerMovement : Component
 		if ( accelspeed > addspeed )
 			accelspeed = addspeed;
 
-		Velocity += wishdir * accelspeed;
+		Velocity += wishdir * accelspeed;*/
+
+		// doing it my way lol
+
+		if ( vector.LengthSquared > 0 )
+		{
+			var xzVel = Velocity.WithZ( 0 );
+			var missingVelocity = vector - xzVel;
+			var velocityDirection = missingVelocity.Normal;
+
+			// Determine amount of acceleration.
+			var accelspeed = acceleration * vector.Length * Time.Delta * SurfaceFriction;
+			var differenceFromInput = Vector3.Dot( AnalogInput.Normal, velocityDirection );
+
+			if ( differenceFromInput <= -0.75f && Velocity.LengthSquared > vector.LengthSquared )
+			{
+				// Faster than target, holding forward.
+				// Slowly slow down.
+
+				// lerp towards held direction
+				missingVelocity = Vector3.Lerp( xzVel.Normal, vector.Normal, Time.Delta * 2 );
+
+				var magnitudeMultiplier = 1 - (Time.Delta * 0.4f);
+				Velocity = (Vector3.Up * Velocity.y) + (missingVelocity.Normal * (xzVel * magnitudeMultiplier));
+			}
+			else if ( differenceFromInput > 0.5f && missingVelocity.Length > 4f )
+			{
+				// moving opposite direction
+				Velocity += 0.5f * float.Lerp( 0, accelspeed, missingVelocity.LengthSquared / vector.LengthSquared ) * velocityDirection;
+			}
+			else
+			{
+				// standard movement case
+				Velocity += float.Lerp( 0, accelspeed, missingVelocity.LengthSquared / vector.LengthSquared ) * velocityDirection;
+			}
+		}
 	}
 
 	/// <summary>
@@ -334,6 +387,7 @@ public partial class PlayerMovement : Component
 
 		if ( pm.Hit )
 		{
+			TimeLastGrounded = Time.Now;
 			CatergorizeGroundSurface( pm );
 		}
 	}

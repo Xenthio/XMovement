@@ -1,8 +1,8 @@
 {
-  "Title": "XMovement Test",
+  "Title": "Wave Parkour",
   "Type": "game",
-  "Org": "xenthio",
-  "Ident": "xmovement_test",
+  "Org": "waveparadigm",
+  "Ident": "wave_parkour",
   "Schema": 1,
   "IncludeSourceFiles": false,
   "Resources": null,
@@ -15,19 +15,17 @@
     "TickRate": 50,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Unrestricted",
-    "MapList": [
-      "facepunch.flatgrass"
-    ],
+    "MapList": [],
     "RankType": "None",
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/rooftops.scene",
+    "StartupScene": "scenes/parkour1.scene",
     "ControlModes": {
       "Keyboard": true,
       "VR": true,
       "Gamepad": false
     },
-    "LaunchMode": "Normal"
+    "LaunchMode": "QuickPlay"
   }
 }

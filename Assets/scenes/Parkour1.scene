@@ -1,0 +1,4900 @@
+{
+  "__guid": "325a4042-0696-43dd-a79d-dcc314299ba3",
+  "GameObjects": [
+    {
+      "__guid": "073e4cac-c7a1-44cd-8e00-333110cf4624",
+      "Flags": 0,
+      "Name": "Network Helper",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "d73dd0b5-35fc-4d92-8016-4a7707709e64",
+          "LobbyName": "",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OverridePlayerCount": -1,
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/waveplayer.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "d5da6c08-7698-4185-ab04-d6bfd474b195"
+            },
+            {
+              "_type": "gameobject",
+              "go": "5228523a-9dba-4bf2-bc0f-762de88a2bdb"
+            },
+            {
+              "_type": "gameobject",
+              "go": "fe9c6a1f-6467-4df6-a7aa-ca3f2c57fd9d"
+            },
+            {
+              "_type": "gameobject",
+              "go": "17a7ac7a-ac0e-4262-a5e7-a4174e510155"
+            },
+            {
+              "_type": "gameobject",
+              "go": "1f222c88-4171-480f-b929-fb21ac5ec52d"
+            },
+            {
+              "_type": "gameobject",
+              "go": "dce53c07-2b19-42fa-9a22-77952aecbe44"
+            },
+            {
+              "_type": "gameobject",
+              "go": "a58c1b31-4ebd-4f0c-901f-4b0f0ff56725"
+            },
+            {
+              "_type": "gameobject",
+              "go": "c02b5089-55c4-4e7c-a681-bd3c66286bbe"
+            },
+            {
+              "_type": "gameobject",
+              "go": "bdbc796b-0eaf-479f-bfb9-00aff14b7e99"
+            },
+            {
+              "_type": "gameobject",
+              "go": "0287c340-4033-48a4-a3ce-be3886371684"
+            }
+          ],
+          "StartServer": true
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "d5da6c08-7698-4185-ab04-d6bfd474b195",
+          "Flags": 0,
+          "Name": "Player Spawn",
+          "Position": "4468.875,-2424.308,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "5228523a-9dba-4bf2-bc0f-762de88a2bdb",
+          "Flags": 0,
+          "Name": "Player Spawn (1)",
+          "Position": "4474.008,-2364.741,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "fe9c6a1f-6467-4df6-a7aa-ca3f2c57fd9d",
+          "Flags": 0,
+          "Name": "Player Spawn (2)",
+          "Position": "4463.634,-2259.844,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "17a7ac7a-ac0e-4262-a5e7-a4174e510155",
+          "Flags": 0,
+          "Name": "Player Spawn (3)",
+          "Position": "4458.362,-2138.379,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "1f222c88-4171-480f-b929-fb21ac5ec52d",
+          "Flags": 0,
+          "Name": "Player Spawn (4)",
+          "Position": "4546.975,-2389.703,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "dce53c07-2b19-42fa-9a22-77952aecbe44",
+          "Flags": 0,
+          "Name": "Player Spawn (5)",
+          "Position": "4546.975,-2307.558,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "a58c1b31-4ebd-4f0c-901f-4b0f0ff56725",
+          "Flags": 0,
+          "Name": "Player Spawn (6)",
+          "Position": "4546.975,-2215.85,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "c02b5089-55c4-4e7c-a681-bd3c66286bbe",
+          "Flags": 0,
+          "Name": "Player Spawn (7)",
+          "Position": "4638.793,-2337.932,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "bdbc796b-0eaf-479f-bfb9-00aff14b7e99",
+          "Flags": 0,
+          "Name": "Player Spawn (8)",
+          "Position": "4638.793,-2236.68,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        },
+        {
+          "__guid": "0287c340-4033-48a4-a3ce-be3886371684",
+          "Flags": 0,
+          "Name": "Player Spawn (9)",
+          "Position": "4709.623,-2294.629,530.4116",
+          "Rotation": "0,0,1,-0.00000004371139",
+          "Enabled": true
+        }
+      ]
+    },
+    {
+      "__guid": "9203720c-8b13-4064-8df5-d88befdfd1e4",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "8a2fbdf2-7172-4408-a947-eab2cd338fd8",
+          "Flags": 0,
+          "Name": "Scene Information",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SceneInformation",
+              "__guid": "5d1e4263-543d-4091-8738-30112c7a8ffd",
+              "Author": null,
+              "Changes": "",
+              "Description": "",
+              "Group": null,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "SceneTags": "",
+              "Title": "minimal",
+              "Version": null
+            }
+          ]
+        },
+        {
+          "__guid": "028c87fe-722e-4181-82a1-5e16692a5e4f",
+          "Flags": 0,
+          "Name": "Spawns",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "b0173d85-ad61-4a20-b45d-3e6c2232e1fe",
+              "Flags": 0,
+              "Name": "Spawn",
+              "Position": "0,-200,50",
+              "Enabled": true
+            },
+            {
+              "__guid": "f526f408-3fc2-4296-81af-cef0776af91f",
+              "Flags": 0,
+              "Name": "Spawn (5)",
+              "Position": "-50,-250,50",
+              "Enabled": true
+            },
+            {
+              "__guid": "f4dca4c1-4cd0-4bf3-8b05-ad1fb0945d20",
+              "Flags": 0,
+              "Name": "Spawn (4)",
+              "Position": "50,-250,50",
+              "Enabled": true
+            },
+            {
+              "__guid": "64df52d1-d352-43da-9e2d-d3f7a66704e5",
+              "Flags": 0,
+              "Name": "Spawn (3)",
+              "Position": "0,-250,50",
+              "Enabled": true
+            },
+            {
+              "__guid": "a34aa9f0-a234-4c1b-bb01-6bc7cb82ef5b",
+              "Flags": 0,
+              "Name": "Spawn (1)",
+              "Position": "50,-200,50",
+              "Enabled": true
+            },
+            {
+              "__guid": "e480aff4-e30a-4cca-9b5b-ae04150c3a4b",
+              "Flags": 0,
+              "Name": "Spawn (2)",
+              "Position": "-50,-200,50",
+              "Enabled": true
+            }
+          ]
+        },
+        {
+          "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+          "Flags": 0,
+          "Name": "Plane",
+          "Scale": "8,8,5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "0b6a18bf-fdb8-4661-970e-ef635bfa9baa",
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/plane.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "0.39546,0.51163,0.27128,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "0715cb55-1733-4f5e-8560-c288b8695631",
+              "Center": "0,0,-5",
+              "Friction": null,
+              "IsTrigger": false,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnObjectTriggerEnter": null,
+              "OnObjectTriggerExit": null,
+              "OnTriggerEnter": null,
+              "OnTriggerExit": null,
+              "Scale": "100,100,10",
+              "Static": true,
+              "Surface": null,
+              "SurfaceVelocity": "0,0,0"
+            }
+          ]
+        },
+        {
+          "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+          "Flags": 0,
+          "Name": "2D Skybox",
+          "Tags": "skybox",
+          "Components": [
+            {
+              "__type": "Sandbox.SkyBox2D",
+              "__guid": "de79e9e0-5c37-4c54-ac67-bfcdb1d5483b",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "SkyIndirectLighting": false,
+              "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.EnvmapProbe",
+              "__guid": "f3e304db-baab-4c1a-a4ec-8442585c2d62",
+              "Bounds": {
+                "Mins": "-512,-512,-512",
+                "Maxs": "512,512,512"
+              },
+              "DelayBetweenUpdates": 0.1,
+              "Feathering": 0.02,
+              "FrameInterval": 5,
+              "MaxDistance": 512,
+              "MultiBounce": false,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "Projection": "Sphere",
+              "RenderDynamically": false,
+              "Texture": "textures/cubemaps/default2.vtex",
+              "TintColor": "1,1,1,1",
+              "UpdateStrategy": "OnEnabled",
+              "ZFar": 4096,
+              "ZNear": 16
+            }
+          ]
+        },
+        {
+          "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+          "Flags": 0,
+          "Name": "Sun",
+          "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+          "Tags": "light_directional,light",
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "d3659344-a90d-48fa-927a-095f70fe041f",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.94419,0.97767,1,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "Shadows": true,
+              "SkyColor": "0.2532,0.32006,0.35349,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "a8ef1e46-5f53-40d6-b07e-6c0b6b688ef0",
+      "Flags": 0,
+      "Name": "Respawn Trigger",
+      "Position": "0,0,350",
+      "Scale": "999,999,1",
+      "Enabled": true,
+      "__Prefab": "prefabs/respawn trigger.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "b501fef3-f91b-4e76-b183-b3306cbf0879",
+      "Flags": 0,
+      "Name": "Camera Override Zone",
+      "Position": "4652.245,-2289.014,607.3831",
+      "Rotation": "0,0,1,-0.00000004371139",
+      "Scale": "11.54326,14.91824,5.287672",
+      "Enabled": true,
+      "__Prefab": "prefabs/camera override zone.prefab",
+      "__PrefabVariables": {
+        "Yaw": -1,
+        "Pitch": 5,
+        "Distance": 300,
+        "Priority": 0
+      }
+    },
+    {
+      "__guid": "1c60fd2e-958b-431a-944d-a0fdee94e21d",
+      "Flags": 0,
+      "Name": "Client",
+      "Position": "1130.004,661.5084,-1573.595",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "a70cc115-56ca-48eb-a3c2-1755c789d940",
+          "Flags": 0,
+          "Name": "Screen-Space UI",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "a5e3e6aa-0f77-4de5-9a39-3c7285308861",
+              "Flags": 0,
+              "Name": "Jumper Chat",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ScreenPanel",
+                  "__guid": "82333cb5-d440-40c0-b3d4-0c29d79120f1",
+                  "AutoScreenScale": true,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opacity": 1,
+                  "Scale": 1,
+                  "ScaleStrategy": "ConsistentHeight",
+                  "ZIndex": 100
+                },
+                {
+                  "__type": "RazorComponents.JumperChat",
+                  "__guid": "f7193925-bd96-4e54-9221-c85c6cb452dd",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "3893d770-5f20-4e01-9b3b-255df332afb4",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "-120.0808,-234.0649,321.0283",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "85dd35a6-2114-438d-ab21-522874b98b02",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "thieves.minecraft_t5",
+          "NoOrigin": false,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "0d3ab54d-f3a6-4e2d-8153-5bb92a6bf70d",
+      "Flags": 0,
+      "Name": "Player Light",
+      "Position": "5011.878,-2346.663,1030.534",
+      "Rotation": "0,0.7071068,0,0.7071068",
+      "Tags": "light,light_directional",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "a0d5f335-d578-4e20-97d2-4bf3373891d2",
+          "FogMode": "Disabled",
+          "FogStrength": 1,
+          "LightColor": "1,1,1,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "4ed2bd31-92c0-404a-b39a-54fa23c03c86",
+      "Flags": 0,
+      "Name": "Add-on Map",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "93a327bf-0b27-49c7-a2ba-7d6cfce09dfa",
+          "Flags": 0,
+          "Name": "grass_block",
+          "Position": "3850,-2200,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "fbcf4a43-28b9-4fa9-812a-c4bc3e7c7aea",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "6a46ed08-03f1-4c3e-938b-ddd086b7744a",
+          "Flags": 0,
+          "Name": "grass_block (22)",
+          "Position": "3900,-2200,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "65920fc4-5bfa-48ff-bdd4-d25f15eaf145",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "17baa87b-75a7-41c1-875d-62ec70fc9bec",
+          "Flags": 0,
+          "Name": "grass_block (23)",
+          "Position": "3850,-2150,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "ee2d58a3-acef-4581-b920-613fe0da1bb4",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "081c2cce-daf8-400e-97da-2538309ca311",
+          "Flags": 0,
+          "Name": "grass_block (25)",
+          "Position": "3750,-1450,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a45e4d9b-5460-4515-810c-d62035540308",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "828d46e9-2d4c-4494-87cf-5dcc571c457a",
+          "Flags": 0,
+          "Name": "grass_block (26)",
+          "Position": "3750,-1450,500",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "238d9faa-233d-406e-824d-1a09d44e5d8b",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "ec13d122-2e75-48aa-a744-58592a1318d5",
+          "Flags": 0,
+          "Name": "grass_block (27)",
+          "Position": "3750,-1450,550",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "55cb13d1-25b3-431f-ab38-902e5a684f41",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "54f54d45-3b03-4a53-abbb-1036195c77ee",
+          "Flags": 0,
+          "Name": "grass_block (28)",
+          "Position": "3750,-1450,600",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "3c199179-2524-434a-8226-645ec9e4e0ab",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "4dcff9f7-b6c2-423b-8dfe-91ab06641294",
+          "Flags": 0,
+          "Name": "grass_block (29)",
+          "Position": "3750,-1450,650",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "3dc71912-865e-4677-98a1-85b9ae346878",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "55dd84d9-39b3-4b7a-962f-839e351f1383",
+          "Flags": 0,
+          "Name": "grass_block (59)",
+          "Position": "3750,-1500,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2dbf2681-7737-4b54-93f0-1a15b0bacf59",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2088059f-0165-4934-8524-427e50b6d5b5",
+          "Flags": 0,
+          "Name": "grass_block (60)",
+          "Position": "3750,-1400,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "ccf4bb2f-a26a-477e-aa82-1e2e47f89c52",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "54b1e8e8-4cc4-423f-b2db-68f58fd8569b",
+          "Flags": 0,
+          "Name": "grass_block (61)",
+          "Position": "3700,-1450,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "1e88fe5a-77c1-49e5-ba13-ac491061f6b2",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "6f1482a8-8290-4aa4-bcd3-10e07ef60294",
+          "Flags": 0,
+          "Name": "grass_block (62)",
+          "Position": "3800,-1450,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "8f4e43e0-9ea5-4db3-8d7d-ed6b2fd476a5",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "c0bd6578-2cb3-4c07-bccd-eb93553ebd4f",
+          "Flags": 0,
+          "Name": "grass_block (63)",
+          "Position": "3800,-1500,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "63644a37-84b3-4259-bf12-691b2bd50878",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "71012b0e-b9ff-47c2-a53b-ef2e26eb7dd9",
+          "Flags": 0,
+          "Name": "grass_block (32)",
+          "Position": "3650,-1150,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "327423b6-3337-409a-962d-a2f065d0c446",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "aaaf530a-ef72-4d04-ab0d-8878d64fcdd7",
+              "Flags": 0,
+              "Name": "grass_block (31)",
+              "Position": "0,0,-50",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "bc561090-0235-4b81-839b-183c5ddfd980",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "2d364215-3ae6-4768-9747-e87d8d61c936",
+              "Flags": 0,
+              "Name": "grass_block (1)",
+              "Position": "0,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "626f9b7f-89e5-4b79-9ede-d379cc894b66",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "4b435356-74b8-4e83-ab9c-ad5b1c8c9a33",
+              "Flags": 0,
+              "Name": "grass_block (2)",
+              "Position": "-50,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "05be8802-1916-4595-9315-a26c4c5e78e9",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "d7f8d7d7-6d93-456d-950a-4034c0294487",
+              "Flags": 0,
+              "Name": "grass_block (3)",
+              "Position": "-50,100,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "6f2abe0c-6f9a-48fd-aa9f-bdd6079dbc7d",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "a668bb51-2f48-4287-83b1-8bbc6e0ef72e",
+              "Flags": 0,
+              "Name": "grass_block (4)",
+              "Position": "-50,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "a9a7ea38-83bc-494e-b2ae-e7751b26e98d",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "dc59466d-a610-4023-993d-033fa6bd26c1",
+              "Flags": 0,
+              "Name": "grass_block (5)",
+              "Position": "-100,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "6eb99bc4-0185-47f8-9520-9387ed47b86f",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "11b3ea5b-d6d6-427b-9594-95370a9e551b",
+              "Flags": 0,
+              "Name": "grass_block (6)",
+              "Position": "-100,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "66cbd879-880c-4c4c-884f-05d88726bc8c",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "a686ea7d-b6a1-4b07-95d0-07bf97096dfe",
+              "Flags": 0,
+              "Name": "grass_block (33)",
+              "Position": "0,0,-100",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "21afba94-99e6-4a1d-b392-e12427cad762",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "d6924d03-682b-4978-b721-6b1ad22b0ca7",
+              "Flags": 0,
+              "Name": "grass_block (34)",
+              "Position": "0,0,-150",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "46dd30ee-7ba4-4495-98e0-54a9f732c4d0",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "d8f376bd-6fbc-4002-902c-dc405e1acc0a",
+              "Flags": 0,
+              "Name": "grass_block (35)",
+              "Position": "0,0,-200",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "4aa80e11-ad83-4897-9a2b-127382f5e1bb",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "74e19300-fbcb-4e95-a79a-5f230985be21",
+              "Flags": 0,
+              "Name": "grass_block (36)",
+              "Position": "0,0,-250",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "852e079a-3f4e-481d-b6b0-93a53250bc76",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "374650c5-413d-4a18-860d-5a7e98b6e006",
+          "Flags": 0,
+          "Name": "grass_block (31)",
+          "Position": "3250,-900,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a13198ba-04e4-4f62-b291-f088e1ab2df5",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "83f8b1d5-ba0b-4386-834f-c5a060882c94",
+              "Flags": 0,
+              "Name": "grass_block (31)",
+              "Position": "0,0,-50",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "d714678b-6134-416b-8885-590506931639",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "5a459e26-4a82-4de7-916e-78c6da6381e2",
+              "Flags": 0,
+              "Name": "grass_block (1)",
+              "Position": "50,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "4d4be4cf-fa95-431d-8387-9939b5be647e",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "a094d946-3bb2-4779-8a87-8dee02b637b9",
+              "Flags": 0,
+              "Name": "grass_block (2)",
+              "Position": "50,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "97e301f4-0f9c-458e-ad65-cb57caae439a",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "c074c814-d71f-4c91-ba89-321e729ad8fd",
+              "Flags": 0,
+              "Name": "grass_block (3)",
+              "Position": "0,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "5adad021-552b-4078-af23-5ee223fcce89",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "468c7a2a-f3eb-44ef-9873-5cfe4f63ccfa",
+              "Flags": 0,
+              "Name": "grass_block (4)",
+              "Position": "-50,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "ae483620-167b-43c2-bad7-46904fa1eb40",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "34142a51-da2b-44d6-b276-5a611592d5cd",
+              "Flags": 0,
+              "Name": "grass_block (5)",
+              "Position": "-50,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "b241a956-e950-4de8-8c30-827add4b7c4f",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "2e361038-37c1-4509-b664-4a3eae364d3a",
+              "Flags": 0,
+              "Name": "grass_block (6)",
+              "Position": "-50,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "7b11057c-e6c9-431d-a3a2-0f481fbbcb2d",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "3d18448b-840b-4aa1-9afa-70a35f1932fe",
+              "Flags": 0,
+              "Name": "grass_block (7)",
+              "Position": "0,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "57e4b669-21f7-41c0-8047-184fdb6d1368",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "eaab8145-00c1-4d43-9d32-795cdabbc7c8",
+              "Flags": 0,
+              "Name": "grass_block (8)",
+              "Position": "50,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "c6944fd8-a1e8-443a-bc7d-0d5cec9c3251",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "b7a25f4d-858b-462e-990f-63526637fb8f",
+              "Flags": 0,
+              "Name": "grass_block (33)",
+              "Position": "0,0,-100",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "2311df67-78b8-485f-a4fa-6bc0878fe789",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "bdbdf494-5c0f-4025-8437-81a58a4c78e2",
+              "Flags": 0,
+              "Name": "grass_block (34)",
+              "Position": "0,0,-150",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "0c38ff2f-5bc8-4b56-9090-5caac97a9e0d",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "b976a452-608a-426f-b25e-80b50a8df912",
+              "Flags": 0,
+              "Name": "grass_block (35)",
+              "Position": "0,0,-200",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "c2fd481c-8965-43b4-96df-c058e30560dc",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "e8cd031d-52cc-4542-b1f3-57766a3def4a",
+              "Flags": 0,
+              "Name": "grass_block (36)",
+              "Position": "0,0,-250",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "3b403c67-1275-4897-8363-fadffa1c6e10",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "0bdaca25-da4a-4c1d-9f98-df0c4bd4eb4e",
+          "Flags": 0,
+          "Name": "grass_block (33)",
+          "Position": "2550,-1650,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "da70fef6-11b0-4c0c-88c0-e53bbd06906f",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "f642a1f4-c2f7-4941-8183-23af11a12aff",
+              "Flags": 0,
+              "Name": "grass_block (31)",
+              "Position": "0,0,-50",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "0001db5a-9693-439a-92c9-16704d7b627d",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "ba5b96bb-8c63-475f-8509-68d2e6f53144",
+              "Flags": 0,
+              "Name": "grass_block (1)",
+              "Position": "50,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "2f5f6161-bcd3-42a2-bb74-276b2cc351b3",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "72298397-6170-4edc-a95e-8893eef030dd",
+              "Flags": 0,
+              "Name": "grass_block (2)",
+              "Position": "50,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "67a2338a-9b45-4306-b3ed-18266a436a57",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "0c8a6570-a70b-4774-8fe7-73171ccbd6b1",
+              "Flags": 0,
+              "Name": "grass_block (3)",
+              "Position": "0,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "81cfd9d1-071b-4f7f-bc6d-73310b184f85",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "f627ef01-44db-4e79-9890-cb977715c5bf",
+              "Flags": 0,
+              "Name": "grass_block (4)",
+              "Position": "-50,50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "f893366e-53af-424e-889a-eee0de124f41",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "76e688dc-7399-4247-ae99-0fa7c9e57e03",
+              "Flags": 0,
+              "Name": "grass_block (5)",
+              "Position": "-50,0,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "ef136892-440e-41f0-a55b-3472765cd505",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "bad4ecf4-e127-4146-ae44-7169157ee00d",
+              "Flags": 0,
+              "Name": "grass_block (6)",
+              "Position": "-50,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "09bed3c9-3c3b-4644-bd9a-b0ce4d5c1791",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "079b9cf1-2f30-4bcc-a242-25905a6ecffb",
+              "Flags": 0,
+              "Name": "grass_block (7)",
+              "Position": "0,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "6fb28cac-0dc7-44cf-9504-7759253fd0c4",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "de224943-e6a0-4738-a018-40e77b55fbaa",
+              "Flags": 0,
+              "Name": "grass_block (8)",
+              "Position": "50,-50,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "3c643fef-4da7-4b37-9112-1b123249a303",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "d57e0775-837c-4198-bedc-11a10ee3db18",
+              "Flags": 0,
+              "Name": "grass_block (33)",
+              "Position": "0,0,-100",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "32721369-e848-4e17-b011-7c00d24c30c9",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "3ba1d91a-8aba-47fd-aa12-ab730fff428f",
+              "Flags": 0,
+              "Name": "grass_block (34)",
+              "Position": "0,0,-150",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "232e3bbb-87ef-4d8b-bcbe-62f185caf142",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "9b473a2e-d905-42b1-b275-997d024045a1",
+              "Flags": 0,
+              "Name": "grass_block (35)",
+              "Position": "0,0,-200",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "4841e028-129e-441d-9d6f-0e7c07eab4d5",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "a2bc6812-7150-4ae8-96b1-4b1da9a0ac96",
+              "Flags": 0,
+              "Name": "respawn_anchor",
+              "Position": "-0.0004882812,0.0002441406,50",
+              "Scale": "1.1,1.1,1.1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "78bf8da4-d83c-4016-abce-2127c9c64848",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "models/minecraft/respawn_anchor.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "8e741b16-7460-45cb-a62e-fe4c016d2d42",
+                  "Center": "0,0,20",
+                  "Friction": null,
+                  "IsTrigger": true,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnObjectTriggerEnter": null,
+                  "OnObjectTriggerExit": null,
+                  "OnTriggerEnter": null,
+                  "OnTriggerExit": null,
+                  "Scale": "32,32,20",
+                  "Static": false,
+                  "Surface": null,
+                  "SurfaceVelocity": "0,0,0"
+                },
+                {
+                  "__type": "OneWayTeleport",
+                  "__guid": "f0391ef4-a815-4895-b921-84f7c06596c1",
+                  "Destination": {
+                    "_type": "gameobject",
+                    "go": "88990461-2b61-4657-9903-eeeb0912ed85"
+                  },
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null
+                }
+              ]
+            },
+            {
+              "__guid": "70c27254-c9f3-49c1-9984-d4b0e3885faf",
+              "Flags": 0,
+              "Name": "grass_block (36)",
+              "Position": "0,0,-250",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.Prop",
+                  "__guid": "671e90b7-b5fe-45d7-a3f9-adb159430024",
+                  "BodyGroups": 18446744073709551615,
+                  "Health": 0,
+                  "IsStatic": true,
+                  "MaterialGroup": null,
+                  "Model": "grass_block.vmdl",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OnPropBreak": null,
+                  "OnPropTakeDamage": null,
+                  "StartAsleep": false,
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "b1362721-5cfc-42ae-baaa-ec595ae39e80",
+          "Flags": 0,
+          "Name": "grass_block (30)",
+          "Position": "3750,-1450,700",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "31ac372a-c13c-45d6-8156-2f071ebb23b7",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "0e0d8394-2281-4669-9747-1625ed5036a9",
+          "Flags": 0,
+          "Name": "grass_block (1)",
+          "Position": "4100,-2300,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "5d84b6e0-1879-4659-9c1c-94dea0bd0955",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "8c2940ac-bfc2-4aa8-b0bc-39b81df2262b",
+          "Flags": 0,
+          "Name": "grass_block (24)",
+          "Position": "4150,-2300,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "6ec256d8-64bd-4d73-8ffa-d114aea62837",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "5fa1d034-7b77-48a2-a686-3cac3a3a6b3b",
+          "Flags": 0,
+          "Name": "grass_block (2)",
+          "Position": "4350,-2300,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c28b241c-ea36-4947-af1e-805c8e6f07cf",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "7c5f48a0-a543-41cb-9f10-6b8572422c6d",
+          "Flags": 0,
+          "Name": "grass_block (5)",
+          "Position": "4400,-2350,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c6985ac1-40b2-45c0-ab1e-0ca4812c4f38",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e9200b27-ac95-4da7-9d6b-62dd91f6b982",
+          "Flags": 0,
+          "Name": "grass_block (6)",
+          "Position": "4400,-2400,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "776d5419-c1f7-4c7b-a865-1208d446e95b",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9a5e9337-4f39-4583-9745-1ed38c4b6921",
+          "Flags": 0,
+          "Name": "grass_block (7)",
+          "Position": "4400,-2450,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "dfcf133f-786e-4802-b30b-aa291c9ef91e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "15a9c833-e9c4-4dcd-8904-e43663280dd3",
+          "Flags": 0,
+          "Name": "grass_block (64)",
+          "Position": "4450,-2550,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "60240510-3f4e-4b9d-90b0-b4b6de2b8164",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "c3c3260a-7027-4c7e-a19a-9095120ba0bc",
+          "Flags": 0,
+          "Name": "grass_block (65)",
+          "Position": "4500,-2500,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "7df0a3f9-9d3d-43c3-a441-b79343f4d41d",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "74b076d2-ed1d-493d-bcba-baf1032a240b",
+          "Flags": 0,
+          "Name": "grass_block (66)",
+          "Position": "4550,-2450,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "fcad4b06-1dda-47ea-9ccd-caca4b9f244d",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e750ab0e-a00a-40b8-af10-5edbe0635f69",
+          "Flags": 0,
+          "Name": "grass_block (67)",
+          "Position": "4600,-2400,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "4bbfa907-c136-401c-a93a-281781a99277",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "eb939068-791f-4c6c-bdcd-b7102b0919ac",
+          "Flags": 0,
+          "Name": "grass_block (68)",
+          "Position": "4600,-2350,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "8cc2d770-469e-42fc-bff5-2e1f867ef8cc",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "4b3bf0d4-af46-448a-94e3-e50068e44c98",
+          "Flags": 0,
+          "Name": "grass_block (69)",
+          "Position": "4600,-2300,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "1cfa4609-a8d9-4e12-a09c-c622a1c79dd3",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "56b7deb3-2d32-42f8-9f03-f404d8a8345e",
+          "Flags": 0,
+          "Name": "grass_block (70)",
+          "Position": "4600,-2250,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "98795705-8985-43a2-b49d-db2009f3bde3",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f826cf28-5d10-4df0-a099-5b74ce59bb76",
+          "Flags": 0,
+          "Name": "grass_block (71)",
+          "Position": "4600,-2200,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c0608607-929f-4a2a-b91c-e9fc637700ad",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "0cbdb0cf-9a01-49a2-844f-be85a6e88a00",
+          "Flags": 0,
+          "Name": "grass_block (72)",
+          "Position": "4500,-2100,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "cafb916f-22b6-46c5-8bfe-54fecd1ac42b",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "37a1bb0a-70b4-45cf-b37d-7e5873f8ed10",
+          "Flags": 0,
+          "Name": "grass_block (74)",
+          "Position": "4450,-2050,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "d694155e-d753-4145-a49c-dedac68af8ae",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "1ef5461d-5f6d-44f2-b56b-fbda1c62887e",
+          "Flags": 0,
+          "Name": "grass_block (75)",
+          "Position": "4550,-2100,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "bc08cd61-ddf7-4c36-b438-06e74e989528",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "577fd3c4-7405-4827-927a-dc62cd152576",
+          "Flags": 0,
+          "Name": "grass_block (76)",
+          "Position": "4600,-2150,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "232bfedf-20ae-42fe-8bd7-71c3b4de7562",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "32620e33-99ec-48ac-aafa-6950f7e6bfab",
+          "Flags": 0,
+          "Name": "grass_block (77)",
+          "Position": "4650,-2200,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2b69eb15-f253-4dc7-8f61-f2dbb59a4d71",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "58f81c57-ae1e-41ed-bdd5-6a0a04e52e66",
+          "Flags": 0,
+          "Name": "grass_block (79)",
+          "Position": "4650,-2300,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "959c308c-ca91-43cf-b565-cb6960c487fe",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "53c01730-57e8-4723-bd86-95f14a969d3d",
+          "Flags": 0,
+          "Name": "grass_block (78)",
+          "Position": "4650,-2250,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "dbe8be2c-b534-48a0-b60c-3450bb82c0e1",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e0779513-fe5d-4e83-acf4-e55f90c3eace",
+          "Flags": 0,
+          "Name": "grass_block (80)",
+          "Position": "4650,-2350,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "ee2637d0-0b5a-446a-93c1-8244a115069d",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "1b028d95-aaa3-4c39-bcd0-c68eebccff15",
+          "Flags": 0,
+          "Name": "grass_block (81)",
+          "Position": "4650,-2400,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "822f27ea-c4e4-4bd2-84dc-145df1283ec9",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "91743766-6b0e-4a3a-b6e2-2de0e17948f6",
+          "Flags": 0,
+          "Name": "grass_block (82)",
+          "Position": "4600,-2450,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a97d52d6-1e37-499b-890d-4f8c0e929e16",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "6435b00d-df05-472c-a2fb-dbe03a186053",
+          "Flags": 0,
+          "Name": "grass_block (83)",
+          "Position": "4550,-2500,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "f0e5719d-1a94-4c16-9165-0f30b19b5a09",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "da81cddc-487a-4e74-ad4a-1a7b97216455",
+          "Flags": 0,
+          "Name": "grass_block (84)",
+          "Position": "4650,-2450,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "b70b6bbf-bb5d-49fb-8d5a-1468760460e2",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "19b318d0-f780-4bdf-9e8a-acc5b41c8ce0",
+          "Flags": 0,
+          "Name": "grass_block (85)",
+          "Position": "4650,-2150,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2232a6d2-38c7-4de3-a57a-f9026cca3787",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "71543760-d2ae-4626-91c2-5cfbb460e249",
+          "Flags": 0,
+          "Name": "grass_block (86)",
+          "Position": "4700,-2200,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "98c83b68-63b9-441b-bc1d-a0d4a996d393",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "25554ef0-58b9-414a-83e3-0ca6bee595aa",
+          "Flags": 0,
+          "Name": "grass_block (87)",
+          "Position": "4750,-2200,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "3f5f2d88-e82b-4767-88e9-5801e349b2b8",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "a6231228-dd26-4912-b3c9-87fdbfd6c46d",
+          "Flags": 0,
+          "Name": "grass_block (88)",
+          "Position": "4700,-2250,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "0bf9348a-12f2-41ef-a4dd-68c5a65d9dd7",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "1141853d-73f1-4fe1-8857-f00f447b2ebe",
+          "Flags": 0,
+          "Name": "grass_block (89)",
+          "Position": "4750,-2250,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c472bee3-08da-44e3-a900-1b4754d2efa5",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "05b81464-f5d6-4a01-b814-707733a46ebf",
+          "Flags": 0,
+          "Name": "grass_block (90)",
+          "Position": "4700,-2300,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "de423ccf-0dfb-4a40-83c2-6084543c2ce9",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "bc8d2b73-8a67-4a79-b9ee-9a1bcf96dbe8",
+          "Flags": 0,
+          "Name": "grass_block (91)",
+          "Position": "4750,-2300,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2b45ff1e-86bf-4e20-868b-00b186e0ea99",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9831fbf1-f103-48b3-894f-bad76219a210",
+          "Flags": 0,
+          "Name": "grass_block (92)",
+          "Position": "4700,-2350,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "47dce9ca-7720-42ed-85c0-8d1fbd9eb832",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "074ea611-5290-4538-be96-8062a9d5ab67",
+          "Flags": 0,
+          "Name": "grass_block (93)",
+          "Position": "4750,-2350,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "9c33fe7c-c0e3-4c2a-b03b-7496999b7b1b",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f65224ff-9e29-427a-89eb-26c0ef1af758",
+          "Flags": 0,
+          "Name": "grass_block (94)",
+          "Position": "4700,-2400,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2deffffe-a71c-44b4-aa45-634c88d65b3d",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "393de20f-4050-41d7-91d5-d7c8310c98f9",
+          "Flags": 0,
+          "Name": "grass_block (95)",
+          "Position": "4750,-2400,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "cf8bb1d4-27b1-488e-b35c-782b8139b476",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "6d3f9dd3-20c5-4d1c-937e-075ccda05ec4",
+          "Flags": 0,
+          "Name": "grass_block (73)",
+          "Position": "4550,-2150,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c21996d4-3a04-4a28-a4f9-94bb6d9cab15",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "560aa622-6c9e-4d58-8503-9e39043b5321",
+          "Flags": 0,
+          "Name": "grass_block (8)",
+          "Position": "4350,-2400,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "6bad23be-d15f-42e9-b34e-f6c5e01848a5",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "64193f87-b0d6-425f-bbec-ecbf9e1a747e",
+          "Flags": 0,
+          "Name": "grass_block (9)",
+          "Position": "4450,-2350,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "d17ec6a0-c38c-48a9-8e35-48cb762a7bf4",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "ea89c23e-3083-4c5e-9d0d-7149b74745a5",
+          "Flags": 0,
+          "Name": "grass_block (10)",
+          "Position": "4450,-2400,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a192b6e0-8a23-4711-a5f7-d4a8a74cffd3",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "824743bb-a2a9-490a-a8e0-8d6fcca9c430",
+          "Flags": 0,
+          "Name": "grass_block (11)",
+          "Position": "4450,-2300,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "844c6f62-3be5-4dbb-91cc-9be1c5cb550e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2e726f71-37ea-4144-b631-038f3b9e58c7",
+          "Flags": 0,
+          "Name": "grass_block (12)",
+          "Position": "4500,-2300,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "ac9fe3b1-2c58-4c13-b92e-e9686c4905ad",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9fa93350-8cb5-4dea-a216-1598d3e5adb9",
+          "Flags": 0,
+          "Name": "grass_block (13)",
+          "Position": "4500,-2350,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "b8f6f0cf-4a20-47a6-a713-ac601d654af2",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "cc976ea0-9e4e-4b98-8371-79362de931b2",
+          "Flags": 0,
+          "Name": "grass_block (14)",
+          "Position": "4450,-2250,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a64803e1-d1ab-496d-b966-c22ded07dacf",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "08f98880-fab4-47d8-ae5f-8fbc0c7ff22e",
+          "Flags": 0,
+          "Name": "grass_block (19)",
+          "Position": "4500,-2250,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "f04b51f3-6636-4568-bddf-9329d413c368",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e6ba5870-b67a-422d-9690-7e73eeb764e6",
+          "Flags": 0,
+          "Name": "grass_block (20)",
+          "Position": "4450,-2200,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2b46defe-2587-4cb8-8572-79b425eca333",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9e1a32ab-45eb-441d-afdf-db70f4a543bb",
+          "Flags": 0,
+          "Name": "grass_block (21)",
+          "Position": "4400,-2150,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "da898096-7404-4efb-8163-f4018b9e51a0",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "c98739f5-fa6c-4908-b70c-348f87ada5ec",
+          "Flags": 0,
+          "Name": "grass_block (15)",
+          "Position": "4400,-2250,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c134b177-d896-442c-9667-4e56ce92e75f",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "773ed9b2-147d-4c59-8590-f5aa0e80f345",
+          "Flags": 0,
+          "Name": "grass_block (16)",
+          "Position": "4400,-2200,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "5cbc728e-2831-4b18-9d25-b728e6f8395e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9f400dea-9e22-4e04-b18d-6712726f7397",
+          "Flags": 0,
+          "Name": "grass_block (17)",
+          "Position": "4350,-2250,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "1332f065-4088-475d-a221-90877cd5b633",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "3ced04ca-ef97-49c8-8a1e-499caa01855e",
+          "Flags": 0,
+          "Name": "grass_block (18)",
+          "Position": "4350,-2200,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "f6592d71-2196-4a4c-b56b-b9490df5143d",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "905520f3-26d3-4661-8477-e537753c6321",
+          "Flags": 0,
+          "Name": "grass_block (34)",
+          "Position": "4350,-2150,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c4acb7fe-9f10-4d92-8179-8b983a581981",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "0a637e82-b9b2-4dc4-8202-3dd5bdd99047",
+          "Flags": 0,
+          "Name": "grass_block (35)",
+          "Position": "4350,-2450,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "d1fadfa0-ee8b-4ff4-b197-33abf0812066",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "4301582e-a73a-48ee-9f93-98b2a06cc81f",
+          "Flags": 0,
+          "Name": "grass_block (36)",
+          "Position": "4350,-2500,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "24ae93e6-2b6d-43fb-97cc-619f9d07b7b1",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f664fa2b-c11b-4921-899f-c84a07f46b47",
+          "Flags": 0,
+          "Name": "grass_block (37)",
+          "Position": "4400,-2500,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "d92fe985-5156-455f-901d-85cb5f66d6a5",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "569c9d36-3001-4536-8aa9-959646d3f0e9",
+          "Flags": 0,
+          "Name": "grass_block (38)",
+          "Position": "4450,-2450,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "46b5cb25-d8db-4246-978f-918161885c90",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "ba27b84d-1bee-4044-ad70-719bfe2502b1",
+          "Flags": 0,
+          "Name": "grass_block (39)",
+          "Position": "4500,-2400,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2da47a97-6a61-41b9-9769-184ea3adf431",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "d94b9759-eaa3-424d-b347-01fcbcb6780f",
+          "Flags": 0,
+          "Name": "grass_block (40)",
+          "Position": "4500,-2200,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "ec7b6ed9-61b9-453b-9cd6-3babcc11ec97",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "6f1dfaaf-6e78-4016-8b49-edab0dace6a5",
+          "Flags": 0,
+          "Name": "grass_block (41)",
+          "Position": "4450,-2150,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a5048272-8587-40b8-b776-42e18b3005a0",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2491b02c-c73c-4ba9-b0c1-b4b7962ef0d8",
+          "Flags": 0,
+          "Name": "grass_block (42)",
+          "Position": "4400,-2100,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "79b8d80c-7762-4c94-ae53-4420dc56e519",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "98e0d53d-b64f-4cba-81ff-86607ccb2a64",
+          "Flags": 0,
+          "Name": "grass_block (43)",
+          "Position": "4350,-2100,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "491211c3-e451-4cc5-9d3d-0f237e9673f9",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f0fb658c-7c5b-4a91-9890-8a3c38d969f7",
+          "Flags": 0,
+          "Name": "grass_block (44)",
+          "Position": "4350,-2050,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2e9ad8cf-f88b-4eee-a446-dc4cdec3c334",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "5b53ccf8-416f-4f4c-91cd-a27c15b928ef",
+          "Flags": 0,
+          "Name": "grass_block (45)",
+          "Position": "4350,-2550,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "d2e2ae7d-ed97-4018-be19-f30826f7cb9f",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2c8d94fa-7e6b-4432-ad99-88eeb703748a",
+          "Flags": 0,
+          "Name": "grass_block (46)",
+          "Position": "4350,-2600,449.9999",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "2cd33083-5019-4a23-9207-d11b9a5d39b8",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "54444a9f-f850-4b92-ab48-7c28bf3b5e3e",
+          "Flags": 0,
+          "Name": "grass_block (47)",
+          "Position": "4400,-2550,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "71de9445-9fae-457a-9ce3-b02581b05052",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "0c194e73-f329-4f60-b82e-138b31d17b27",
+          "Flags": 0,
+          "Name": "grass_block (48)",
+          "Position": "4450,-2500,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "29f154e6-ffb9-4b74-b61c-2da94062423b",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "356311a7-094a-4cef-bb28-6455b344becc",
+          "Flags": 0,
+          "Name": "grass_block (49)",
+          "Position": "4500,-2450,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "76eed6f4-3430-42f7-982f-97b3ab1ebd16",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "b3d1907a-1797-4336-9b5c-826d8e7d8c79",
+          "Flags": 0,
+          "Name": "grass_block (50)",
+          "Position": "4550,-2400,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "8c7eb385-5bd8-402a-b896-b2920a14d228",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "5d2c8d6b-300a-4290-b9a1-203cce93743d",
+          "Flags": 0,
+          "Name": "grass_block (51)",
+          "Position": "4550,-2350,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "b0f3c625-e0bf-41d8-a314-da763ad67b0a",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "0c13b2d3-7f6e-4dcd-8508-6a04a3dbab73",
+          "Flags": 0,
+          "Name": "grass_block (52)",
+          "Position": "4550,-2300,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "6c75c92d-7016-4794-b54f-43e4cd928e34",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "a2c3512c-61e0-431b-b84e-8dc9df1e6393",
+          "Flags": 0,
+          "Name": "grass_block (53)",
+          "Position": "4550,-2250,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c4298227-fe8c-404f-a7f4-c7b7c3c40efe",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "28a39388-ad1a-43ee-adb4-b95edd33e3ba",
+          "Flags": 0,
+          "Name": "grass_block (54)",
+          "Position": "4550,-2200,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "e72e9063-8cb3-4c2b-a921-ba4e223db7ca",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "b282614c-dfd2-4b62-adb6-798c5532dd37",
+          "Flags": 0,
+          "Name": "grass_block (55)",
+          "Position": "4500,-2150,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "094ce1c2-366c-4ba2-a6d8-9ef2fd8296f2",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "54601f4b-add8-4b95-b86e-60165314bf60",
+          "Flags": 0,
+          "Name": "grass_block (56)",
+          "Position": "4450,-2100,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "86cd164e-96f0-4728-b07c-c4bb8c1f250e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "322b1e92-f737-4142-8a2c-82c6e0ef23e2",
+          "Flags": 0,
+          "Name": "grass_block (57)",
+          "Position": "4400,-2050,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "db225c92-15b8-48ea-a01b-ecd852a9ce1e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f3ae0e2b-0a6f-45f8-badb-2fea7a1422cc",
+          "Flags": 0,
+          "Name": "grass_block (58)",
+          "Position": "4350,-2000,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "5a6dc763-ec68-4f46-8573-a3ab3ba06065",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "79438e34-ffa9-40de-8877-afbc56144938",
+          "Flags": 0,
+          "Name": "grass_block (4)",
+          "Position": "4400,-2300,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "901fd52e-274c-4daa-8da5-83b3bf5197fb",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "a8e58c5e-cb92-4578-9204-cd4a6a6caf7f",
+          "Flags": 0,
+          "Name": "grass_block (3)",
+          "Position": "4350,-2350,450",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "7dd7da2a-6eb0-43ba-8819-97edd6613ce8",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "MaterialGroup": null,
+              "Model": "grass_block.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnPropBreak": null,
+              "OnPropTakeDamage": null,
+              "StartAsleep": false,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9fff4994-5d57-460a-a70d-89e5d513e107",
+          "Flags": 0,
+          "Name": "Spinning Platform",
+          "Position": "2900,-904.9412,750",
+          "Scale": "6,2,0.1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "aa475ef8-d1c8-4bbb-9ae9-f3597621e747",
+              "__enabled": false,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {
+                "X": false,
+                "Y": false,
+                "Z": false,
+                "Pitch": false,
+                "Yaw": false,
+                "Roll": false
+              },
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "808a555b-3f3c-427c-9838-ef3e44066b8d",
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/shine.vmat",
+              "Model": "models/dev/box.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "7f5653f4-e8a4-499f-b554-a7c8e7a90a30",
+              "Center": "0,0,0",
+              "Friction": null,
+              "IsTrigger": false,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnObjectTriggerEnter": null,
+              "OnObjectTriggerExit": null,
+              "OnTriggerEnter": null,
+              "OnTriggerExit": null,
+              "Scale": "50,50,50",
+              "Static": false,
+              "Surface": null,
+              "SurfaceVelocity": "0,0,0"
+            },
+            {
+              "__type": "MoveComponent",
+              "__guid": "764dc35b-6e10-4d03-8493-4c1eac712522",
+              "__enabled": false,
+              "Distance": "200,0,0",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "Speed": 1.2
+            },
+            {
+              "__type": "SpinComponent",
+              "__guid": "1495b3f9-ce44-4fbf-8442-ae75fa3a0456",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "SpinAngles": "0,45,0"
+            }
+          ]
+        },
+        {
+          "__guid": "3e8801f3-d538-4820-866f-485d61e80ebf",
+          "Flags": 0,
+          "Name": "Spinning Platform (1)",
+          "Position": "2690.422,-1232.863,750.0008",
+          "Scale": "6,2,0.1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "04b95449-d3d8-4451-94d0-cc0adf89f78f",
+              "__enabled": false,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {
+                "X": false,
+                "Y": false,
+                "Z": false,
+                "Pitch": false,
+                "Yaw": false,
+                "Roll": false
+              },
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            },
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "cc9f357e-5225-411f-89e4-25bda68ef156",
+              "BodyGroups": 18446744073709551615,
+              "CreateAttachments": false,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/shine.vmat",
+              "Model": "models/dev/box.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "8a24506d-b6c3-4b48-b520-1fd515a842bf",
+              "Center": "0,0,0",
+              "Friction": null,
+              "IsTrigger": false,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnObjectTriggerEnter": null,
+              "OnObjectTriggerExit": null,
+              "OnTriggerEnter": null,
+              "OnTriggerExit": null,
+              "Scale": "50,50,50",
+              "Static": false,
+              "Surface": null,
+              "SurfaceVelocity": "0,0,0"
+            },
+            {
+              "__type": "MoveComponent",
+              "__guid": "c370e7c5-2eb5-4cdb-88f3-69f81f4ab92a",
+              "__enabled": false,
+              "Distance": "200,0,0",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "Speed": 1.2
+            },
+            {
+              "__type": "SpinComponent",
+              "__guid": "8a23fc89-c9ac-476c-9454-3866032abb42",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "SpinAngles": "0,-45,0"
+            }
+          ]
+        },
+        {
+          "__guid": "625f8992-14de-4e56-a0b5-dcf4c993876a",
+          "Flags": 0,
+          "Name": "sign001",
+          "Position": "4349.999,-2550,450",
+          "Rotation": "0.0499502,-0.1205905,0.3794095,0.9159757",
+          "Scale": "1.987653,1.987653,1.987653",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "14ffc5a7-30e2-4f1a-adcc-6d56b08c7508",
+              "AnimationGraph": null,
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": null,
+              "CreateAttachments": false,
+              "CreateBoneObjects": false,
+              "MaterialGroup": null,
+              "MaterialOverride": "materials/trimsheets/wood/wood_trim_polished_blend_03.vmat",
+              "Model": "models/props_mining/sign001.vmdl",
+              "Morphs": {},
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "Parameters": {
+                "bools": {},
+                "ints": {},
+                "floats": {},
+                "vectors": {},
+                "rotations": {}
+              },
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Sequence": {
+                "Name": null
+              },
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            },
+            {
+              "__type": "Sandbox.ModelCollider",
+              "__guid": "1982f63a-f0d1-4a27-a3c5-f3072e6b9b16",
+              "Friction": null,
+              "IsTrigger": false,
+              "Model": "models/props_mining/sign001.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OnObjectTriggerEnter": null,
+              "OnObjectTriggerExit": null,
+              "OnTriggerEnter": null,
+              "OnTriggerExit": null,
+              "Static": true,
+              "Surface": null,
+              "SurfaceVelocity": "0,0,0"
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "56d7cf92-8d2f-4cce-8806-61bd3879a57d",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {
+                "X": true,
+                "Y": true,
+                "Z": true,
+                "Pitch": true,
+                "Yaw": true,
+                "Roll": true
+              },
+              "MassCenterOverride": "0,0,0",
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "OverrideMassCenter": false,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "0a8c57a8-3451-4054-b971-0346ac37caa0",
+              "Flags": 0,
+              "Name": "WorldText",
+              "Position": "1.461187,-0.7245281,55.69333",
+              "Rotation": "-0.0003924961,0.04560665,0.9989225,0.008597463",
+              "Scale": "0.1,0.1,0.1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "a358490f-cd88-41af-9f33-565c6628e502",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 1,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Welcome to Wave Parkour!",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 32,
+                    "FontWeight": 400,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,1,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "__guid": "cd75e2e9-9927-454c-bdd7-5c8bfb6f4473",
+              "Flags": 0,
+              "Name": "WorldText (1)",
+              "Position": "1.460985,-1.125267,51.30796",
+              "Rotation": "-0.0003924833,0.04560664,0.9989226,0.008597434",
+              "Scale": "0.09999998,0.09999998,0.09999998",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "1f80cddb-d658-4159-afb4-19d13e193186",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 1,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Shift to Sprint!",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 32,
+                    "FontWeight": 400,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,1,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "__guid": "402ba2b4-2563-4b21-9394-bf19ca7e0e47",
+              "Flags": 0,
+              "Name": "WorldText (2)",
+              "Position": "1.461086,-1.510894,47.09084",
+              "Rotation": "-0.0003924833,0.04560664,0.9989226,0.008597434",
+              "Scale": "0.1,0.1,0.1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "290f1553-a5ee-4402-b8e8-840f0a42ad04",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 1,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Hold Space to jump farther!",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 32,
+                    "FontWeight": 400,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,1,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "__guid": "4d9b5c92-aaa8-4101-be19-5a6389a48bc8",
+              "Flags": 0,
+              "Name": "WorldText (3)",
+              "Position": "1.46088,-2.153084,40.06921",
+              "Rotation": "-0.0003924591,0.04560663,0.9989227,0.008597434",
+              "Scale": "0.06,0.06,0.06",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.TextRenderer",
+                  "__guid": "d6e3efef-9855-4f13-b62e-5b9962748671",
+                  "__version": 1,
+                  "BlendMode": "Normal",
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "RenderOptions": {
+                    "GameLayer": true,
+                    "OverlayLayer": false,
+                    "BloomLayer": false,
+                    "AfterUILayer": false
+                  },
+                  "Scale": 1,
+                  "TextAlignment": "Center",
+                  "TextScope": {
+                    "Text": "Based on XMovement by Xenthio",
+                    "TextColor": "1,1,1,1",
+                    "FontName": "Poppins",
+                    "FontSize": 32,
+                    "FontWeight": 400,
+                    "FontItalic": false,
+                    "LineHeight": 1,
+                    "LetterSpacing": 0,
+                    "WordSpacing": 0,
+                    "Outline": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,1,1"
+                    },
+                    "Shadow": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    },
+                    "OutlineUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,1,0,1"
+                    },
+                    "ShadowUnder": {
+                      "Enabled": false,
+                      "Size": 4,
+                      "Color": "0,0,0,1",
+                      "Offset": "4,4"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "88990461-2b61-4657-9903-eeeb0912ed85",
+      "Flags": 0,
+      "Name": "Teleport Destination",
+      "Position": "750,-1550,684.4861",
+      "Enabled": true
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "minimal"
+    },
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": "minimal",
+  "Description": null,
+  "__references": [
+    "facepunch.woodtrimpolishedblend03#79834",
+    "moman.respawnanchor#1101",
+    "sklystuff.grass_block#37909",
+    "tfassets.sign001#21032"
+  ],
+  "__version": 2
+}

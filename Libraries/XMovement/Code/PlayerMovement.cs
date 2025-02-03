@@ -8,6 +8,17 @@ public partial class PlayerMovement : Component
 	/// The current gravity.
 	/// </summary>
 	[Property, Group( "Config" )] public Vector3 Gravity { get; set; } = new Vector3( 0, 0, 800 );
+	
+	/// <summary>
+	/// The lowered gravity to apply while holding jump, for a limited time.
+	/// </summary>
+	[Property, Group( "Config" )] public Vector3 JumpHoldGravity { get; set; } = new Vector3( 0, 0, 500 );
+
+	/// <summary>
+	/// How long the player can hold jump for more height
+	/// </summary>
+	[Property, Group( "Config" )] public float JumpHoldDuration { get; set; } = 0.75f;
+
 
 	/// <summary>
 	/// How much friction does the player have?
@@ -34,16 +45,35 @@ public partial class PlayerMovement : Component
 		PerUpdate
 	}
 	[Sync] public Vector3 WishVelocity { get; set; }
+	[Sync] public Vector3 AnalogInput { get; set; }
+	public bool IsHoldingJump { get; set; }
+
+	[Sync] public Vector3 RespawnPosition { get; set; }
+
 	protected override void OnStart()
 	{
 		base.OnStart();
 		Tags.Add( "player" );
+		SetRespawnPosition( WorldPosition );
 		CreateShadowObjects();
 	}
 
 	public void PrepareMovement()
 	{
 		UpdateFromSimulatedShadow();
+	}
+
+	public void HandleGravity()
+	{
+		if ( !IsOnGround )
+		{
+			var g = Gravity;
+			if ((Time.Now - TimeLastJumped) < JumpHoldDuration && IsHoldingJump)
+			{
+				g = JumpHoldGravity;
+			}
+			Velocity -= g * Time.Delta;
+		}
 	}
 
 	/// <summary>
@@ -54,9 +84,10 @@ public partial class PlayerMovement : Component
 		RestoreGroundPos();
 		ApplyAcceleration();
 
-		// Start gravity
-		if ( !IsOnGround && withGravity )
-			Velocity -= Gravity * Time.Delta * 0.5f;
+		if ( withGravity )
+		{
+			HandleGravity();
+		}
 
 		if ( withWishVelocity )
 		{
@@ -66,7 +97,8 @@ public partial class PlayerMovement : Component
 			}
 			else
 			{
-				Accelerate( WishVelocity.ClampLength( AirControl ), AirAcceleration );
+				//Accelerate( WishVelocity.ClampLength( AirControl ), AirAcceleration );
+				Accelerate( WishVelocity, AirAcceleration );
 			}
 		}
 
@@ -117,6 +149,21 @@ public partial class PlayerMovement : Component
 	/// <returns></returns>
 	private float GetFriction()
 	{
+		if (Input.AnalogMove.LengthSquared <= 0)
+		{
+			return BaseFriction * 2;
+		}
 		return BaseFriction;
+	}
+
+	public void SetRespawnPosition(Vector3 position)
+	{
+		RespawnPosition = position;
+	}
+
+	public void Respawn()
+	{
+		Velocity = Vector3.Zero;
+		WorldPosition = RespawnPosition;
 	}
 }

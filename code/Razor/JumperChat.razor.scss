@@ -1,0 +1,89 @@
+JumperChat {
+	position: absolute;
+	bottom: 120px;
+	left: 20px;
+	width: 600px;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+	flex-direction: column;
+	align-items: stretch;
+	font-size: 20px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	gap: 10px;
+
+	.skipvote {
+		height: 35px;
+	}
+
+	.skipvote p {
+		font-family: Poppins;
+		font-size: 30px;
+		color: antiquewhite;
+		text-stroke: 3px black;
+	}
+
+	.output {
+		flex-grow: 1;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: stretch;
+		gap: 5px;
+
+		.chat_entry {
+			//background-color: #222d;
+			padding: 2px;
+			gap: 10px;
+			text-stroke: 4px black;
+			align-items: center;
+
+			.avatar {
+				width: 32px;
+				height: 32px;
+				background-position: center;
+				background-size: cover;
+			}
+
+			.author {
+				text-stroke: 4px black;
+				color: #fab003;
+				white-space: nowrap;
+				flex-shrink: 0;
+			}
+
+			.message {
+				color: #fff;
+			}
+		}
+	}
+
+	.input {
+		color: white;
+	}
+
+	TextEntry {
+		overflow: visible;
+	}
+
+	TextEntry label {
+		overflow: visible;
+	}
+
+	.textentry, .content-label, .textentry .prefix-label, .textentry .suffix-label, .textentry .placeholder {
+		overflow: visible;
+	}
+
+	.hide {
+		display: none;
+		width: 0;
+	}
+
+	&.open {
+		.input {
+			background-color: #00000026;
+			border-bottom: 4px solid #000000;
+			overflow: visible;
+		}
+	}
+}

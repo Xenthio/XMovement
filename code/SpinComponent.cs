@@ -23,7 +23,6 @@ public sealed class MoveComponent : Component
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
-
 		startPos = LocalTransform;
 	}
 

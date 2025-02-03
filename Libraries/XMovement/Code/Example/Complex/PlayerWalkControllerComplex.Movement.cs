@@ -51,6 +51,9 @@ public partial class PlayerWalkControllerComplex : Component
 	/// The Input Action that jumping is triggered by.
 	/// </summary>
 	[Property, InputAction, Feature( "Jumping" )] public string JumpAction { get; set; } = "Jump";
+
+	[Property, Feature( "Jumping" )] public float JumpBuffer { get; set; } = 0.11f;
+	[Property, Feature( "Jumping" )] public float CoyoteTime { get; set; } = 0.11f;
 	/// <summary>
 	/// Can the player hold down jump to repeatedly jump?
 	/// </summary>
@@ -66,6 +69,9 @@ public partial class PlayerWalkControllerComplex : Component
 	public bool WantsJump { get; set; }
 	public Vector3 WishMove { get; private set; }
 
+	private float timeLastGrounded { get; set; } = -1;
+	private float timeLastPressedJump { get; set; } = -1;
+
 	public virtual void DoMovement()
 	{
 		Controller.PrepareMovement();
@@ -73,7 +79,7 @@ public partial class PlayerWalkControllerComplex : Component
 		BuildWishVelocity();
 		BuildInput();
 
-		if ( Controller.IsOnGround && WantsJump && CanJump() ) Jump();
+		if ( (Time.Now - Controller.TimeLastGrounded) <= CoyoteTime && WantsJump && CanJump() ) Jump();
 
 		CheckWater();
 		CheckLadder();
@@ -105,7 +111,7 @@ public partial class PlayerWalkControllerComplex : Component
 
 	public void Jump()
 	{
-		Controller.LaunchUpwards( JumpPower );
+		Controller.Jump( JumpPower );
 		BroadcastPlayerJumped();
 	}
 
@@ -120,12 +126,31 @@ public partial class PlayerWalkControllerComplex : Component
 
 	private void BuildFrameInput()
 	{
-		if ( AllowPogosticking && Input.Down( JumpAction ) || (IsInVR && Input.VR.RightHand.ButtonA.IsPressed) ) WantsJump = true;
-		else if ( Input.Pressed( JumpAction ) || (IsInVR && Input.VR.RightHand.ButtonA.Delta) ) WantsJump = true;
+		Controller.IsHoldingJump = Input.Down( JumpAction );
+		if ( AllowPogosticking && Controller.IsHoldingJump || (IsInVR && Input.VR.RightHand.ButtonA.IsPressed) )
+		{
+			//WantsJump = true;
+			timeLastPressedJump = Time.Now;
+		}
+		else if ( Input.Pressed( JumpAction ) || (IsInVR && Input.VR.RightHand.ButtonA.Delta) )
+		{
+			//WantsJump = true;
+			timeLastPressedJump = Time.Now;
+		}
+
+		WantsJump = (Time.Now - timeLastPressedJump) <= JumpBuffer;
+
+		if ( !Input.Down( "Jump" ) && Time.Now - Controller.TimeLastJumped < Controller.JumpHoldDuration && Time.Now - Controller.TimeLastJumped > 0.125f && Controller.Velocity.z > 0 )
+		{
+			Controller.Velocity = Controller.Velocity.WithZ( Controller.Velocity.z * 0.66f );
+			Controller.TimeLastJumped = Time.Now - (Controller.JumpHoldDuration * 2);
+		}
 	}
+
+
 	private void ResetFrameInput()
 	{
-		WantsJump = false;
+		WantsJump = (Time.Now - timeLastPressedJump) <= JumpBuffer;
 	}
 	private void BuildInput()
 	{

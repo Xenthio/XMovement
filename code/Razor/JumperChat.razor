@@ -1,0 +1,306 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@namespace RazorComponents
+@inherits PanelComponent
+@implements Component.INetworkListener
+
+<root>
+	@if (chatVisible)
+	{
+		<div class="output">
+			@foreach (var entry in Entries)
+			{
+				<div class="chat_entry">
+					<div class="author">@entry.author</div>
+					<div class="message">@entry.message</div>
+				</div>
+			}
+		</div>
+	}
+
+	<div class="input">
+		<TextEntry @ref="InputBox" onsubmit="@SubmitChatMessage"></TextEntry>
+	</div>
+
+	<div class="skipvote">
+		@if (showSkip)
+		{
+			<p>Votes to !skip: @numSkips/@numPlayers</p>
+		}
+	</div>
+</root>
+
+@code
+{
+	public static JumperChat Singleton
+	{
+		get
+		{
+			if (!_singleton.IsValid())
+			{
+				_singleton = Game.ActiveScene.GetAllComponents<JumperChat>().FirstOrDefault();
+			}
+			return _singleton;
+		}
+	}
+	private static JumperChat _singleton = null;
+
+	bool showSkip = false;
+	int numSkips = 0;
+	int numPlayers = 0;
+
+	RealTimeSince lastMessageSent = 0;
+	float messagesPerFiveSeconds = 3;
+	List<RealTimeSince> messagesSentAt = new();
+
+	TextEntry InputBox;
+	bool hasInit = false;
+	bool chatVisible = true;
+
+	public record Entry( ulong steamid, string author, string message, RealTimeSince timeSinceAdded, float lifetime = 20f );
+	List<Entry> Entries = new();
+	RealTimeSince lastSentNotice = 10;
+
+	protected override void OnUpdate()
+	{
+		if (InputBox is null)
+			return;
+
+		if (!hasInit)
+		{
+			InputBox.MaxLength = 150;
+			hasInit = true;
+		}
+
+		Panel.AcceptsFocus = false;
+
+		if ( Input.Pressed( "chat" ) )
+		{
+			InputBox.Focus();
+		}
+
+		if ( Entries.RemoveAll( x => x.timeSinceAdded > x.lifetime ) > 0 )
+		{
+			StateHasChanged();
+		}
+
+		SetClass( "open", InputBox.HasFocus );
+	}
+
+	float MessagesSentInLastFiveSeconds()
+	{
+		int messages = 0;
+		List<RealTimeSince> validMessages = new();
+		foreach (RealTimeSince r in messagesSentAt)
+		{
+			if (r.Relative < 5)
+			{
+				messages++;
+				validMessages.Add(r);
+			}
+		}
+
+		messagesSentAt = validMessages;
+		return messages;
+	}
+
+	void SubmitChatMessage()
+	{
+		if (MessagesSentInLastFiveSeconds() <= messagesPerFiveSeconds)
+		{
+			messagesSentAt.Add(0);
+			var text = InputBox.Text;
+			InputBox.Text = "";
+
+			if (string.IsNullOrWhiteSpace(text))
+				return;
+
+			bool shouldSuppressMessage = false;
+
+			bool hasBlacklistedWord = TextContainsBlacklistedWord(text);
+			if (hasBlacklistedWord)
+			{
+				shouldSuppressMessage = true;
+				Log.Warning("Blacklisted word used. Muting.");
+
+				if (PlayerLocalDataManager.Singleton.IsValid())
+				{
+					PlayerLocalDataManager.Singleton.MuteForDay();
+					this.AddSystemText(Connection.Local.DisplayName + " has been muted for use of inappropriate language.");
+				}
+			}
+
+			if (PlayerLocalDataManager.Singleton.IsValid() && PlayerLocalDataManager.Singleton.GetCurrentlyMuted())
+			{
+				shouldSuppressMessage = true;
+			}
+
+			if (!shouldSuppressMessage)
+			{
+				AddText(text);
+			}
+		}
+	}
+
+	[Rpc.Broadcast]
+	void ForceDisconnect()
+	{
+		Log.Warning("Developer-forced disconnect.");
+		Game.Close();
+	}
+
+	[Rpc.Broadcast]
+	void MuteBySteamId(ulong steamId)
+	{
+		if (Connection.Local.SteamId == steamId)
+		{
+			if (PlayerLocalDataManager.Singleton.IsValid())
+			{
+				AddSystemText(Connection.Local.DisplayName + " has been muted by admin.");
+				PlayerLocalDataManager.Singleton.MutePermanently();
+			}
+		}
+	}
+
+	[Rpc.Broadcast]
+	void UnmuteBySteamId(ulong steamId)
+	{
+		if (Connection.Local.SteamId == steamId)
+		{
+			if (PlayerLocalDataManager.Singleton.IsValid())
+			{
+				PlayerLocalDataManager.Singleton.Unmute();
+				AddSystemText(Connection.Local.DisplayName + " has been unmuted by admin.");
+			}
+		}
+	}
+
+	bool ProcessPublicCommand(string cmd, string[] args)
+	{
+		if (cmd == "!cheat")
+		{
+			string txt = "Jumping around the starting gate is not cheating - it is an intended mechanic! Think of it like timing your start in a kart-racer.";
+			if (lastSentNotice.Relative > 5)
+			{
+				AddSystemText(txt);
+				lastSentNotice = 0;
+			}
+			else
+			{
+				AddSystemTextLocal(txt);
+			}
+
+			return true;
+		} else if (cmd == "!host")
+		{
+			string txt = "The current host is: " + Connection.Host.DisplayName;
+			if (lastSentNotice.Relative > 5)
+			{
+				AddSystemText(txt);
+				lastSentNotice = 0;
+			} else
+			{
+				AddSystemTextLocal(txt);
+			}
+
+			return true;
+		} else if (cmd == "!help")
+		{
+			chatVisible = true;
+			AddSystemTextLocal("Commands: !skip, !togglechat, !respawn, !host, !cheat, !uptime");
+
+			return true;
+		} else if (cmd == "!togglechat")
+		{
+			chatVisible = !chatVisible;
+			Log.Info(chatVisible);
+			StateHasChanged();
+			return true;
+		}
+
+		return false;
+	}
+
+	[Rpc.Broadcast]
+	public void AddText( string message )
+	{
+		message = message.Truncate( 300 );
+
+		if (string.IsNullOrWhiteSpace(message))
+			return;
+
+		var steamid = Rpc.Caller.SteamId;
+		var author = Rpc.Caller.DisplayName;
+		Log.Info($"{author}: {message}");
+
+		Entries.Add(new Entry(steamid, author, message, 0.0f));
+		StateHasChanged();
+	}
+
+	[Rpc.Broadcast]
+	public void AddSystemText(string message, float lifetime = 20)
+	{
+		Log.Info("System message: " + message);
+		message = message.Truncate(350);
+
+		if (string.IsNullOrWhiteSpace(message))
+			return;
+
+		Entries.Add(new Entry(0, "ℹ️", message, 0.0f, lifetime));
+		StateHasChanged();
+	}
+
+	public void AddSystemTextLocal(string message, float lifetime = 20)
+	{
+		Log.Info("Local system message: " + message);
+		message = message.Truncate(350);
+
+		if (string.IsNullOrWhiteSpace(message))
+		{
+			return;
+		}
+
+		Entries.Add(new Entry(0, "ℹ️", message, 0.0f, lifetime));
+		StateHasChanged();
+	}
+
+	void Component.INetworkListener.OnConnected( Connection channel )
+	{
+		AddSystemTextLocal( $"{channel.DisplayName} has joined the game" );
+	}
+
+	void Component.INetworkListener.OnDisconnected( Connection channel )
+	{
+		AddSystemTextLocal( $"{channel.DisplayName} has left the game" );
+	}
+
+	bool TextContainsBlacklistedWord(string text)
+	{
+		if (BlacklistedWordDict == null)
+		{
+			BlacklistedWordDict = new();
+			foreach (string s in BlacklistedWords)
+			{
+				BlacklistedWordDict.Add(s, true);
+			}
+		}
+
+		foreach (string s in text.Split(' ', System.StringSplitOptions.TrimEntries))
+		{
+			if (BlacklistedWordDict.ContainsKey(s.ToLower()))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public List<string> BlacklistedWords = new()
+	{
+		"nigger", "niggers", "nnigger", "nniggger", "nniggers", "nnigggers", "n1gger", "n1ggers",
+		"fag", "fags", "faggot", "faggots", "f@g", "f@ggot", "fagg0t", "f@gg0t", "f@gs", "f@ggots", "fagg0ts", "f@gg0ts",
+		"dyke", "dykes"
+	};
+	Dictionary<string, bool> BlacklistedWordDict;
+}
