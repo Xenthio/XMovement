@@ -46,26 +46,16 @@ public partial class PlayerWalkControllerComplex : Component
 		if ( CameraMode == CameraModes.FirstPerson )
 		{
 			Camera.LocalPosition = FirstPersonOffset;
-			foreach ( var mdlrenderer in Body.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
-			{
-				mdlrenderer.RenderType = PlayerShadowsOnly ? Sandbox.ModelRenderer.ShadowRenderType.ShadowsOnly : Sandbox.ModelRenderer.ShadowRenderType.On;
-			}
 		}
 		if ( CameraMode == CameraModes.ThirdPerson )
 		{
 			Camera.LocalPosition = ThirdPersonOffset;
-			if ( BodyModelRenderer.RenderType == Sandbox.ModelRenderer.ShadowRenderType.ShadowsOnly && PlayerShadowsOnly )
-			{
-				foreach ( var mdlrenderer in Body.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
-				{
-					mdlrenderer.RenderType = Sandbox.ModelRenderer.ShadowRenderType.On;
-				}
-			}
 		}
 		if ( !IsProxy && Game.IsPlaying )
 		{
 			Camera.Enabled = true;
 		}
+		UpdateBodyVisibility();
 	}
 
 	public void UpdateCamera()
@@ -83,6 +73,35 @@ public partial class PlayerWalkControllerComplex : Component
 		{
 			if ( CameraMode == CameraModes.ThirdPerson ) CameraMode = CameraModes.FirstPerson;
 			else if ( CameraMode == CameraModes.FirstPerson ) CameraMode = CameraModes.ThirdPerson;
+		}
+	}
+
+	public void UpdateBodyVisibility()
+	{
+		if ( IsProxy )
+		{
+			foreach ( var mdlrenderer in Body.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
+			{
+				mdlrenderer.RenderType = Sandbox.ModelRenderer.ShadowRenderType.On;
+			}
+			return;
+		}
+		if ( CameraMode == CameraModes.FirstPerson )
+		{
+			foreach ( var mdlrenderer in Body.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
+			{
+				mdlrenderer.RenderType = PlayerShadowsOnly ? Sandbox.ModelRenderer.ShadowRenderType.ShadowsOnly : Sandbox.ModelRenderer.ShadowRenderType.On;
+			}
+		}
+		if ( CameraMode == CameraModes.ThirdPerson )
+		{
+			if ( BodyModelRenderer.RenderType == Sandbox.ModelRenderer.ShadowRenderType.ShadowsOnly && PlayerShadowsOnly )
+			{
+				foreach ( var mdlrenderer in Body.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
+				{
+					mdlrenderer.RenderType = Sandbox.ModelRenderer.ShadowRenderType.On;
+				}
+			}
 		}
 	}
 }

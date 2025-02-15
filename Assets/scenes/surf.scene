@@ -1,0 +1,218 @@
+{
+  "__guid": "3460441f-1418-4227-a761-dcf08a6d9bb4",
+  "GameObjects": [
+    {
+      "__guid": "96446dde-3764-4c4e-800e-91186e1ffa80",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "78a2fa65-dee7-42c2-966d-312693b930c7",
+          "Author": null,
+          "Changes": "",
+          "Description": "",
+          "Group": null,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "SceneTags": "",
+          "Title": "rooftops",
+          "Version": null
+        }
+      ]
+    },
+    {
+      "__guid": "b40b520f-f817-4b5a-b65b-83348fa3b793",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "6f0d80fa-4042-46af-866c-70efc6815c81",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "dogi.surf_esmdogi",
+          "NoOrigin": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "9be169a6-5cf7-4881-9c9d-1f698c019e2d",
+      "Flags": 0,
+      "Name": "Envmap Probe",
+      "Position": "-416,0,128",
+      "Components": [
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "211a04fa-52d0-487c-a5d7-5205f5827543",
+          "Bounds": {
+            "Mins": "-1024,-1024,-1024",
+            "Maxs": "1024,1024,1024"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.02,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "MultiBounce": false,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Projection": "Box",
+          "RenderDynamically": false,
+          "Texture": "textures/cubemaps/default2.vtex",
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
+    },
+    {
+      "__guid": "49efb184-1406-479c-9f81-1e83ad30f7b7",
+      "Flags": 0,
+      "Name": "Sun",
+      "Position": "0,2304,64",
+      "Rotation": "0.08357476,0.262664,-0.2914574,0.9160106",
+      "Tags": "light",
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "6b0051be-ba15-46d1-bd5b-08f4e429e35e",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "1.82746,1.96078,2,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "__guid": "16e9110c-fe74-4782-8b7d-1fe671859eb1",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Position": "0,2176,64",
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "b51e55fb-011c-411c-996b-61ee165ca2a7",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "SkyIndirectLighting": true,
+          "SkyMaterial": "materials/skybox/rustig_koppie_puresky.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "98d585df-9733-4222-943e-d1359740b9c4",
+      "Flags": 0,
+      "Name": "Object",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "d4e1a773-d674-446e-a152-e00ff99cf90d",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "90d74eae-7363-496e-b3c3-a2b12e3f6cc0"
+            }
+          ],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "90d74eae-7363-496e-b3c3-a2b12e3f6cc0",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "0,192,0",
+      "Rotation": "0,0,-0.7071067,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpawnPoint",
+          "__guid": "19a182b6-2a89-4255-aa23-91ec7d2e7499",
+          "Color": "0.8902,0.31765,0.05098,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 66,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 3,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "rooftops"
+    },
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": "rooftops",
+  "Description": null,
+  "__references": [
+    "polyhaven.rustig_koppie_puresky#30194"
+  ],
+  "__version": 2
+}

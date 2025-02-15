@@ -152,7 +152,7 @@
       {
         "__type": "Sandbox.HUD",
         "__guid": "8e052cca-09cb-450f-b731-b897aec4f2ae",
-        "MyStringValue": "Press \u0027Reload\u0027 to respawn",
+        "MyStringValue": "Press 'Reload' to respawn",
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -218,6 +218,7 @@
               "vectors": {},
               "rotations": {}
             },
+            "PlaybackRate": 1,
             "RenderOptions": {
               "GameLayer": true,
               "OverlayLayer": false,
@@ -332,6 +333,7 @@
               "vectors": {},
               "rotations": {}
             },
+            "PlaybackRate": 1,
             "RenderOptions": {
               "GameLayer": true,
               "OverlayLayer": false,
@@ -349,6 +351,7 @@
             "__type": "Sandbox.VR.VRHand",
             "__guid": "5c874702-8dfe-4fbe-a2e7-db46a87da82f",
             "HandSource": "Left",
+            "MotionRange": "Hand",
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
@@ -402,6 +405,7 @@
               "vectors": {},
               "rotations": {}
             },
+            "PlaybackRate": 1,
             "RenderOptions": {
               "GameLayer": true,
               "OverlayLayer": false,
@@ -419,6 +423,7 @@
             "__type": "Sandbox.VR.VRHand",
             "__guid": "07de04a2-5b8e-4e01-a643-31d872162d1f",
             "HandSource": "Right",
+            "MotionRange": "Hand",
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
