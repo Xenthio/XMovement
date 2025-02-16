@@ -29,7 +29,7 @@ public partial class PlayerWalkControllerComplex : Component
 				DefaultSpeed = 120f;
 
 				RunByDefault = true;
-				RunSpeed = 210f;
+				RunSpeed = 320f;
 
 				CrouchSpeed = RunSpeed * 0.333f;
 
