@@ -28,7 +28,7 @@ public partial class PlayerWalkControllerComplex : Component
 		{
 			if ( Using is IPressable pressable ) pressable.Pressing( evnt );
 		}
-		if ( Input.Released( UseAction ) || !CanUse( Hovering ) )
+		if ( Using != null && (Input.Released( UseAction ) || !CanUse( Using )) )
 		{
 			if ( Using is IPressable pressable ) pressable.Release( evnt );
 			Using = null;
@@ -65,6 +65,7 @@ public partial class PlayerWalkControllerComplex : Component
 
 	public bool CanUse( Component component )
 	{
+		if ( component == null ) return false;
 		if ( component.WorldPosition.Distance( AimRay.Position ) > UseDistance ) return false;
 		return true;
 	}
@@ -80,7 +81,7 @@ public partial class PlayerWalkControllerComplex : Component
 		if ( tr.GameObject.IsValid() )
 			tr.GameObject.Components.TryGet<Component.IPressable>( out pressable );
 
-		if ( pressable.CanPress( new IPressable.Event() { Ray = AimRay, Source = this } ) )
+		if ( pressable != null && pressable.CanPress( new IPressable.Event() { Ray = AimRay, Source = this } ) )
 			return pressable as Component;
 
 		return null;

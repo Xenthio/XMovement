@@ -142,7 +142,7 @@ public partial class PlayerWalkControllerComplex : Component
 		IsCrouching = crouch || !CanUncrouch();
 	}
 
-	protected float GetWishSpeed()
+	public virtual float GetWishSpeed()
 	{
 		if ( IsCrouching ) return CrouchSpeed;
 		if ( IsRunning ) return RunSpeed;
@@ -164,13 +164,13 @@ public partial class PlayerWalkControllerComplex : Component
 		Controller.WishVelocity = wishDirection * GetWishSpeed();
 	}
 
-	private bool CanJump()
+	public bool CanJump()
 	{
 		if ( !EnableJumping ) return false;
 		if ( IsSwimming ) return false;
 		return true;
 	}
-	private bool CanUncrouch()
+	public bool CanUncrouch()
 	{
 		var b = Controller.Height;
 		if ( !IsCrouching ) return true;

@@ -40,6 +40,7 @@ public partial class PlayerWalkControllerComplex : Component, Component.ExecuteI
 
 		if ( !IsProxy )
 		{
+			UpdateCrouching();
 			if ( Controller.MovementFrequency == PlayerMovement.MovementFrequencyMode.PerFixedUpdate ) DoMovement();
 		}
 		Animate();
