@@ -23,7 +23,7 @@ public sealed class Duplicator : Component
 	public GameObject Duplicate()
 	{
 
-		var copy = GameManager.ActiveScene.CreateObject();
+		var copy = Game.ActiveScene.CreateObject();
 		foreach ( Component component in this.Components.GetAll() )
 		{
 			if ( component is Duplicator ) continue;
