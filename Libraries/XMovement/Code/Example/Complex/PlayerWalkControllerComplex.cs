@@ -28,6 +28,7 @@ public partial class PlayerWalkControllerComplex : Component, Component.ExecuteI
 			UpdateCamera();
 			DoEyeLook();
 			BuildFrameInput();
+			DoUsing();
 			if ( Controller.MovementFrequency == PlayerMovement.MovementFrequencyMode.PerUpdate ) DoMovement();
 		}
 		Animate();
