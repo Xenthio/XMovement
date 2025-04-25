@@ -53,6 +53,11 @@ public partial class PlayerMovement : Component
 	public Vector3 GroundNormal { get; set; }
 	public float SurfaceFriction { get; set; } = 1.0f;
 
+	/// <summary>
+	/// Use a physics body for the shape of the player's movement trace, uses bbox if unset.
+	/// </summary> 
+	[Property] ModelCollider PlayerColliderModel { get; set; }
+
 	protected override void DrawGizmos()
 	{
 		Gizmo.Draw.LineBBox( BoundingBox );
@@ -147,8 +152,14 @@ public partial class PlayerMovement : Component
 		box.Mins *= WorldScale;
 		box.Maxs *= WorldScale;
 
-		var source = Scene.Trace.Ray( from, to );
-		var trace = source.Size( box ).IgnoreGameObjectHierarchy( GameObject );
+		var source = Scene.Trace.Ray( from, to ).Size( box );
+		if ( PlayerColliderModel.IsValid() )
+		{
+			var scale = Height / PlayerColliderModel.Model.PhysicsBounds.Maxs.z;
+			PlayerColliderModel.GameObject.WorldScale = new Vector3( 1, 1, scale );
+			source = Scene.Trace.Body( PlayerColliderModel.Rigidbody.PhysicsBody, new Transform( from ), to );
+		}
+		var trace = source.IgnoreGameObjectHierarchy( GameObject );
 
 		return UseCollisionRules ? trace.WithCollisionRules( Tags ) : trace.WithoutTags( IgnoreLayers );
 	}
