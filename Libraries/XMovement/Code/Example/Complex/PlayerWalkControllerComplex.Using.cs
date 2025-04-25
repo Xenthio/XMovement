@@ -16,6 +16,7 @@ public partial class PlayerWalkControllerComplex : Component
 	public void DoUsing()
 	{
 		if ( !EnableUse ) return;
+		if ( IsProxy ) return;
 		var evnt = new IPressable.Event() { Ray = AimRay, Source = this };
 		UpdateHover( FindUsable() );
 
@@ -65,7 +66,7 @@ public partial class PlayerWalkControllerComplex : Component
 
 	public bool CanUse( Component component )
 	{
-		if ( component == null ) return false;
+		if ( !component.IsValid() ) return false;
 		if ( component.WorldPosition.Distance( AimRay.Position ) > UseDistance ) return false;
 		return true;
 	}
