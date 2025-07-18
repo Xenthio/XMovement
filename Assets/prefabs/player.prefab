@@ -18,6 +18,7 @@
         "__type": "XPSBase.PlayerComponent",
         "__guid": "dc6d5aed-e596-4809-bb84-b536ace67097",
         "__enabled": true,
+        "Health": 100,
         "Movement": {
           "_type": "component",
           "component_id": "14f16545-0f5a-4dd2-8241-2666c86c8f78",
