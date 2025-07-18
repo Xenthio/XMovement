@@ -3,6 +3,9 @@ namespace XMovement;
 
 public partial class PlayerWalkControllerComplex : Component
 {
+	[Property, Group( "Camera" )]
+	public bool UseSceneCamera { get; set; } = true;
+
 	[Property, Group( "Camera" ), Change( "SetupCamera" )]
 	public CameraModes CameraMode { get; set; } = CameraModes.ThirdPerson;
 	public enum CameraModes
@@ -12,28 +15,44 @@ public partial class PlayerWalkControllerComplex : Component
 		Manual,
 	}
 
-	[Property, Group( "Camera" ), ShowIf( "CameraMode", CameraModes.Manual )]
+	private bool _isfirstperson => CameraMode == CameraModes.FirstPerson && !UseSceneCamera;
+	private bool _isthirdperson => CameraMode == CameraModes.ThirdPerson && !UseSceneCamera;
+	private bool _ismanual => CameraMode == CameraModes.Manual && !UseSceneCamera;
+	private bool _canToggleCamera => CameraMode != CameraModes.Manual && !UseSceneCamera;
+
+	[Property, Group( "Camera" ), ShowIf( "_ismanual", true )]
 	public CameraComponent Camera { get; set; }
 
 
-	[Property, Group( "Camera" ), ShowIf( "CameraMode", CameraModes.FirstPerson ), Change( "SetupCamera" )]
+	[Property, Group( "Camera" ), ShowIf( "_isfirstperson", true ), Change( "SetupCamera" )]
 	public bool PlayerShadowsOnly { get; set; } = true;
 
 
-	[Property, Group( "Camera" ), ShowIf( "CameraMode", CameraModes.FirstPerson ), Change( "SetupCamera" )]
+	[Property, Group( "Camera" ), ShowIf( "_isfirstperson", true ), Change( "SetupCamera" )]
 	public Vector3 FirstPersonOffset { get; set; } = new Vector3( 0, 0, 0 );
 
 
-	[Property, Group( "Camera" ), ShowIf( "CameraMode", CameraModes.ThirdPerson ), Change( "SetupCamera" )]
+	[Property, Group( "Camera" ), ShowIf( "_isthirdperson", true ), Change( "SetupCamera" )]
 	public Vector3 ThirdPersonOffset { get; set; } = new Vector3( -180, 0, 0 );
 
-	[Property, InputAction, Group( "Camera" )]
+	[Property, InputAction, Group( "Camera" ), ShowIf( "_canToggleCamera", true )]
 	public string CameraToggleAction { get; set; } = "View";
+
+	/// <summary>
+	/// If true, the camera will apply user preferences such as FOV and other settings.
+	/// </summary>
+	[Property, Group( "Camera" )]
+	public bool ApplyUserPreferences { get; set; } = true;
 
 	public virtual void OnCameraModeChanged() { }
 	public void SetupCamera()
 	{
 		OnCameraModeChanged();
+		if ( UseSceneCamera )
+		{
+			if ( !Game.IsPlaying ) return;
+			if ( Scene.Camera.IsValid() ) Camera = Scene.Camera;
+		}
 		if ( CameraMode != CameraModes.Manual && !Camera.IsValid() )
 		{
 			var cameraobj = Scene.CreateObject();
@@ -51,15 +70,23 @@ public partial class PlayerWalkControllerComplex : Component
 		{
 			Camera.LocalPosition = ThirdPersonOffset;
 		}
-		if ( !IsProxy && Game.IsPlaying )
+		if ( Game.IsPlaying )
 		{
-			Camera.Enabled = true;
+			if ( !IsProxy ) Camera.Enabled = true;
+			UpdateBodyVisibility();
+			if ( ApplyUserPreferences )
+			{
+				Camera.FieldOfView = Preferences.FieldOfView;
+			}
 		}
-		UpdateBodyVisibility();
 	}
 
 	public void UpdateCamera()
 	{
+		if ( UseSceneCamera && !Camera.IsValid() )
+		{
+			if ( Scene.Camera.IsValid() ) Camera = Scene.Camera;
+		}
 		if ( CameraMode == CameraModes.ThirdPerson )
 		{
 			var fraction = 1f;
@@ -68,6 +95,14 @@ public partial class PlayerWalkControllerComplex : Component
 			var tr = Scene.Trace.Ray( start, end ).IgnoreDynamic().Run();
 			fraction = tr.Fraction;
 			Camera.LocalPosition = ThirdPersonOffset * fraction;
+		}
+		if ( CameraMode == CameraModes.FirstPerson )
+		{
+			if ( UseSceneCamera )
+			{
+				Camera.WorldPosition = Head.WorldPosition + (FirstPersonOffset * Head.WorldRotation);
+				Camera.WorldRotation = Head.WorldRotation;
+			}
 		}
 		if ( Input.Pressed( CameraToggleAction ) )
 		{

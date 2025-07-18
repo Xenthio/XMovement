@@ -1,8 +1,8 @@
 {
-  "Title": "XMovement Test",
+  "Title": "XPS Base",
   "Type": "game",
   "Org": "xenthio",
-  "Ident": "xmovement_test",
+  "Ident": "xps_base",
   "Schema": 1,
   "IncludeSourceFiles": false,
   "Resources": null,
@@ -23,12 +23,15 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/rooftops.scene",
+    "StartupScene": "scenes/menu.scene",
     "ControlModes": {
       "Keyboard": true,
       "VR": true,
       "Gamepad": false
     },
-    "LaunchMode": "Normal"
+    "LaunchMode": "Normal",
+    "MapStartupScene": "scenes/map_loader.scene",
+    "DedicatedServerStartupScene": "scenes/map_loader.scene",
+    "SystemScene": "scenes/engine.scene"
   }
 }

@@ -1,9 +1,19 @@
 ﻿using Sandbox;
 namespace XMovement;
 
-public partial class PlayerWalkControllerComplex : Component, Component.ExecuteInEditor
+public partial class PlayerWalkControllerComplex : Component
 {
 	[RequireComponent] public PlayerMovement Controller { get; set; }
+
+	[Button( "Setup Template/Apply Changes" )]
+	public void SetupTemplate()
+	{
+		SetupBody();
+		SetupHead();
+		SetupCamera();
+		SetupVR();
+	}
+
 	protected override void OnStart()
 	{
 		base.OnStart();

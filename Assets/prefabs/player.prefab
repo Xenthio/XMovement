@@ -1,30 +1,36 @@
 {
   "RootObject": {
     "__guid": "df0069e0-452d-42e0-af9a-a56c27398cce",
+    "__version": 1,
     "Flags": 0,
     "Name": "player",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
     "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "NetworkOrphaned": 0,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "XMovement.PlayerWalkControllerComplex",
         "__guid": "19ac7684-4641-48ee-b617-8e266cf12238",
+        "__enabled": true,
         "AllowPogosticking": true,
+        "ApplyUserPreferences": true,
         "Body": {
           "_type": "gameobject",
-          "go": "6d99b4fd-950b-4dfd-aac3-f44792cb1300"
+          "go": "657d0338-98b9-4460-b74f-4fc58b823095"
         },
         "BodyModelRenderer": {
           "_type": "component",
-          "component_id": "d94ae345-4c1b-443c-b898-5a6eb72cff16",
-          "go": "6d99b4fd-950b-4dfd-aac3-f44792cb1300",
+          "component_id": "bf49b09b-a944-49c3-a34e-5139c3266631",
+          "go": "657d0338-98b9-4460-b74f-4fc58b823095",
           "component_type": "SkinnedModelRenderer"
         },
-        "Camera": {
-          "_type": "component",
-          "component_id": "f81190e3-a5a5-4f71-8c39-5373b26fbabe",
-          "go": "b7cdfa62-6dc9-49e2-91e1-421dc224c648",
-          "component_type": "CameraComponent"
-        },
+        "Camera": null,
         "CameraMode": "FirstPerson",
         "CameraToggleAction": "View",
         "ClimbSpeed": 100,
@@ -37,18 +43,19 @@
         "EnableNoclipping": true,
         "EnableRunning": true,
         "EnableSwimming": true,
+        "EnableUse": false,
         "EnableVR": true,
         "EnableWalking": false,
         "FirstPersonOffset": "0,0,0",
         "Head": {
           "_type": "gameobject",
-          "go": "6005e47b-ec48-4df3-a7a7-f8fbf5a99579"
+          "go": "cd9eaf58-5e7d-4395-a6ee-cde7c784c426"
         },
         "HeadHeight": 64,
         "HeadTracker": {
           "_type": "component",
-          "component_id": "8a8f75dc-ac9b-4e85-8c8a-4d752c34abc9",
-          "go": "6005e47b-ec48-4df3-a7a7-f8fbf5a99579",
+          "component_id": "52ce627f-fe62-410b-8909-c7c9661ee99c",
+          "go": "cd9eaf58-5e7d-4395-a6ee-cde7c784c426",
           "component_type": "VRTrackedObject"
         },
         "Height": 72,
@@ -76,6 +83,9 @@
         "SwimmingSpeedScale": 0.8,
         "SwimUpAction": "Jump",
         "ThirdPersonOffset": "-180,0,0",
+        "UseAction": "Use",
+        "UseDistance": 130,
+        "UseSceneCamera": true,
         "WalkAction": "Walk",
         "WalkSpeed": 120,
         "WaterTag": "water"
@@ -83,6 +93,7 @@
       {
         "__type": "XMovement.PlayerMovement",
         "__guid": "14f16545-0f5a-4dd2-8241-2666c86c8f78",
+        "__enabled": true,
         "Acceleration": 10,
         "AirAcceleration": 40,
         "AirControl": 30,
@@ -105,6 +116,7 @@
         "OnComponentStart": null,
         "OnComponentUpdate": null,
         "PhysicsIntegration": true,
+        "PlayerColliderModel": null,
         "PushScale": 0.7,
         "Radius": 16,
         "StepHeight": 18,
@@ -115,6 +127,7 @@
       {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
         "__guid": "78124ebb-f9a3-4b5d-937f-4751a06268b7",
+        "__enabled": true,
         "BodyWeight": 1,
         "EyeSource": null,
         "EyesWeight": 1,
@@ -134,14 +147,15 @@
         "OnComponentUpdate": null,
         "Target": {
           "_type": "component",
-          "component_id": "d94ae345-4c1b-443c-b898-5a6eb72cff16",
-          "go": "6d99b4fd-950b-4dfd-aac3-f44792cb1300",
+          "component_id": "bf49b09b-a944-49c3-a34e-5139c3266631",
+          "go": "657d0338-98b9-4460-b74f-4fc58b823095",
           "component_type": "SkinnedModelRenderer"
         }
       },
       {
         "__type": "Sandbox.VR.VRAnchor",
         "__guid": "c7795a5f-3e61-4879-b4b3-502ce740cad0",
+        "__enabled": true,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -152,6 +166,7 @@
       {
         "__type": "Sandbox.HUD",
         "__guid": "8e052cca-09cb-450f-b731-b897aec4f2ae",
+        "__enabled": true,
         "MyStringValue": "Press 'Reload' to respawn",
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
@@ -163,6 +178,7 @@
       {
         "__type": "Sandbox.ScreenPanel",
         "__guid": "ba9fa8df-033e-40c7-9cce-21461c203e59",
+        "__enabled": true,
         "AutoScreenScale": true,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
@@ -173,11 +189,13 @@
         "Opacity": 1,
         "Scale": 1,
         "ScaleStrategy": "ConsistentHeight",
+        "TargetCamera": null,
         "ZIndex": 100
       },
       {
         "__type": "Respawner",
         "__guid": "002d810d-8ba8-403d-8dfb-55e30821dd66",
+        "__enabled": true,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -188,14 +206,24 @@
     ],
     "Children": [
       {
-        "__guid": "6d99b4fd-950b-4dfd-aac3-f44792cb1300",
+        "__guid": "657d0338-98b9-4460-b74f-4fc58b823095",
+        "__version": 1,
         "Flags": 0,
         "Name": "Body",
+        "Position": "0,0,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "d94ae345-4c1b-443c-b898-5a6eb72cff16",
+            "__guid": "bf49b09b-a944-49c3-a34e-5139c3266631",
+            "__enabled": true,
             "AnimationGraph": null,
             "BodyGroups": 341,
             "BoneMergeTarget": null,
@@ -203,6 +231,7 @@
             "CreateBoneObjects": false,
             "MaterialGroup": null,
             "MaterialOverride": null,
+            "Materials": null,
             "Model": "models/citizen/citizen.vmdl",
             "Morphs": {},
             "OnComponentDestroy": null,
@@ -225,38 +254,37 @@
               "BloomLayer": false,
               "AfterUILayer": false
             },
-            "RenderType": "ShadowsOnly",
+            "RenderType": "On",
             "Sequence": {
-              "Name": null
+              "Name": null,
+              "Looping": true,
+              "Blending": false
             },
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
-        ]
+        ],
+        "Children": []
       },
       {
-        "__guid": "6005e47b-ec48-4df3-a7a7-f8fbf5a99579",
+        "__guid": "cd9eaf58-5e7d-4395-a6ee-cde7c784c426",
+        "__version": 1,
         "Flags": 0,
         "Name": "Head",
-        "Position": "0,0,64",
+        "Position": "0,0,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.VR.VRTrackedObject",
-            "__guid": "b142de0c-4b58-4683-8bc3-a9b581ea86cc",
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null,
-            "PoseSource": "Head",
-            "TrackingType": "All",
-            "UseRelativeTransform": false
-          },
-          {
-            "__type": "Sandbox.VR.VRTrackedObject",
-            "__guid": "8a8f75dc-ac9b-4e85-8c8a-4d752c34abc9",
+            "__guid": "52ce627f-fe62-410b-8909-c7c9661ee99c",
+            "__enabled": true,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
@@ -268,196 +296,13 @@
             "UseRelativeTransform": false
           }
         ],
-        "Children": [
-          {
-            "__guid": "b7cdfa62-6dc9-49e2-91e1-421dc224c648",
-            "Flags": 0,
-            "Name": "Camera",
-            "Enabled": true,
-            "Components": [
-              {
-                "__type": "Sandbox.CameraComponent",
-                "__guid": "f81190e3-a5a5-4f71-8c39-5373b26fbabe",
-                "__enabled": false,
-                "BackgroundColor": "0.33333,0.46275,0.52157,1",
-                "ClearFlags": "All",
-                "FieldOfView": 90,
-                "IsMainCamera": true,
-                "OnComponentDestroy": null,
-                "OnComponentDisabled": null,
-                "OnComponentEnabled": null,
-                "OnComponentFixedUpdate": null,
-                "OnComponentStart": null,
-                "OnComponentUpdate": null,
-                "Orthographic": false,
-                "OrthographicHeight": 1204,
-                "Priority": 1,
-                "RenderExcludeTags": "",
-                "RenderTags": "",
-                "TargetEye": "Both",
-                "Viewport": "0,0,1,1",
-                "ZFar": 10000,
-                "ZNear": 10
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "__guid": "8cec35a9-7568-410b-a968-b9eea4cfde34",
-        "Flags": 0,
-        "Name": "Object",
-        "Components": [
-          {
-            "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "edb61aac-fefb-46de-9c42-02f61a970e74",
-            "AnimationGraph": null,
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": null,
-            "CreateAttachments": false,
-            "CreateBoneObjects": false,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
-            "Model": "models/hands/human_hand_left.vmdl",
-            "Morphs": {},
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null,
-            "Parameters": {
-              "bools": {},
-              "ints": {},
-              "floats": {},
-              "vectors": {},
-              "rotations": {}
-            },
-            "PlaybackRate": 1,
-            "RenderOptions": {
-              "GameLayer": true,
-              "OverlayLayer": false,
-              "BloomLayer": false,
-              "AfterUILayer": false
-            },
-            "RenderType": "On",
-            "Sequence": {
-              "Name": null
-            },
-            "Tint": "1,1,1,1",
-            "UseAnimGraph": true
-          },
-          {
-            "__type": "Sandbox.VR.VRHand",
-            "__guid": "5c874702-8dfe-4fbe-a2e7-db46a87da82f",
-            "HandSource": "Left",
-            "MotionRange": "Hand",
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null
-          },
-          {
-            "__type": "Sandbox.VR.VRTrackedObject",
-            "__guid": "d0ab393a-0a53-4ec5-a4c8-5fa6ad4f15b2",
-            "__enabled": false,
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null,
-            "PoseSource": "LeftHand",
-            "TrackingType": "All",
-            "UseRelativeTransform": false
-          }
-        ]
-      },
-      {
-        "__guid": "daf931fd-90f2-407a-96b4-36da55bc6175",
-        "Flags": 0,
-        "Name": "Object (1)",
-        "Components": [
-          {
-            "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "06830d60-5548-4bff-aa01-a6d9f2f3e539",
-            "AnimationGraph": null,
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": null,
-            "CreateAttachments": false,
-            "CreateBoneObjects": false,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
-            "Model": "models/hands/human_hand_right.vmdl",
-            "Morphs": {},
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null,
-            "Parameters": {
-              "bools": {},
-              "ints": {},
-              "floats": {},
-              "vectors": {},
-              "rotations": {}
-            },
-            "PlaybackRate": 1,
-            "RenderOptions": {
-              "GameLayer": true,
-              "OverlayLayer": false,
-              "BloomLayer": false,
-              "AfterUILayer": false
-            },
-            "RenderType": "On",
-            "Sequence": {
-              "Name": null
-            },
-            "Tint": "1,1,1,1",
-            "UseAnimGraph": true
-          },
-          {
-            "__type": "Sandbox.VR.VRHand",
-            "__guid": "07de04a2-5b8e-4e01-a643-31d872162d1f",
-            "HandSource": "Right",
-            "MotionRange": "Hand",
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null
-          },
-          {
-            "__type": "Sandbox.VR.VRTrackedObject",
-            "__guid": "b1ee052e-e516-4b4a-9f09-0dcb526ca2f6",
-            "__enabled": false,
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null,
-            "PoseSource": "RightHand",
-            "TrackingType": "All",
-            "UseRelativeTransform": false
-          }
-        ]
+        "Children": []
       }
     ],
-    "__variables": [],
     "__properties": {
-      "FixedUpdateFrequency": 50,
-      "MaxFixedUpdates": 5,
-      "NetworkFrequency": 30,
       "NetworkInterpolation": true,
-      "PhysicsSubSteps": 1,
-      "ThreadedAnimation": true,
       "TimeScale": 1,
-      "UseFixedUpdate": true,
+      "WantsSystemScene": true,
       "Metadata": {},
       "NavMesh": {
         "Enabled": false,
@@ -471,13 +316,14 @@
         "ExcludedBodies": "",
         "IncludedBodies": ""
       }
-    }
+    },
+    "__variables": []
   },
+  "ResourceVersion": 2,
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "DontBreakAsTemplate": false,
-  "ResourceVersion": 1,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }
