@@ -7,9 +7,15 @@ public class PlayerComponent : Component, Component.IDamageable
 	[Property, Group( "Player" )] public PlayerWalkControllerComplex WalkController;
 	[Property, Group( "Player" )] public PlayerMovement Movement;
 	[Property, Group( "Life" )] public float Health = 100f;
+
+	public static PlayerComponent Local;
 	protected override void OnStart()
 	{
 		base.OnStart();
+		if ( !IsProxy )
+		{
+			Local = this;
+		}
 	}
 
 	public void OnDamage( in DamageInfo damage )

@@ -1,0 +1,17 @@
+@using Sandbox;
+@using Sandbox.UI;
+@namespace XPSBase
+
+<root>
+	<div class="Health">
+		<iconpanel>local_hospital</iconpanel>
+		<label>
+			@PlayerComponent.Local.Health
+		</label>
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash() => System.HashCode.Combine(PlayerComponent.Local.Health);
+}

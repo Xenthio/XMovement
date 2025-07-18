@@ -184,10 +184,9 @@
           "ZIndex": 100
         },
         {
-          "__type": "Sandbox.HUD",
-          "__guid": "977439ce-10a8-437f-b383-f2b3ba739743",
+          "__type": "XPSBase.HUD",
+          "__guid": "d1a45d9a-daa8-41cb-8f2b-772d5b8f162b",
           "__enabled": true,
-          "MyStringValue": "Hello World!",
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
