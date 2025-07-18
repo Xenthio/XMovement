@@ -1,0 +1,15 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace XPSBase
+
+<root>
+	<MainMenuRoot>
+
+	</MainMenuRoot>
+</root>
+
+@code
+{
+	protected override int BuildHash() => System.HashCode.Combine( 1 );
+}

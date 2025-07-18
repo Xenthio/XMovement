@@ -1,0 +1,31 @@
+LandingPage {
+	font-family: Poppins;
+	color: #fff;
+	font-size: 16px;
+
+	.Controls {
+		background-color: #444;
+		flex-direction: column;
+		margin: 24px;
+		padding: 24px;
+		border-radius: 8px;
+	}
+
+	.Button {
+		background-color: #333;
+		border: 0.5px solid #555;
+		color: #fff;
+		padding: 12px 24px;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-bottom: 8px;
+
+		&:hover {
+			background-color: #555;
+		}
+	}
+
+	.Title {
+		font-size: 48px;
+	}
+}

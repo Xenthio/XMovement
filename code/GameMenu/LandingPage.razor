@@ -1,0 +1,20 @@
+@using Sandbox.Menu
+@using Sandbox.UI;
+
+@inherits Panel
+@namespace XPSBase
+
+<root> 
+	<div class="Controls">
+		<label class="Title">XPS Base</label>
+		<button class="Button" @onclick=@( () => LoadScene("scenes/dev/minimal.scene") )>Start Game</button>
+	</div>
+</root>
+
+@code
+{ 
+	private void LoadScene(string scenePath)
+	{
+		Game.ActiveScene.LoadFromFile(scenePath);
+	}
+}
