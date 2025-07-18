@@ -145,6 +145,58 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "7dac07ea-c319-44c8-b949-0c14c09f3803",
+      "__version": 1,
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "-99.08633,69.37756,34.98386",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "1e0dac93-a2e2-408f-9923-bc787c16b015",
+          "__enabled": true,
+          "AutoScreenScale": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "TargetCamera": {
+            "_type": "component",
+            "component_id": "b9ec6d3b-cb00-4826-8d80-63f313d61dcc",
+            "go": "7038a069-cbec-4a6f-9a29-2ab75a70e5f8",
+            "component_type": "CameraComponent"
+          },
+          "ZIndex": 100
+        },
+        {
+          "__type": "Sandbox.HUD",
+          "__guid": "977439ce-10a8-437f-b383-f2b3ba739743",
+          "__enabled": true,
+          "MyStringValue": "Hello World!",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {

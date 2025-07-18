@@ -15,6 +15,29 @@
     "OwnerTransfer": 1,
     "Components": [
       {
+        "__type": "XPSBase.PlayerComponent",
+        "__guid": "dc6d5aed-e596-4809-bb84-b536ace67097",
+        "__enabled": true,
+        "Movement": {
+          "_type": "component",
+          "component_id": "14f16545-0f5a-4dd2-8241-2666c86c8f78",
+          "go": "df0069e0-452d-42e0-af9a-a56c27398cce",
+          "component_type": "PlayerMovement"
+        },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "WalkController": {
+          "_type": "component",
+          "component_id": "19ac7684-4641-48ee-b617-8e266cf12238",
+          "go": "df0069e0-452d-42e0-af9a-a56c27398cce",
+          "component_type": "PlayerWalkControllerComplex"
+        }
+      },
+      {
         "__type": "XMovement.PlayerWalkControllerComplex",
         "__guid": "19ac7684-4641-48ee-b617-8e266cf12238",
         "__enabled": true,
@@ -155,46 +178,6 @@
       {
         "__type": "Sandbox.VR.VRAnchor",
         "__guid": "c7795a5f-3e61-4879-b4b3-502ce740cad0",
-        "__enabled": true,
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null
-      },
-      {
-        "__type": "Sandbox.HUD",
-        "__guid": "8e052cca-09cb-450f-b731-b897aec4f2ae",
-        "__enabled": true,
-        "MyStringValue": "Press 'Reload' to respawn",
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null
-      },
-      {
-        "__type": "Sandbox.ScreenPanel",
-        "__guid": "ba9fa8df-033e-40c7-9cce-21461c203e59",
-        "__enabled": true,
-        "AutoScreenScale": true,
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null,
-        "Opacity": 1,
-        "Scale": 1,
-        "ScaleStrategy": "ConsistentHeight",
-        "TargetCamera": null,
-        "ZIndex": 100
-      },
-      {
-        "__type": "Respawner",
-        "__guid": "002d810d-8ba8-403d-8dfb-55e30821dd66",
         "__enabled": true,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
