@@ -44,6 +44,17 @@
         }
       },
       {
+        "__type": "PlayerInventory",
+        "__guid": "00d42939-9375-4e07-9428-48756dee3cb0",
+        "__enabled": true,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
+      },
+      {
         "__type": "XMovement.PlayerWalkControllerComplex",
         "__guid": "19ac7684-4641-48ee-b617-8e266cf12238",
         "__enabled": true,
