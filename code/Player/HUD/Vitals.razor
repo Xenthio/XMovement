@@ -1,17 +1,16 @@
 @using Sandbox;
 @using Sandbox.UI;
-@namespace XPSBase
 
-<root>
-	<div class="Health">
+<root class="padding-medium">
+	<div class="Health Widget">
 		<iconpanel>local_hospital</iconpanel>
 		<label>
-			@PlayerComponent.Local.Health
+			@Player.FindLocalPlayer().Health
 		</label>
 	</div>
 </root>
 
 @code
 {
-	protected override int BuildHash() => System.HashCode.Combine(PlayerComponent.Local.Health);
+	protected override int BuildHash() => System.HashCode.Combine(Player.FindLocalPlayer().Health);
 }

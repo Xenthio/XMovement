@@ -26,10 +26,7 @@
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/player.prefab"
-          },
+          "PlayerPrefab": null,
           "SpawnPoints": [],
           "StartServer": true
         }
@@ -184,8 +181,8 @@
           "ZIndex": 100
         },
         {
-          "__type": "XPSBase.HUD",
-          "__guid": "d1a45d9a-daa8-41cb-8f2b-772d5b8f162b",
+          "__type": "HUD",
+          "__guid": "26870159-ad57-4a4b-8876-3a76f6b47cba",
           "__enabled": true,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,

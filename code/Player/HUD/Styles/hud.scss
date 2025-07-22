@@ -1,0 +1,14 @@
+$text-color: white;
+$text-font: Poppins;
+$text-weight: 400;
+$text-size: 25px;
+
+@import "./layout.scss";
+@import "./widget.scss";
+
+HUD {
+	color: $text-color;
+	font-family: $text-font;
+	font-weight: $text-weight;
+	font-size: $text-size;
+}

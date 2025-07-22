@@ -482,6 +482,36 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "18c4960e-7f71-4adb-91d2-f68072632061",
+      "__version": 1,
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "-200,3.54908,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.SpawnPoint",
+          "__guid": "625652a9-cf1c-4fe0-9f92-4374c73fa267",
+          "__enabled": true,
+          "Color": "0.8902,0.31765,0.05098,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {

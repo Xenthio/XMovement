@@ -1,0 +1,18 @@
+$size: 12px;
+$size-medium: 24px;
+
+.padding {
+	padding: $size;
+}
+
+.padding-medium {
+	padding: $size-medium;
+}
+
+.margin {
+	margin: $size;
+}
+
+.margin-medium {
+	margin: $size-medium;
+}

@@ -15,10 +15,15 @@
     "OwnerTransfer": 1,
     "Components": [
       {
-        "__type": "XPSBase.PlayerComponent",
-        "__guid": "dc6d5aed-e596-4809-bb84-b536ace67097",
+        "__type": "Player",
+        "__guid": "9aaf8ca5-bfc1-49fb-bae6-ca5b09bb6cc2",
         "__enabled": true,
+        "Body": {
+          "_type": "gameobject",
+          "go": "657d0338-98b9-4460-b74f-4fc58b823095"
+        },
         "Health": 100,
+        "MaxHealth": 100,
         "Movement": {
           "_type": "component",
           "component_id": "14f16545-0f5a-4dd2-8241-2666c86c8f78",
