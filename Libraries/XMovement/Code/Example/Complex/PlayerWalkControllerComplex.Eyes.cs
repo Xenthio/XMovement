@@ -55,8 +55,8 @@ public partial class PlayerWalkControllerComplex : Component
 			{
 				EyeAngles = Input.VR.Head.Rotation.Angles();
 			}
-
-			PositionHead();
 		}
+
+		PositionHead();
 	}
 }
