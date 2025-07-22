@@ -31,7 +31,8 @@ public partial class PlayerWalkControllerComplex : Component
 		base.OnUpdate();
 		if ( !Game.IsPlaying ) return;
 
-		Camera.Enabled = !IsProxy;
+		if ( !UseSceneCamera )
+			Camera.Enabled = !IsProxy;
 
 		if ( !IsProxy )
 		{
