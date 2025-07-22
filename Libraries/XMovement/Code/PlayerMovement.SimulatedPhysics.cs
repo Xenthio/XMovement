@@ -12,14 +12,18 @@ public partial class PlayerMovement : Component
 	[Property, Feature( "Physics Integration" )] public float Mass { get; set; } = 85;
 	[Property, Feature( "Physics Integration" )] public float PushScale { get; set; } = 0.7f;
 
-	[Property, Feature( "Physics Integration" )] public GameObject PhysicsShadow { get; set; }
-	[Property, Feature( "Physics Integration" )] public Rigidbody PhysicsShadowRigidbody;
-	[Property, Feature( "Physics Integration" )] public BoxCollider PhysicsShadowCollider;
-	[Property, Feature( "Physics Integration" )] public GameObject PhysicsBody { get; set; }
-	[Property, Feature( "Physics Integration" )] public Rigidbody PhysicsBodyRigidbody;
-	[Property, Feature( "Physics Integration" )] public BoxCollider PhysicsBodyCollider;
+	[Property, Feature( "Physics Integration" ), Group( "Shadow" )] public GameObject PhysicsShadow { get; set; }
+	[Property, Feature( "Physics Integration" ), Group( "Shadow" )] public Rigidbody PhysicsShadowRigidbody;
+	[Property, Feature( "Physics Integration" ), Group( "Shadow" )] public BoxCollider PhysicsShadowCollider;
+	[Property, Feature( "Physics Integration" ), Group( "Body" )] public GameObject PhysicsBody { get; set; }
+	[Property, Feature( "Physics Integration" ), Group( "Body" )] public Rigidbody PhysicsBodyRigidbody;
+	[Property, Feature( "Physics Integration" ), Group( "Body" )] public BoxCollider PhysicsBodyCollider;
 	bool PreviouslyOnGround = false;
 
+	/// <summary>
+	/// You can pre-create the shadow objects if you want to do so, otherwise they will be created at runtime.
+	/// </summary>
+	//[InfoBox( "You can pre-create the shadow objects if you want to do so, otherwise they will be created at runtime.", tint: EditorTint. )]
 	[Button( "Pre Create Shadow Objects" ), Feature( "Physics Integration" )]
 
 	void CreateShadowObjects()
