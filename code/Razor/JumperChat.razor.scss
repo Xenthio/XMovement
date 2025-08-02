@@ -12,6 +12,12 @@ JumperChat {
 	font-size: 20px;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	gap: 10px;
+	pointer-events: none;
+
+	.hide {
+		display: none;
+		width: 0;
+	}
 
 	.skipvote {
 		height: 35px;
@@ -29,7 +35,9 @@ JumperChat {
 		flex-direction: column;
 		justify-content: flex-end;
 		align-items: stretch;
-		gap: 5px;
+		gap: 2px;
+		overflow: scroll;
+		max-height: 260px;
 
 		.chat_entry {
 			//background-color: #222d;
@@ -37,6 +45,7 @@ JumperChat {
 			gap: 10px;
 			text-stroke: 4px black;
 			align-items: center;
+			flex-shrink: 0;
 
 			.avatar {
 				width: 32px;
@@ -74,16 +83,13 @@ JumperChat {
 		overflow: visible;
 	}
 
-	.hide {
-		display: none;
-		width: 0;
-	}
-
 	&.open {
+		pointer-events: all;
+
 		.input {
 			background-color: #00000026;
 			border-bottom: 4px solid #000000;
-			overflow: visible;
+			/*overflow: visible;*/
 		}
 	}
 }

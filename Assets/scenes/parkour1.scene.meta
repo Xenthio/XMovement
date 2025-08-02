@@ -1,0 +1,21 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Wave Voxel Parkour Test",
+      "Type": "map",
+      "Org": "waveparadigm",
+      "Ident": "wave_parkour_voxel_test",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "scenes/parkour1.scene",
+        "ParentPackage": "waveparadigm.wave_parkour"
+      }
+    }
+  }
+}

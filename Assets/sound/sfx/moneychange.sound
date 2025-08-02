@@ -1,0 +1,17 @@
+{
+  "UI": true,
+  "Volume": "0.1",
+  "Pitch": "0.75",
+  "Decibels": 70,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sound/sfx/moneychange.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": false,
+  "__references": [],
+  "__version": 0
+}

@@ -1,0 +1,19 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/waternew.shader"
+
+	g_flAlbedoMultiplier "1.000"
+	g_flSize "0.198"
+	g_flSpeed "1.000"
+	MainAlbedo "materials/textures/Water.png"
+	NoiseTexture "materials/textures/WarblePerlin.png"
+	NoiseTexture0 "materials/textures/WarblePerlin.png"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Translucent ----
+	g_flOpacityScale "1.000"
+}

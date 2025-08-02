@@ -7,6 +7,7 @@ public sealed class CameraOverrideZoneController : Component, Component.ITrigger
 	[Property] public float Yaw { get; set; } = -1;
 	[Property] public float Pitch { get; set; } = 20;
 	[Property] public float Distance { get; set; } = 650f;
+	[Property] public bool AllowYawOverride { get; set; } = false;
 	public int GetZoneId()
 	{
 		Vector3 pos = GameObject.WorldPosition;
@@ -33,7 +34,7 @@ public sealed class CameraOverrideZoneController : Component, Component.ITrigger
 			// This is our player!
 			if (CameraController.Local != null && CameraController.Local.IsValid && GameObject != null && GameObject.IsValid)
 			{
-				CameraController.Local.RegisterCameraOverride(GetZoneId(), Priority, Yaw != -1 ? Yaw : GameObject.WorldRotation.Yaw(), Pitch, Distance);
+				CameraController.Local.RegisterCameraOverride(GetZoneId(), Priority, Yaw != -1 ? Yaw : GameObject.WorldRotation.Yaw(), Pitch, Distance, AllowYawOverride);
 			}
 		}
 	}

@@ -953,14 +953,24 @@
                   "Lifetime": {
                     "Type": "Range",
                     "Evaluation": "Particle",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "2,15,0,0"
                   },
                   "MaxParticles": 1000,
@@ -986,14 +996,24 @@
                   "Scale": {
                     "Type": "Range",
                     "Evaluation": "Particle",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "10,30,0,0"
                   },
                   "SequenceId": 0,
@@ -1160,14 +1180,24 @@
                   "Lifetime": {
                     "Type": "Range",
                     "Evaluation": "Particle",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "0.5,1,0,0"
                   },
                   "MaxParticles": 1000,
@@ -1193,14 +1223,24 @@
                   "Scale": {
                     "Type": "Range",
                     "Evaluation": "Particle",
-                    "CurveA": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
-                    "CurveB": {
-                      "rangex": "0,0",
-                      "rangey": "0,0"
-                    },
+                    "CurveA": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
+                    "CurveB": [
+                      {
+                        "x": 0.5,
+                        "y": 0.5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ],
                     "Constants": "10,30,0,0"
                   },
                   "SequenceId": 0,

@@ -1,0 +1,19 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "lunar-crater",
+      "Type": "sound",
+      "Org": "local",
+      "Ident": "lunar-crater",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "sound/music/lunar-crater.sound"
+      }
+    }
+  }
+}

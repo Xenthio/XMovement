@@ -1,0 +1,44 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/saunacliff.shader"
+
+	//---- Rendering ----
+	F_DO_NOT_CAST_SHADOWS 1
+
+	//---- Cliff Model Data ----
+	CliffDirection "materials/default/default.tga"
+	CliffDirt "materials/default/default.tga"
+	CliffPeaks "materials/default/default.tga"
+	DirtStrength "0.000"
+	PeaksStrength "0.000"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	AmbientOcclusionStrength "0.000"
+	Color "materials/textures/Wood.png"
+	ColorTintMask "materials/default/default.tga"
+	DetailAmbientOcclusion "materials/default/default_ao.tga"
+	DetailNormal "materials/default/default_normal.tga"
+	g_flColorTint "[0.486275 0.274510 0.176471 0.000000]"
+	GlobalAmbientOcclusion "materials/default/default_ao.tga"
+	GlobalNormal "materials/default/default.tga"
+	GlobalNormalStrength "0.000"
+	Metalness "materials/default/default_metal.tga"
+	NormalStrength "0.000"
+	Roughness "[0.904000 0.904000 0.904000 0.000000]"
+
+	//---- Triplanar Settings ----
+	TextureBlending "1.000"
+	TextureScale "1.000"
+	TextureTiling "1.000"
+
+	SystemAttributes
+	{
+		WorldMappingWidth "1"
+		WorldMappingHeight "1"
+	}
+}

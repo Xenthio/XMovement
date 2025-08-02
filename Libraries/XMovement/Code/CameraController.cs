@@ -20,12 +20,14 @@ public sealed class CameraController : Component
 		public float Yaw;
 		public float Pitch;
 		public float Distance;
-		public CameraOverrideZone( int priority, float yaw, float pitch, float distance )
+		public bool AllowYaw;
+		public CameraOverrideZone( int priority, float yaw, float pitch, float distance, bool allowYaw = false )
 		{
 			Priority = priority;
 			Yaw = yaw;
 			Pitch = pitch;
 			Distance = distance;
+			AllowYaw = allowYaw;
 		}
 	}
 	private Dictionary<int, CameraOverrideZone> registeredCameraOverrides = new();
@@ -40,6 +42,7 @@ public sealed class CameraController : Component
 	private Angles eyeAngles { get; set; }
 
 	private float cameraLockoutTime = 0f;
+	private bool hasInitWithLocal = false;
 
 	private Transform? virtualTransform;
 	private Transform transitionStartTransform;
@@ -74,6 +77,7 @@ public sealed class CameraController : Component
 		if (camera == null)
 		{
 			//create camera!
+			Log.Info( "Create camera!" );
 			var cameraobj = Scene.CreateObject();
 			cameraobj.Name = "MainCamera";
 			camera = cameraobj.AddComponent<CameraComponent>();
@@ -83,7 +87,6 @@ public sealed class CameraController : Component
 		{
 			CameraObject = camera.GameObject;
 		}
-		cameraLockoutTime = 2f;
 		ResetAngles();
 	}
 
@@ -118,6 +121,11 @@ public sealed class CameraController : Component
 		}
 		else if ( LookDirectionController.Local != null && LookDirectionController.Local.IsValid )
 		{
+			if (!hasInitWithLocal)
+			{
+				ResetAngles();
+			}
+
 			HandleManualLook();
 
 			if ( activeCameraOverride == null )
@@ -127,7 +135,11 @@ public sealed class CameraController : Component
 			else
 			{
 				// We have an override!
-				HandleOverride( MathF.Min( Time.Delta, 0.05f ) );
+				HandleOverride( MathF.Min( Time.Delta, 0.05f ), activeCameraOverride.AllowYaw && cameraLockoutTime <= 0);
+				if ( activeCameraOverride.AllowYaw && cameraLockoutTime > 0 )
+				{
+					HandleMovement( MathF.Min( Time.Delta, 0.05f ) );
+				}
 			}
 
 			LookDirectionController.Local.WorldRotation = eyeAngles.ToRotation();
@@ -167,34 +179,47 @@ public sealed class CameraController : Component
 		e.pitch = e.pitch.Clamp( -45, 80 );
 		e.roll = 0;
 		eyeAngles = e;
+
+		if ( MathF.Abs( inputAngles.yaw ) > 0.015f )
+		{
+			cameraLockoutTime = 1.5f;
+		}
 	}
 
 	Vector3 currentPosition, previousPosition, currentVelocity, previousVelocity;
 	Rotation? targetRotation;
 	Rotation currentRotation, slerpedRotation;
 	float slerpRate;
-
+	Vector3 delta;
 	void HandleMovement( float dt )
 	{
 		currentRotation = eyeAngles.WithPitch( 0 ).WithRoll( 0 ).ToRotation();
-		if ( MathF.Abs( Input.AnalogLook.yaw ) > 0.015f )
-		{
-			cameraLockoutTime = 1.5f;
-		}
 
 		if ( cameraLockoutTime <= 0 )
 		{
 			currentPosition = LookDirectionController.Local.WorldPosition.WithZ( 0 );
-			currentVelocity = Vector3.Lerp( previousVelocity, (currentPosition - previousPosition) / dt, dt * 12 );
-			previousVelocity = currentVelocity;
+			delta = (currentPosition - previousPosition);
 
-			if ( currentVelocity.Length > AutocamFollowSpeed.x )
+			if (delta.LengthSquared > 1000000)
 			{
-				targetRotation = Rotation.FromToRotation( Vector3.Forward, currentVelocity.WithZ( 0 ).Normal );
-			}
-			else
+				// we moved more than 1000 units. wipe all previous info.
+				previousPosition = LookDirectionController.Local.WorldPosition.WithZ( 0 );
+				currentPosition = previousPosition;
+				previousVelocity = Vector3.Zero;
+				currentVelocity = Vector3.Zero;
+			} else
 			{
-				targetRotation = null;
+				currentVelocity = Vector3.Lerp( previousVelocity, (currentPosition - previousPosition) / dt, dt * 12 );
+				previousVelocity = currentVelocity;
+
+				if ( currentVelocity.Length > AutocamFollowSpeed.x )
+				{
+					targetRotation = Rotation.FromToRotation( Vector3.Forward, currentVelocity.WithZ( 0 ).Normal );
+				}
+				else
+				{
+					targetRotation = null;
+				}
 			}
 
 			if ( targetRotation.HasValue )
@@ -219,15 +244,21 @@ public sealed class CameraController : Component
 		}
 	}
 
-	void HandleOverride( float dt )
+	void HandleOverride( float dt, bool suppressRotation )
 	{
-		currentRotation = eyeAngles.ToRotation();
-		targetRotation = new Angles( activeCameraOverride.Pitch > -90 ? activeCameraOverride.Pitch : currentRotation.Pitch(), activeCameraOverride.Yaw <= -999 ? eyeAngles.yaw : activeCameraOverride.Yaw, 0 ).ToRotation();
-
 		distance = distance.LerpTo( activeCameraOverride.Distance, dt * 5 );
 
-		slerpedRotation = Rotation.Slerp( currentRotation, targetRotation.Value, dt * 5 );
-		eyeAngles = slerpedRotation.Angles();
+		if ( suppressRotation )
+		{
+			currentRotation = eyeAngles.ToRotation();
+			targetRotation = new Angles( activeCameraOverride.Pitch > -90 ? activeCameraOverride.Pitch : currentRotation.Pitch(), activeCameraOverride.Yaw <= -999 ? eyeAngles.yaw : activeCameraOverride.Yaw, 0 ).ToRotation();
+
+			slerpedRotation = Rotation.Slerp( currentRotation, targetRotation.Value, dt * 5 );
+			eyeAngles = slerpedRotation.Angles();
+
+			previousPosition = LookDirectionController.Local.WorldPosition.WithZ( 0 );
+			currentPosition = previousPosition;
+		}
 	}
 
 	void HandleVirtual( float dt )
@@ -326,6 +357,7 @@ public sealed class CameraController : Component
 			currentVelocity = Vector3.Zero;
 
 			cameraLockoutTime = 1f;
+			hasInitWithLocal = true;
 		}
 
 		registeredCameraOverrides.Clear();
@@ -376,13 +408,18 @@ public sealed class CameraController : Component
 		}
 	}
 
-	public void RegisterCameraOverride( int id, int priority, float yaw, float pitch, float distance )
+	public void RegisterCameraOverride( int id, int priority, float yaw, float pitch, float distance, bool allowYaw )
 	{
 		if ( !registeredCameraOverrides.ContainsKey( id ) )
 		{
+			if (allowYaw)
+			{
+				cameraLockoutTime = 0f;
+			}
+
 			registeredCameraOverrides.Add( id, new CameraOverrideZone
 				(
-					priority, yaw, pitch, distance
+					priority, yaw, pitch, distance, allowYaw
 				)
 			);
 

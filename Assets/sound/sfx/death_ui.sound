@@ -1,0 +1,17 @@
+{
+  "UI": true,
+  "Volume": "9.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 200,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sound/sfx/death.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": false,
+  "__references": [],
+  "__version": 0
+}

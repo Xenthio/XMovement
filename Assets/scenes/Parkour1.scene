@@ -20,7 +20,7 @@
           "OverridePlayerCount": -1,
           "PlayerPrefab": {
             "_type": "gameobject",
-            "prefab": "prefabs/waveplayer.prefab"
+            "prefab": "prefabs/waveplayer_thirdperson_simple.prefab"
           },
           "SpawnPoints": [
             {
@@ -380,7 +380,8 @@
         "Yaw": -1,
         "Pitch": 5,
         "Distance": 300,
-        "Priority": 0
+        "Priority": 0,
+        "Allow Yaw Override": true
       }
     },
     {

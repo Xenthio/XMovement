@@ -1,0 +1,18 @@
+{
+  "UI": false,
+  "Volume": "9.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 190,
+  "SelectionMode": "RandomExclusive",
+  "Sounds": [
+    "sound/sfx/knock-low2.vsnd",
+    "sound/sfx/knock-low.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "__references": [],
+  "__version": 0
+}

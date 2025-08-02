@@ -49,12 +49,13 @@ public partial class PlayerMovement : Component
 	public bool IsHoldingJump { get; set; }
 
 	[Sync] public Vector3 RespawnPosition { get; set; }
+	[Sync] public Rotation RespawnRotation { get; set; }
 
 	protected override void OnStart()
 	{
 		base.OnStart();
 		Tags.Add( "player" );
-		SetRespawnPosition( WorldPosition );
+		SetRespawn( WorldPosition, WorldRotation );
 		CreateShadowObjects();
 	}
 
@@ -156,14 +157,27 @@ public partial class PlayerMovement : Component
 		return BaseFriction;
 	}
 
-	public void SetRespawnPosition(Vector3 position)
+	public void SetRespawn(Vector3 position, Rotation rotation)
 	{
 		RespawnPosition = position;
+		RespawnRotation = rotation;
 	}
 
 	public void Respawn()
 	{
+		if (CameraController.Local.IsValid())
+		{
+			CameraController.Local.Teleport( RespawnPosition, RespawnRotation.Yaw() );
+		}
+
 		Velocity = Vector3.Zero;
 		WorldPosition = RespawnPosition;
+		WorldRotation = RespawnRotation;
+
+		PlayerWalkControllerSimple pwcs = GetComponent<PlayerWalkControllerSimple>();
+		if (pwcs != null)
+		{
+			pwcs.NotifyRespawn();
+		}
 	}
 }

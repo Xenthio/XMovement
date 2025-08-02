@@ -54,6 +54,7 @@
       {
         "__type": "CameraOverrideZoneController",
         "__guid": "1b83b565-744c-44aa-9916-ea6d15e809f4",
+        "AllowYawOverride": true,
         "Distance": -1,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
@@ -117,6 +118,19 @@
           {
             "Id": "1b83b565-744c-44aa-9916-ea6d15e809f4",
             "Property": "Priority"
+          }
+        ]
+      },
+      {
+        "Id": "Allow Yaw Override",
+        "Title": "Allow Yaw Override",
+        "Description": null,
+        "Group": null,
+        "Order": 0,
+        "Targets": [
+          {
+            "Id": "1b83b565-744c-44aa-9916-ea6d15e809f4",
+            "Property": "AllowYawOverride"
           }
         ]
       }

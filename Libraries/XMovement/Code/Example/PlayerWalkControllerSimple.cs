@@ -137,7 +137,7 @@ public partial class PlayerWalkControllerSimple : Component
 	private void BuildInput()
 	{
 		IsSlowWalking = !Input.Down( "Run" );
-		IsCrouching = Input.Down( "Duck" ) || !CanUncrouch();
+		IsCrouching = false; //Input.Down( "Duck" ) || !CanUncrouch();
 	}
 
 	protected float GetWishSpeed(Vector3 dir)
@@ -276,6 +276,11 @@ public partial class PlayerWalkControllerSimple : Component
 		}
 
 		AnimationHelper.DuckLevel = IsCrouching ? 80 : 0;
+	}
+
+	public void NotifyRespawn()
+	{
+		ModelRenderer.WorldRotation = WorldRotation;
 	}
 
 	public static PlayerWalkControllerSimple _local;

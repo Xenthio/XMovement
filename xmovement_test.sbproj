@@ -26,6 +26,7 @@
       "VR": true,
       "Gamepad": false
     },
-    "LaunchMode": "QuickPlay"
+    "LaunchMode": "Launcher",
+    "MapStartupScene": "scenes/mapload.scene"
   }
 }

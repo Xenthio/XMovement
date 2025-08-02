@@ -139,16 +139,16 @@ public partial class PlayerMovement : Component
 			var accelspeed = acceleration * vector.Length * Time.Delta * SurfaceFriction;
 			var differenceFromInput = Vector3.Dot( AnalogInput.Normal, velocityDirection );
 
-			if ( differenceFromInput <= -0.75f && Velocity.LengthSquared > vector.LengthSquared )
+			if ( differenceFromInput <= -0.51f && Velocity.LengthSquared > vector.LengthSquared )
 			{
 				// Faster than target, holding forward.
 				// Slowly slow down.
 
 				// lerp towards held direction
-				missingVelocity = Vector3.Lerp( xzVel.Normal, vector.Normal, Time.Delta * 2 );
+				//missingVelocity = Vector3.Lerp( xzVel.Normal, vector.Normal, Time.Delta * 2 );
 
 				var magnitudeMultiplier = 1 - (Time.Delta * 0.4f);
-				Velocity = (Vector3.Up * Velocity.y) + (missingVelocity.Normal * (xzVel * magnitudeMultiplier));
+				Velocity = (Vector3.Up * Velocity.z) + (xzVel * magnitudeMultiplier);
 			}
 			else if ( differenceFromInput > 0.5f && missingVelocity.Length > 4f )
 			{
