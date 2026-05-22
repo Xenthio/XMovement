@@ -56,9 +56,16 @@ public partial class BaseCarryable : Component
 		{
 			worldModel.Flags |= GameObjectFlags.NotSaved | GameObjectFlags.NotNetworked;
 
-			// Match shadow render mode to the player body (shadows-only in first person)
+			// Set initial render type based on current camera mode.
+			// OnFrameUpdate will keep this in sync each frame.
+			var initialType = ( Owner?.Controller?.ThirdPerson ?? true )
+				? ModelRenderer.ShadowRenderType.On
+				: ModelRenderer.ShadowRenderType.ShadowsOnly;
+
 			foreach ( var mr in worldModel.GetComponentsInChildren<ModelRenderer>() )
-				mr.RenderType = renderer.RenderType;
+				mr.RenderType = initialType;
+
+			_lastWorldModelRenderType = initialType;
 
 			WorldModel = worldModel;
 			IEvent.PostToGameObject( WorldModel, x => x.OnCreateWorldModel() );

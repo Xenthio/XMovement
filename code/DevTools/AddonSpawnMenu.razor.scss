@@ -1,0 +1,247 @@
+/* ================================================================
+   [DEBUG TOOL] Addon Spawn Menu styles
+   Root selector = component class name: AddonSpawnMenu
+   ================================================================ */
+
+AddonSpawnMenu {
+	&.hidden { display: none; pointer-events: none; }
+
+	position: absolute;
+	left: 40px;
+	top: 40px;
+	width: 760px;
+	height: 560px;
+	background-color: rgba(12, 14, 18, 0.96);
+	border: 1px solid rgba(255, 200, 50, 0.4);
+	border-radius: 6px;
+	flex-direction: column;
+	flex-shrink: 0;
+	font-family: Poppins;
+	font-size: 13px;
+	color: #d4d8e0;
+	pointer-events: all;
+
+	/* --- Header --- */
+	.header {
+		flex-shrink: 0;
+		flex-direction: row;
+		align-items: center;
+		padding: 8px 12px;
+		border-bottom: 1px solid rgba(255,200,50,0.25);
+		background-color: rgba(255,200,50,0.05);
+
+		.title {
+			flex-grow: 1;
+			font-weight: 600;
+			font-size: 14px;
+			color: #ffc832;
+		}
+
+		.badge {
+			font-size: 9px;
+			font-weight: 700;
+			background-color: #e05252;
+			color: #fff;
+			padding: 2px 5px;
+			border-radius: 3px;
+			margin-left: 8px;
+		}
+
+		.close-btn {
+			background-color: transparent;
+			border: 0px;
+			color: #6e7480;
+			font-size: 16px;
+			padding: 0 4px;
+			border-radius: 3px;
+			&:hover { color: #e05252; }
+		}
+	}
+
+	/* --- Tab bar --- */
+	.tabs {
+		flex-shrink: 0;
+		flex-direction: row;
+		border-bottom: 1px solid rgba(255,200,50,0.15);
+		padding: 0 8px;
+
+		.tab-btn {
+			background-color: transparent;
+			border: 0px;
+			border-bottom: 2px solid transparent;
+			color: #6e7480;
+			font-size: 12px;
+			font-weight: 500;
+			padding: 7px 14px;
+
+			&:hover { color: #d4d8e0; }
+
+			&.active {
+				color: #ffc832;
+				border-bottom-color: #ffc832;
+			}
+		}
+	}
+
+	/* --- Search row --- */
+	.search-row {
+		flex-shrink: 0;
+		flex-direction: row;
+		padding: 6px 10px;
+		border-bottom: 1px solid rgba(255,255,255,0.05);
+
+		.search-input {
+			flex-grow: 1;
+			background-color: rgba(0,0,0,0.4);
+			border: 1px solid rgba(255,200,50,0.25);
+			color: #d4d8e0;
+			padding: 4px 10px;
+			border-radius: 3px;
+			font-size: 12px;
+		}
+	}
+
+	/* --- Status bar --- */
+	.status-bar {
+		flex-shrink: 0;
+		padding: 4px 12px;
+		background-color: rgba(255,200,50,0.08);
+		border-bottom: 1px solid rgba(255,200,50,0.15);
+		font-size: 11px;
+		color: #ffc832;
+	}
+
+	/* --- Content / tab panels ---
+	   Direct flex children of the root column.
+	   flex-grow: 1 fills remaining height, overflow-y: scroll does the rest.
+	   flex-shrink: 0 on all siblings above/below is the critical requirement. */
+	.tab-content {
+		flex-direction: column;
+		flex-grow: 1;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		&.hidden { display: none; }
+	}
+
+	.empty {
+		padding: 20px 16px;
+		color: #6e7480;
+	}
+
+		/* Cloud icon grid */
+		.icon-grid {
+			flex-direction: row;
+			flex-wrap: wrap;
+			padding: 8px;
+			gap: 8px;
+			align-content: flex-start;
+			overflow-y:scroll;
+		}
+
+		.pkg-icon {
+			width: 120px;
+			flex-direction: column;
+			align-items: center;
+			background-color: rgba(30,34,44,0.9);
+			border: 1px solid rgba(255,255,255,0.06);
+			border-radius: 4px;
+			padding: 4px;
+			cursor: pointer;
+
+			&:hover {
+				border-color: rgba(255,200,50,0.5);
+				background-color: rgba(255,200,50,0.08);
+			}
+
+			.thumb {
+				width: 108px;
+				height: 80px;
+				border-radius: 3px;
+				background-size: cover;
+				background-position: center;
+				background-color: rgba(0,0,0,0.3);
+			}
+
+			.thumb-placeholder {
+				align-items: center;
+				justify-content: center;
+				font-size: 32px;
+			}
+
+			.pkg-name {
+				width: 108px;
+				font-size: 10px;
+				margin-top: 4px;
+				text-align: center;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				color: #d4d8e0;
+			}
+		}
+
+		/* Local prefab rows */
+		.entry-row {
+			flex-direction: row;
+			align-items: center;
+			padding: 5px 12px;
+			border-bottom: 1px solid rgba(255,255,255,0.04);
+			gap: 8px;
+
+			&:hover { background-color: rgba(40,44,55,0.9); }
+
+			.entry-name {
+				width: 180px;
+				font-weight: 500;
+			}
+
+			.entry-path {
+				flex-grow: 1;
+				color: #6e7480;
+				font-size: 10px;
+			}
+
+			.spawn-btn {
+				width: 64px;
+				background-color: rgba(40,44,55,0.9);
+				border: 1px solid rgba(255,200,50,0.35);
+				color: #ffc832;
+				font-size: 11px;
+				font-weight: 600;
+				padding: 4px 8px;
+				border-radius: 3px;
+
+				&:hover {
+					background-color: rgba(255,200,50,0.18);
+					border-color: #ffc832;
+				}
+			}
+		}
+
+	/* --- Footer --- */
+	.footer {
+		flex-shrink: 0;
+		flex-direction: row;
+		align-items: center;
+		padding: 6px 12px;
+		border-top: 1px solid rgba(255,200,50,0.15);
+		gap: 10px;
+
+		.refresh-btn {
+			background-color: rgba(40,44,55,0.9);
+			border: 1px solid rgba(255,200,50,0.3);
+			color: #d4d8e0;
+			font-size: 11px;
+			padding: 3px 10px;
+			border-radius: 3px;
+			&:hover { background-color: rgba(60,66,80,0.95); }
+		}
+
+		.hint {
+			color: #6e7480;
+			font-size: 10px;
+			flex-grow: 1;
+			text-align: right;
+		}
+	}
+}

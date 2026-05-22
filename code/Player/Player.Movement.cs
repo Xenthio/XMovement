@@ -16,6 +16,20 @@ public sealed partial class Player
 		WalkController.OnJumped += OnWalkControllerJumped;
 		// Hook into PlayerMovement's grounded change
 		Movement.OnLanded += OnMovementLanded;
+
+		// Tag body hierarchy "player" so addon projectiles using IgnoreGameObject(root)
+		// or WithoutTags("player") don't self-hit on child colliders.
+		// Sandbox sets this via the prefab; we do it here in code for parity.
+		if ( Body.IsValid() )
+		{
+			Body.Tags.Add( "player" );
+			foreach ( var col in Body.GetComponentsInChildren<Collider>() )
+				col.GameObject.Tags.Add( "player" );
+		}
+		// Also tag the XMovement PhysicsBody GO (BoxCollider + Rigidbody for physics push)
+		// which lives on a separate child GameObject tagged "movement".
+		if ( Movement?.PhysicsBody.IsValid() ?? false )
+			Movement.PhysicsBody.Tags.Add( "player" );
 	}
 
 	protected override void OnDestroy()

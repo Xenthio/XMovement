@@ -1,0 +1,314 @@
+@* ================================================================
+   [DEBUG TOOL] Addon Spawn Test Menu — UI Panel
+
+   Toggle: `spawnmenu_toggle` in the console.
+   Also: spawnmenu_open / spawnmenu_close
+
+   Created automatically by SpawnMenuManager.OnClientInitialize.
+
+   To remove this feature entirely, delete:
+     code/DevTools/AddonSpawnMenu.razor       (this file)
+     code/DevTools/AddonSpawnMenu.razor.scss
+     code/DevTools/SpawnMenuManager.cs
+   ================================================================ *@
+
+@namespace XenGameKit.DevTools
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+
+	@* ---- Header ---- *@
+	<div class="header">
+		<label class="title">🔧 Spawn Menu <span class="badge">DEBUG</span></label>
+		<button class="close-btn" onclick=@Close>✕</button>
+	</div>
+
+	@* ---- Tab bar ---- *@
+	<div class="tabs">
+		<button class="@TabClass(Tab.LocalPrefabs)"  onclick=@(() => SwitchTab(Tab.LocalPrefabs)) >📦 Local</button>
+		<button class="@TabClass(Tab.CloudProps)"    onclick=@(() => SwitchTab(Tab.CloudProps))   >☁️ Props</button>
+		<button class="@TabClass(Tab.CloudEntities)" onclick=@(() => SwitchTab(Tab.CloudEntities))>🧠 Entities</button>
+	</div>
+
+	@* ---- Search (cloud tabs only) ---- *@
+	@if ( _tab != Tab.LocalPrefabs )
+	{
+		<div class="search-row">
+			<TextEntry Placeholder="Search…" class="search-input" Value:bind=@Filter />
+		</div>
+	}
+
+	@* ---- Status bar ---- *@
+	@if ( !string.IsNullOrEmpty( _status ) )
+	{
+		<div class="status-bar"><label>@_status</label></div>
+	}
+
+	@* ---- Content ---- *@
+
+	@* LOCAL PREFABS *@
+	<div class="@ContentClass(Tab.LocalPrefabs)">
+		@if ( !LocalEntries.Any() )
+		{
+			<label class="empty">No local prefabs found.</label>
+		}
+		@foreach ( var entry in LocalEntries )
+		{
+			var e = entry;
+			<div class="entry-row">
+				<label class="entry-name">@e.Label</label>
+				<label class="entry-path">@e.Path</label>
+				<button class="spawn-btn" onclick=@(() => SpawnLocal( e ))>Spawn</button>
+			</div>
+		}
+	</div>
+
+	@* CLOUD PROPS *@
+	<div class="@ContentClass(Tab.CloudProps)">
+		@if ( _tab == Tab.CloudProps )
+		{
+			@if ( _cloudResult is null )
+			{
+				<label class="empty">Loading…</label>
+			}
+			else if ( !_cloudResult.Packages.Any() )
+			{
+				<label class="empty">No results.</label>
+			}
+			else
+			{
+				<div class="icon-grid">
+					@foreach ( var pkg in _cloudResult.Packages )
+					{
+						var p = pkg;
+						<div class="pkg-icon" onclick=@(() => SpawnCloudPackage( p ))>
+							@if ( !string.IsNullOrEmpty( p.Thumb ) )
+							{
+								<div class="thumb" style="background-image: url(@p.Thumb)"></div>
+							}
+							else
+							{
+								<div class="thumb thumb-placeholder">📦</div>
+							}
+							<label class="pkg-name">@p.Title</label>
+						</div>
+					}
+				</div>
+			}
+		}
+	</div>
+
+	@* CLOUD ENTITIES *@
+	<div class="@ContentClass(Tab.CloudEntities)">
+		@if ( _tab == Tab.CloudEntities )
+		{
+			@if ( _cloudResult is null )
+			{
+				<label class="empty">Loading…</label>
+			}
+			else if ( !_cloudResult.Packages.Any() )
+			{
+				<label class="empty">No results.</label>
+			}
+			else
+			{
+				<div class="icon-grid">
+					@foreach ( var pkg in _cloudResult.Packages )
+					{
+						var p = pkg;
+						<div class="pkg-icon" onclick=@(() => SpawnCloudPackage( p ))>
+							@if ( !string.IsNullOrEmpty( p.Thumb ) )
+							{
+								<div class="thumb" style="background-image: url(@p.Thumb)"></div>
+							}
+							else
+							{
+								<div class="thumb thumb-placeholder">📦</div>
+							}
+							<label class="pkg-name">@p.Title</label>
+						</div>
+					}
+				</div>
+			}
+		}
+	</div>
+
+	@* ---- Footer ---- *@
+	<div class="footer">
+		<button class="refresh-btn" onclick=@Refresh>↺ Refresh</button>
+		<label class="hint">spawnmenu_toggle to close</label>
+	</div>
+
+</root>
+
+@code
+{
+	// ------------------------------------------------------------------
+	// Tabs
+	// ------------------------------------------------------------------
+
+	enum Tab { LocalPrefabs, CloudProps, CloudEntities }
+
+	Tab _tab = Tab.LocalPrefabs;
+
+	void SwitchTab( Tab t )
+	{
+		_tab = t;
+		_cloudResult = null;
+		_status = "";
+		if ( t != Tab.LocalPrefabs ) FetchCloud();
+	}
+
+	string TabClass( Tab t ) => "tab-btn" + ( _tab == t ? " active" : "" );
+	string ContentClass( Tab t ) => "tab-content" + ( _tab == t ? "" : " hidden" );
+
+	// ------------------------------------------------------------------
+	// Visibility + mouse
+	// ------------------------------------------------------------------
+
+	protected override void OnUpdate()
+	{
+		var open = SpawnMenuManager.IsOpen;
+		SetClass( "hidden", !open );
+
+		if ( open )
+		{
+			Mouse.Visible    = true;
+			Mouse.Visibility = MouseVisibility.Auto;
+		}
+		else
+		{
+			Mouse.Visible    = false;
+			Mouse.Visibility = MouseVisibility.Hidden;
+		}
+	}
+
+	void Close() => SpawnMenuManager.IsOpen = false;
+
+	void Refresh()
+	{
+		_cloudResult = null;
+		_status = "";
+		if ( _tab != Tab.LocalPrefabs ) FetchCloud();
+		StateHasChanged();
+	}
+
+	// ------------------------------------------------------------------
+	// Status
+	// ------------------------------------------------------------------
+
+	string _status = "";
+
+	// ------------------------------------------------------------------
+	// Local prefab discovery
+	// ------------------------------------------------------------------
+
+	record LocalEntry( string Label, string Path, bool IsCarryable );
+
+	IEnumerable<LocalEntry> LocalEntries
+	{
+		get
+		{
+			foreach ( var dir in _localDirs )
+			{
+				foreach ( var file in FileSystem.Mounted.FindFile( dir.path, "*.prefab", recursive: true ) )
+				{
+					var stem = System.IO.Path.GetFileNameWithoutExtension( file );
+					if ( stem.EndsWith( "_vm", StringComparison.OrdinalIgnoreCase ) ) continue;
+					if ( stem.EndsWith( "_wm", StringComparison.OrdinalIgnoreCase ) ) continue;
+					yield return new LocalEntry( PrettyName( stem ), $"{dir.path}/{file}", dir.carryable );
+				}
+			}
+		}
+	}
+
+	static readonly (string path, bool carryable)[] _localDirs =
+	{
+		("prefabs/weapons",  true),
+		("prefabs/entities", false),
+		("prefabs/npcs",     false),
+		("prefabs/vehicles", false),
+		("prefabs/props",    false),
+	};
+
+	void SpawnLocal( LocalEntry e )
+	{
+		if ( e.IsCarryable )
+			ConsoleSystem.Run( "give", e.Path );
+		else
+			ConsoleSystem.Run( "ent_create", e.Path );
+	}
+
+	// ------------------------------------------------------------------
+	// Cloud content — Package.FindAsync then mount+spawn on click
+	// ------------------------------------------------------------------
+
+	Package.FindResult _cloudResult;
+
+	string _filter = "";
+	string Filter
+	{
+		get => _filter;
+		set { _filter = value; FetchCloud(); }
+	}
+
+	async void FetchCloud()
+	{
+		_status = "Loading…";
+		StateHasChanged();
+
+		var query = _tab == Tab.CloudProps
+			? "sort:popular type:model"
+			: "sort:popular type:sent";
+
+		if ( !string.IsNullOrWhiteSpace( _filter ) ) query += $" {_filter}";
+
+		_cloudResult = await Package.FindAsync( query );
+		_status = "";
+		StateHasChanged();
+	}
+
+	async void SpawnCloudPackage( Package pkg )
+	{
+		_status = $"Mounting {pkg.Title}…";
+		StateHasChanged();
+
+		try
+		{
+			await pkg.MountAsync();
+			_status = $"✅ Mounted {pkg.Title}";
+		}
+		catch ( System.Exception ex )
+		{
+			_status = $"❌ {ex.Message}";
+			StateHasChanged();
+			return;
+		}
+
+		// Delegate actual spawn to server-side ConCmd
+		var type = _tab == Tab.CloudEntities ? "entity" : "prop";
+		ConsoleSystem.Run( "devtools_spawn_cloud", type, pkg.FullIdent );
+		StateHasChanged();
+	}
+
+	// ------------------------------------------------------------------
+	// Helpers
+	// ------------------------------------------------------------------
+
+	static string PrettyName( string raw )
+	{
+		raw = raw.Replace( "weapon_", "" ).Replace( "item_", "" ).Replace( "npc_", "" );
+		raw = System.Text.RegularExpressions.Regex.Replace( raw, "([A-Z])", " $1" ).Trim();
+		return System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase( raw.Replace( '_', ' ' ) );
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine(
+		SpawnMenuManager.IsOpen,
+		_tab,
+		_cloudResult?.Packages.Count(),
+		_filter,
+		_status
+	);
+}

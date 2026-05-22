@@ -282,8 +282,7 @@
         "OnComponentEnabled": null,
         "OnComponentFixedUpdate": null,
         "OnComponentStart": null,
-        "OnComponentUpdate": null,
-        "RespawnDelay": 5
+        "OnComponentUpdate": null
       },
       {
         "__type": "AmmoInventory",
@@ -323,12 +322,18 @@
         "__guid": "b56ae8d3-f016-4728-9ee1-d964985bd692",
         "__enabled": true,
         "Flags": 0,
+        "AlignCarryAngles": true,
+        "AngularDamping": 30,
         "Damping": 6,
+        "HeldMass": 1,
         "HoldDistance": 72,
+        "HoldWallPadding": 8,
+        "IgnoreCarryPitch": true,
         "MaxCarryAngular": 180,
         "MaxCarrySpeed": 600,
         "MaxErrorDistance": 200,
         "MaxMass": 35,
+        "MinHoldDistance": 24,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -337,7 +342,34 @@
         "OnComponentUpdate": null,
         "PickupRange": 85,
         "SpringStrength": 25,
-        "ThrowForce": 800
+        "ThrowForce": 800,
+        "UseHl2CarryRotation": true
+      },
+      {
+        "__type": "PlayerController",
+        "__guid": "6f8e1820-547b-4ce7-94e6-33568b4bde21",
+        "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
+      },
+      {
+        "__type": "PlayerFootsteps",
+        "__guid": "4d8bb401-3cb8-45b6-b9bd-308bd21741af",
+        "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "TraceDistance": 20,
+        "Volume": 1
       }
     ],
     "Children": [
@@ -2270,6 +2302,7 @@
             "OnComponentUpdate": null,
             "OverrideMassCenter": false,
             "RigidbodyFlags": "DisableCollisionSounds",
+            "SleepThreshold": 2,
             "StartAsleep": false
           },
           {
@@ -2349,6 +2382,7 @@
             "OnComponentUpdate": null,
             "OverrideMassCenter": true,
             "RigidbodyFlags": "DisableCollisionSounds",
+            "SleepThreshold": 2,
             "StartAsleep": false
           },
           {

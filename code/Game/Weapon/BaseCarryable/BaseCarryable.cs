@@ -72,7 +72,9 @@ public partial class BaseCarryable : Component
 		{
 			var go = ViewModel;
 
-			if ( Scene.Camera.RenderExcludeTags.Contains( "firstperson" ) ) go = default;
+			// Scene.Camera can be null on proxies or during startup — guard it
+			if ( Scene?.Camera is not null && Scene.Camera.RenderExcludeTags.Contains( "firstperson" ) )
+				go = default;
 
 			if ( !go.IsValid() ) go = WorldModel;
 			if ( !go.IsValid() ) go = GameObject;
@@ -92,7 +94,12 @@ public partial class BaseCarryable : Component
 		get
 		{
 			if ( HasOwner )
-				return Owner.EyeTransform.ForwardRay;
+			{
+				var owner = Owner;
+				if ( owner.Controller.ThirdPerson && Scene.Camera.IsValid() )
+					return Scene.Camera.Transform.World.ForwardRay;
+				return owner.EyeTransform.ForwardRay;
+			}
 
 			var muzzle = MuzzleTransform.WorldTransform;
 			return new Ray( muzzle.Position, muzzle.Rotation.Forward );
@@ -151,7 +158,7 @@ public partial class BaseCarryable : Component
 	protected override void OnUpdate()
 	{
 		var player = Owner;
-		var controller = player?.WalkController;
+		var controller = player?.Controller;
 		if ( controller is null ) return;
 
 		if ( player.IsLocalPlayer )
@@ -161,7 +168,7 @@ public partial class BaseCarryable : Component
 			var hud = Scene.Camera.Hud;
 			var aimPos = Screen.Size * 0.5f;
 
-			if ( controller.CameraMode == PlayerWalkControllerComplex.CameraModes.ThirdPerson )
+			if ( controller.ThirdPerson )
 			{
 				var tr = Scene.Trace.Ray( AimRay, 4096 )
 								.IgnoreGameObjectHierarchy( AimIgnoreRoot )
@@ -187,12 +194,30 @@ public partial class BaseCarryable : Component
 	{
 		if ( player is null ) return;
 
-		if ( !player.WalkController.CameraMode.Equals( PlayerWalkControllerComplex.CameraModes.ThirdPerson ) )
+		if ( !player.Controller.ThirdPerson )
+		{
 			CreateViewModel();
+			// First person: world model renders shadows only (shows in shadow of player arms)
+			SetWorldModelRenderType( ModelRenderer.ShadowRenderType.ShadowsOnly );
+		}
 		else
+		{
 			DestroyViewModel();
+			// Third person: world model fully visible
+			SetWorldModelRenderType( ModelRenderer.ShadowRenderType.On );
+		}
 
 		GameObject.Network.Interpolation = false;
+	}
+
+	private ModelRenderer.ShadowRenderType _lastWorldModelRenderType = (ModelRenderer.ShadowRenderType)(-1);
+	private void SetWorldModelRenderType( ModelRenderer.ShadowRenderType type )
+	{
+		if ( !WorldModel.IsValid() ) return;
+		if ( _lastWorldModelRenderType == type ) return;
+		_lastWorldModelRenderType = type;
+		foreach ( var mr in WorldModel.GetComponentsInChildren<ModelRenderer>() )
+			mr.RenderType = type;
 	}
 
 	public virtual void OnPlayerUpdate( Player player )
