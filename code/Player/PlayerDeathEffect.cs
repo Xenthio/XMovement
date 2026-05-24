@@ -97,10 +97,16 @@ public class PlayerDeathEffect : Component, Local.IPlayerEvents
 			clothingRenderer.BoneMergeTarget = ragdollRenderer;
 		}
 
+		// Batch physics creation so bodies are ready before CopyBonesFrom
+		// (matches sandbox's approach — avoids the old async-delay hack)
+		var batch = Scene.BatchGroup();
+
 		// Add physics — this is what makes it ragdoll
 		var physics = ragdoll.Components.Create<ModelPhysics>();
 		physics.Model = ragdollRenderer.Model;
 		physics.Renderer = ragdollRenderer;
+		batch.Dispose();
+
 		physics.CopyBonesFrom( renderer, true );
 
 		// Apply death velocity
@@ -117,11 +123,8 @@ public class PlayerDeathEffect : Component, Local.IPlayerEvents
 		ragdollRenderer.Invoke( 30f, ragdoll.Destroy );
 	}
 
-	async void ApplyRagdollForce( ModelPhysics physics, Vector3 velocity, Vector3 origin )
+	void ApplyRagdollForce( ModelPhysics physics, Vector3 velocity, Vector3 origin )
 	{
-		// Brief delay so physics bodies are initialised
-		await GameTask.Delay( 10 );
-
 		if ( !physics.IsValid() ) return;
 
 		foreach ( var body in physics.Bodies )

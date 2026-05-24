@@ -75,6 +75,7 @@ public static class Bullet
 			.Ray( info.Origin, info.Origin + direction * info.Range )
 			.IgnoreGameObjectHierarchy( info.Attacker )
 			.IgnoreGameObjectHierarchy( info.Weapon )
+			.WithCollisionRules( "bullet" )
 			.WithoutTags( "playercontroller" )
 			.Radius( info.Radius )
 			.UseHitboxes()

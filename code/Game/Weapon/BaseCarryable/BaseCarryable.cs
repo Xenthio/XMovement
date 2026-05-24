@@ -194,18 +194,16 @@ public partial class BaseCarryable : Component
 	{
 		if ( player is null ) return;
 
-		if ( !player.Controller.ThirdPerson )
-		{
-			CreateViewModel();
-			// First person: world model renders shadows only (shows in shadow of player arms)
-			SetWorldModelRenderType( ModelRenderer.ShadowRenderType.ShadowsOnly );
-		}
-		else
-		{
-			DestroyViewModel();
-			// Third person: world model fully visible
-			SetWorldModelRenderType( ModelRenderer.ShadowRenderType.On );
-		}
+		// Always create the viewmodel — hiding/showing is handled via the "firstperson"
+		// RenderExcludeTag on the camera (set in PlayerCameraEvents), matching sandbox's approach.
+		// This avoids destroying + recreating the viewmodel every time you toggle camera mode.
+		CreateViewModel();
+
+		// World model shadow mode: shadows-only in first person, fully visible in third person
+		var isThirdPerson = player.Controller.ThirdPerson;
+		SetWorldModelRenderType( isThirdPerson
+			? ModelRenderer.ShadowRenderType.On
+			: ModelRenderer.ShadowRenderType.ShadowsOnly );
 
 		GameObject.Network.Interpolation = false;
 	}

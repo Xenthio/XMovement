@@ -33,15 +33,23 @@ public class PlayerCameraEvents : Component, ICameraSetup
 		Local.IPlayerEvents.PostToGameObject( Player.GameObject, x => x.OnCameraSetup( cc ) );
 		Local.IPlayerEvents.PostToGameObject( Player.GameObject, x => x.OnCameraPostSetup( cc ) );
 
-		// Hide third-person-only objects (e.g. world model props parented to the player root)
+	// Hide third-person-only objects (e.g. world model props parented to the player root)
 		// when in first person. Tag any such renderer as "thirdperson" and it will
 		// automatically be excluded from the first-person camera view.
+		// Similarly, add/remove "firstperson" exclude tag so viewmodels are hidden in third person
+		// without destroying and recreating them (matches sandbox's approach).
 		var isFirstPerson = Player.WalkController?.CameraMode ==
 			XMovement.PlayerWalkControllerComplex.CameraModes.FirstPerson;
 
 		if ( isFirstPerson )
+		{
 			cc.RenderExcludeTags.Add( "thirdperson" );
+			cc.RenderExcludeTags.Remove( "firstperson" );
+		}
 		else
+		{
 			cc.RenderExcludeTags.Remove( "thirdperson" );
+			cc.RenderExcludeTags.Add( "firstperson" );
+		}
 	}
 }

@@ -5,6 +5,26 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 	}
 
 	// -------------------------------------------------------------------------
+	// Notifications
+	// -------------------------------------------------------------------------
+
+	/// <summary>
+	/// Send a chat notification to all clients. Host-only.
+	/// Uses Sandbox.Platform.Chat so it shows in the platform chat overlay.
+	/// </summary>
+	public void Notify( string text )
+	{
+		Assert.True( Networking.IsHost, "Only the host can send notifications" );
+		NotifyRpc( text );
+	}
+
+	[Rpc.Broadcast( NetFlags.HostOnly )]
+	private void NotifyRpc( string text )
+	{
+		Sandbox.Platform.Chat.AddText( text );
+	}
+
+	// -------------------------------------------------------------------------
 	// Console Commands
 	// -------------------------------------------------------------------------
 
@@ -204,12 +224,16 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 	{
 		channel.CanSpawnObjects = false;
 
+		Notify( $"👋 {channel.DisplayName} has joined the game" );
+
 		var playerData = CreatePlayerInfo( channel );
 		SpawnPlayer( playerData );
 	}
 
 	void Component.INetworkListener.OnDisconnected( Connection channel )
 	{
+		Notify( $"👋 {channel.DisplayName} has left the game" );
+
 		var pd = PlayerData.For( channel );
 		if ( pd is not null )
 			pd.GameObject.Destroy();

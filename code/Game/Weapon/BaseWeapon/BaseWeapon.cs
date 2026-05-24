@@ -72,10 +72,8 @@ public partial class BaseWeapon : BaseCarryable
 	{
 		if ( player is null ) return;
 
-		if ( player.WalkController?.CameraMode != PlayerWalkControllerComplex.CameraModes.ThirdPerson )
-			CreateViewModel();
-		else
-			DestroyViewModel();
+		// Always create the viewmodel — see BaseCarryable.OnFrameUpdate for explanation.
+		CreateViewModel();
 
 		GameObject.Network.Interpolation = false;
 	}
