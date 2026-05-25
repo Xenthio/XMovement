@@ -103,10 +103,21 @@ public sealed partial class Player : Component, Component.IDamageable
 	}
 
 	[Rpc.Broadcast( NetFlags.HostOnly | NetFlags.Reliable )]
+	private SoundHandle _dmgSound;
+
+	[Rpc.Broadcast( NetFlags.HostOnly | NetFlags.Reliable )]
 	private void NotifyOnDamage( PlayerDamageParams args )
 	{
 		Local.IPlayerEvents.PostToGameObject( GameObject, x => x.OnDamage( args ) );
 		Global.IPlayerEvents.Post( x => x.OnPlayerDamage( this, args ) );
+
+		if ( IsLocalPlayer )
+		{
+			_dmgSound?.Stop();
+			_dmgSound = args.Tags.Contains( DamageTags.Shock )
+				? Sound.Play( "damage_taken_shock" )
+				: Sound.Play( "damage_taken_shot" );
+		}
 	}
 
 	public T GetWeapon<T>() where T : BaseCarryable

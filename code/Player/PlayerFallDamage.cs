@@ -16,6 +16,16 @@ public class PlayerFallDamage : Component, Local.IPlayerEvents
 	/// <summary>Scales all fall damage. 1.0 = standard, 0 = no fall damage.</summary>
 	[Property] public float DamageMultiplier { get; set; } = 1.0f;
 
+	/// <summary>Sound played on the owner when fall damage is taken.</summary>
+	[Property] public SoundEvent FallSound { get; set; }
+
+	[Rpc.Owner]
+	private void PlayFallSound()
+	{
+		if ( FallSound.IsValid() )
+			GameObject.PlaySound( FallSound );
+	}
+
 	void Local.IPlayerEvents.OnLand( float distance, Vector3 impactVelocity )
 	{
 		if ( IsProxy ) return;
@@ -33,5 +43,6 @@ public class PlayerFallDamage : Component, Local.IPlayerEvents
 			Tags = new TagSet { DamageTags.Fall }
 		};
 		Player.OnDamage( info );
+		PlayFallSound();
 	}
 }
