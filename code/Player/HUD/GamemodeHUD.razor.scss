@@ -1,0 +1,86 @@
+@import "Styles/_vars.scss";
+
+GamemodeHUD {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	flex-direction: column;
+	pointer-events: none;
+	padding-top: 12px;
+	gap: 4px;
+
+	.Timer {
+		background-color: rgba(0,0,0,0.65);
+		border-radius: 6px;
+		padding: 4px 20px;
+		font-family: $hud-font;
+		font-size: 28px;
+		font-weight: 700;
+		color: white;
+		letter-spacing: 2px;
+
+		&.urgent {
+			color: #ff4040;
+		}
+	}
+
+	.TeamScores {
+		flex-direction: row;
+		align-items: center;
+		gap: 12px;
+		background-color: rgba(0,0,0,0.55);
+		border-radius: 6px;
+		padding: 4px 16px;
+
+		.Team {
+			flex-direction: row;
+			align-items: center;
+			gap: 8px;
+
+			.name {
+				font-family: $hud-font;
+				font-size: 14px;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				opacity: 0.85;
+			}
+
+			.score {
+				font-family: $hud-font;
+				font-size: 26px;
+				font-weight: 700;
+			}
+		}
+
+		.Divider {
+			font-family: $hud-font;
+			font-size: 20px;
+			color: rgba(255,255,255,0.3);
+		}
+	}
+
+	.PersonalScore {
+		flex-direction: row;
+		align-items: baseline;
+		background-color: rgba(0,0,0,0.55);
+		border-radius: 6px;
+		padding: 2px 14px;
+
+		.kills {
+			font-family: $hud-font;
+			font-size: 22px;
+			font-weight: 700;
+			color: white;
+		}
+
+		.dim {
+			font-family: $hud-font;
+			font-size: 13px;
+			color: rgba(255,255,255,0.45);
+			margin-left: 4px;
+		}
+	}
+}

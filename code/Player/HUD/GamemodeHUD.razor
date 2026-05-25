@@ -1,0 +1,82 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Player = global::Player;
+
+@* Top-center gamemode info: round timer + team/personal scores *@
+@if ( IsVisible )
+{
+	<div class="GamemodeHUD">
+		@if ( ShowTimer )
+		{
+			<div class="Timer @( TimeRemaining < 30f ? "urgent" : "" )">
+				@FormatTime( TimeRemaining )
+			</div>
+		}
+
+		@if ( ShowTeamScores )
+		{
+			<div class="TeamScores">
+				<div class="Team" style="color: @Team0Color">
+					<label class="name">@Team0Name</label>
+					<label class="score">@Team0Score</label>
+				</div>
+				<div class="Divider">:</div>
+				<div class="Team" style="color: @Team1Color">
+					<label class="score">@Team1Score</label>
+					<label class="name">@Team1Name</label>
+				</div>
+			</div>
+		}
+
+		@if ( ShowPersonalScore )
+		{
+			<div class="PersonalScore">
+				<label class="kills">@Kills</label>
+				<label class="dim"> kills</label>
+			</div>
+		}
+	</div>
+}
+
+@code
+{
+	// ─── Data sources ──────────────────────────────────────────────────────────
+
+	TDMGamemode TDM => GamemodeManager.Current?.ActiveGamemode as TDMGamemode;
+	FFAGamemode FFA => GamemodeManager.Current?.ActiveGamemode as FFAGamemode;
+	Player LocalPlayer => Player.FindLocalPlayer();
+
+	bool IsVisible => TDM is not null || FFA is not null;
+
+	// Timer
+	bool ShowTimer => ( TDM?.IsActive ?? false ) || ( FFA?.IsActive ?? false );
+	float TimeRemaining => TDM?.TimeRemaining ?? FFA?.TimeRemaining ?? 0f;
+
+	// Team scores (TDM only)
+	bool ShowTeamScores => TDM is not null;
+	string Team0Name  => TDM?.Teams?.Length > 0 ? TDM.Teams[0].TeamName  : "Red";
+	string Team1Name  => TDM?.Teams?.Length > 1 ? TDM.Teams[1].TeamName  : "Blue";
+	string Team0Color => TDM?.Teams?.Length > 0 ? ColorToCSS( TDM.Teams[0].TeamColor ) : "#ff4444";
+	string Team1Color => TDM?.Teams?.Length > 1 ? ColorToCSS( TDM.Teams[1].TeamColor ) : "#44aaff";
+	int    Team0Score => TDM?.Team0Score ?? 0;
+	int    Team1Score => TDM?.Team1Score ?? 0;
+
+	// Personal score (FFA only)
+	bool ShowPersonalScore => FFA is not null;
+	int  Kills => LocalPlayer?.PlayerData?.Kills ?? 0;
+
+	// ─── Helpers ───────────────────────────────────────────────────────────────
+
+	string FormatTime( float seconds )
+	{
+		int s = (int)MathF.Ceiling( seconds );
+		return $"{s / 60}:{(s % 60):D2}";
+	}
+
+	string ColorToCSS( Color c ) => $"rgb({(int)(c.r*255)},{(int)(c.g*255)},{(int)(c.b*255)})";
+
+	protected override int BuildHash() => System.HashCode.Combine(
+		IsVisible, ShowTimer, TimeRemaining,
+		Team0Score, Team1Score, Kills
+	);
+}

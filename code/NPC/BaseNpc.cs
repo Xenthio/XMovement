@@ -30,6 +30,10 @@ public abstract class BaseNpc : Component, Component.IDamageable
 
 	[Property] public SkinnedModelRenderer Renderer { get; set; }
 
+	// Sounds — set these on the prefab
+	[Property, Group( "Sounds" )] public List<SoundEvent> PainSounds  { get; set; } = new();
+	[Property, Group( "Sounds" )] public List<SoundEvent> DeathSounds { get; set; } = new();
+
 	// Sub-layers — added automatically via [RequireComponent]
 	[RequireComponent] public NpcSenses     Senses     { get; private set; }
 	[RequireComponent] public NpcNavigation Navigation { get; private set; }
@@ -143,7 +147,11 @@ public abstract class BaseNpc : Component, Component.IDamageable
 	}
 
 	// Override to react to being hit (pain sounds, flinch, interrupt schedule, etc.)
-	protected virtual void OnHurt( in DamageInfo damage ) { }
+	protected virtual void OnHurt( in DamageInfo damage )
+	{
+		if ( PainSounds.Count > 0 )
+			BroadcastSound( Random.Shared.FromList( PainSounds ) );
+	}
 
 	// ─── Senses reactions ────────────────────────────────────────────────────
 	//
@@ -203,6 +211,12 @@ public abstract class BaseNpc : Component, Component.IDamageable
 		// Tell the kill feed about this death
 		var killer = damage.Attacker?.GetComponent<Player>()?.PlayerData?.DisplayName ?? damage.Attacker?.Name ?? "World";
 		KillfeedData.Add( killer, NpcName, damage.Weapon?.Name ?? "" );
+
+		if ( DeathSounds.Count > 0 )
+			BroadcastSound( Random.Shared.FromList( DeathSounds ) );
+
+		// Blood drip at death position
+		BloodSystem.Drip( WorldPosition, GameObject );
 
 		SpawnRagdoll( GetDeathVelocity( damage ), damage.Origin );
 		GameObject.Destroy();
@@ -270,6 +284,13 @@ public abstract class BaseNpc : Component, Component.IDamageable
 	}
 
 	// ─── Debug ────────────────────────────────────────────────────────────────
+
+	[Rpc.Broadcast]
+	void BroadcastSound( SoundEvent sound )
+	{
+		if ( Application.IsDedicatedServer || !sound.IsValid() ) return;
+		Sound.Play( sound, WorldPosition );
+	}
 
 	void DrawDebug()
 	{
