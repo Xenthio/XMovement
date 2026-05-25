@@ -16,7 +16,7 @@ public class NpcAnimation : Component
 	protected override void OnStart()
 	{
 		_npc      = GetComponent<BaseNpc>();
-		_renderer = _npc?.Renderer ?? GetComponentInChildren<SkinnedModelRenderer>();
+		_renderer = _npc.IsValid() ? _npc.Renderer : GetComponentInChildren<SkinnedModelRenderer>();
 	}
 
 	protected override void OnUpdate()
@@ -59,7 +59,7 @@ public class NpcAnimation : Component
 
 	void ApplyLook( Vector3 target )
 	{
-		if ( _renderer is null ) return;
+		if ( !_renderer.IsValid() || !_npc.IsValid() ) return;
 		var dir = (target - WorldPosition).Normal;
 		_renderer.SetLookDirection( "aim_eyes", dir, 1f );
 		_renderer.SetLookDirection( "aim_head", dir, 1f );
@@ -68,7 +68,7 @@ public class NpcAnimation : Component
 
 	void ApplyMove( Vector3 velocity, Rotation reference )
 	{
-		if ( _renderer is null || reference.w == 0f ) return;
+		if ( !_renderer.IsValid() || reference.w == 0f ) return;
 
 		float fwd  = reference.Forward.Dot( velocity );
 		float side = reference.Right.Dot( velocity );

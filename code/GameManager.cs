@@ -281,6 +281,7 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 		} );
 
 		var player = playerGo.Components.Get<Player>( true );
+		if ( !player.IsValid() ) { playerGo.Destroy(); return; }
 		player.PlayerData = playerData;
 
 		var owner = Connection.Find( playerData.PlayerId );

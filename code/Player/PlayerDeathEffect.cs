@@ -72,7 +72,7 @@ public class PlayerDeathEffect : Component, Local.IPlayerEvents
 		if ( !bodyGo.IsValid() ) return;
 
 		var renderer = bodyGo.GetComponent<SkinnedModelRenderer>();
-		if ( !renderer.IsValid() ) return;
+		if ( !renderer.IsValid() || renderer.Model is null ) return;
 
 		// Spawn ragdoll GO at player world position
 		var ragdoll = new GameObject( true, $"{Player.DisplayName} Ragdoll" );

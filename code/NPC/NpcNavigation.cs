@@ -22,6 +22,7 @@ public class NpcNavigation : Component
 	protected override void OnUpdate()
 	{
 		if ( IsProxy || _agent is null ) return;
+		if ( !_npc.IsValid() ) return;
 		_agent.MaxSpeed = IsRunning ? RunSpeed : WalkSpeed;
 		_npc?.Animation?.SetMove( _agent.Velocity, _agent.WorldRotation );
 	}
