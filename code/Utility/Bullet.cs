@@ -137,6 +137,12 @@ public static class Bullet
 				?? hitSurface.GetBaseSurface()?.PrefabCollection.BulletImpact;
 		}
 
+		// Impact sound
+		var bulletSound = hitSurface.IsValid()
+			? hitSurface.SoundCollection.Bullet ?? hitSurface.GetBaseSurface()?.SoundCollection.Bullet
+			: null;
+		if ( bulletSound.IsValid() ) Sound.Play( bulletSound, hitPoint );
+
 		if ( !prefab.IsValid() ) return;
 
 		var rot = Rotation.LookAt( normal * -1f, Vector3.Random );
@@ -189,6 +195,12 @@ public static class Bullet
 		}
 
 		if ( !hit || !hitObject.IsValid() ) return;
+
+		// Impact sound
+		var bulletSound = hitSurface.IsValid()
+			? hitSurface.SoundCollection.Bullet ?? hitSurface.GetBaseSurface()?.SoundCollection.Bullet
+			: null;
+		if ( bulletSound.IsValid() ) Sound.Play( bulletSound, hitPoint );
 
 		// Impact effect — override, then surface lookup
 		var prefab = impactOverride;

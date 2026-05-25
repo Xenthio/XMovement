@@ -150,7 +150,11 @@ public class BaseMeleeWeapon : BaseCarryable
 
 		// Impact decal + sound — reuse the bullet effect system
 		Bullet.SpawnImpactEffect( tr.HitPosition, tr.Normal, tr.GameObject, tr.Surface, ImpactEffectOverride );
-		if ( HitSound.IsValid() ) BroadcastSound( HitSound, tr.HitPosition );
+		var impactSound = tr.Surface.IsValid()
+			? tr.Surface.SoundCollection.ImpactHard ?? tr.Surface.GetBaseSurface()?.SoundCollection.ImpactHard ?? HitSound
+			: HitSound;
+		if ( impactSound.IsValid() ) BroadcastSound( impactSound, tr.HitPosition );
+		else if ( HitSound.IsValid() ) BroadcastSound( HitSound, tr.HitPosition );
 	}
 
 	protected virtual void OnMiss()
