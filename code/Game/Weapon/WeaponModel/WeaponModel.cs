@@ -79,28 +79,20 @@ public abstract class WeaponModel : Component
 			var prefab = cheapPrefab.IsValid() ? cheapPrefab : EjectBrass;
 			if ( !prefab.IsValid() ) return;
 
-			// Inherit owner velocity
-			var ownerVelocity = Vector3.Zero;
-			var ownerCC = GameObject.Root.Components.Get<CharacterController>( FindMode.EverythingInSelfAndDescendants );
-			if ( ownerCC.IsValid() ) ownerVelocity = ownerCC.Velocity;
-
-			// TTT-style: local eject direction transformed to world space
+			// Match rigidbody path exactly
 			var ejectDir = EjectTransform.WorldRotation.Forward * 250
-			             + (EjectTransform.WorldRotation.Right + Vector3.Random * -0.35f) * 250
-			             + EjectTransform.WorldRotation.Up * Game.Random.Float( 0f, 64f )
-			             + ownerVelocity;
+			             + (EjectTransform.WorldRotation.Right + Vector3.Random * -0.35f) * 250;
 
-			var go = prefab.Clone( new CloneConfig { Transform = EjectTransform.WorldTransform, StartEnabled = false } );
+			var go = prefab.Clone( new CloneConfig { Transform = EjectTransform.WorldTransform.WithScale( 1 ), StartEnabled = false } );
 
 			if ( go.IsValid() )
 			{
-				// Set velocity before enabling — applied on first OnParticleStep, not OnParticleCreated
 				var brass = go.Components.Get<BrassEjectPhysics>( FindMode.EverythingInSelfAndDescendants );
 				if ( brass.IsValid() )
 				{
 					brass.StartVelocity        = ejectDir;
 					brass.StartAngles          = EjectTransform.WorldRotation.Angles();
-					brass.StartAngularVelocity = Vector3.Random * 300f;
+					brass.StartAngularVelocity = EjectTransform.WorldRotation.Right * 50f;
 				}
 				go.Transform.ClearInterpolation();
 				go.Enabled = true;

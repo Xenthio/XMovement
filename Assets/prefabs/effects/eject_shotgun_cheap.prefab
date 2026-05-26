@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "24d99820-ab8b-405c-ac35-108de79054fa",
+    "__guid": "47e53608-a140-40be-95e5-ad3230ddca96",
     "__version": 1,
     "Flags": 0,
     "Name": "eject_shotgun_cheap",
@@ -13,7 +13,7 @@
     "Components": [
       {
         "__type": "TemporaryEffect",
-        "__guid": "694588b3-458a-4701-9e39-9484a008c174",
+        "__guid": "fb63a4aa-e525-4a01-9d19-5a9e508a1501",
         "__enabled": true,
         "BecomeOrphan": false,
         "DestroyAfterSeconds": 5.0,
@@ -27,7 +27,7 @@
       },
       {
         "__type": "Sandbox.ParticleEffect",
-        "__guid": "fbc900d6-b325-4684-997c-73db56dd80f5",
+        "__guid": "25148d2a-2318-4f72-89f2-c624891923c0",
         "__version": 1,
         "Bounce": 1,
         "Collision": true,
@@ -58,7 +58,7 @@
       },
       {
         "__type": "BrassEjectPhysics",
-        "__guid": "acbc2466-3da7-4dad-af68-ed9bfed7bf8a",
+        "__guid": "181d4755-3472-41a2-aa16-c8a3e6aa2446",
         "__enabled": true,
         "ImpactSound": "prefabs/effects/shell_case_bounce.wav.sound",
         "StartAngles": "0,0,0",
@@ -73,7 +73,7 @@
       },
       {
         "__type": "Sandbox.ParticleConeEmitter",
-        "__guid": "f94c8a41-8d30-4a33-bc47-c5f8251c0277",
+        "__guid": "a45c00c4-be62-4a58-8257-dc27422e3f47",
         "__enabled": true,
         "Burst": 1,
         "ConeAngle": 0,
@@ -95,7 +95,7 @@
       },
       {
         "__type": "Sandbox.ParticleModelRenderer",
-        "__guid": "b222d32a-af67-4baf-af5f-189886b309c6",
+        "__guid": "677e59f8-a84f-4e2c-8246-9e57cc58f346",
         "__version": 1,
         "CastShadows": false,
         "Choices": [
