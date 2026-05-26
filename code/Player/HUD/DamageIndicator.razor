@@ -1,6 +1,5 @@
 @using Sandbox;
 @using Sandbox.UI;
-@using Player = global::Player;
 @namespace Sandbox
 @inherits PanelComponent
 
@@ -21,7 +20,7 @@
 	const float RadialDistancePx = 120f;
 	const float ArrowSize        = 48f;
 
-	Player LocalPlayer => Player.FindLocalPlayer();
+	global::Player LocalPlayer => global::Player.FindLocalPlayer();
 
 	readonly List<(Vector3 WorldPos, TimeSince Since)> _indicators = new();
 
