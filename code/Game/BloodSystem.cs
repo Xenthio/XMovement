@@ -56,7 +56,13 @@ public static class BloodSystem
 		{
 			// Fall back: try the flesh surface's built-in BulletImpact prefab
 			var flesh = Surface.FindByName( "flesh" );
-			PrefabFile fallback = flesh?.PrefabCollection.BulletImpact ?? flesh?.GetBaseSurface()?.PrefabCollection.BulletImpact;
+			GameObject fallback = null;
+			if ( flesh is not null )
+			{
+				fallback = flesh.PrefabCollection.BulletImpact;
+				if ( fallback is null )
+					fallback = flesh.GetBaseSurface()?.PrefabCollection.BulletImpact;
+			}
 			if ( fallback is null ) return;
 
 			var rot2 = Rotation.LookAt( normal * -1f, Vector3.Up );
@@ -67,7 +73,7 @@ public static class BloodSystem
 		}
 
 		var rot = Rotation.LookAt( normal * -1f, Vector3.Up );
-		var impact = prefab.Clone( new CloneConfig { Transform = new Transform( position, rot ), StartEnabled = true } );
+		var impact = GameObject.Clone( prefab, new CloneConfig { Transform = new Transform( position, rot ), StartEnabled = true } );
 		if ( hitObject.IsValid() ) impact.SetParent( hitObject, true );
 
 		// Detach any Decal children so they survive beyond the particle's TemporaryEffect lifetime
@@ -82,7 +88,13 @@ public static class BloodSystem
 
 		// Use a random blood splatter decal directly — no particle, just a floor pool
 		var flesh = Surface.FindByName( "flesh" );
-		var prefab = flesh?.PrefabCollection.BulletImpact ?? flesh?.GetBaseSurface()?.PrefabCollection.BulletImpact;
+		GameObject prefab = null;
+		if ( flesh is not null )
+		{
+			prefab = flesh.PrefabCollection.BulletImpact;
+			if ( prefab is null )
+				prefab = flesh.GetBaseSurface()?.PrefabCollection.BulletImpact;
+		}
 		if ( prefab is null ) return;
 
 		// Flat on the floor
