@@ -77,5 +77,8 @@
   },
   "ShowInMenu": false,
   "ResourceVersion": 2,
-  "__version": 2
+  "__version": 2,
+  "__references": [
+    "facepunch.pistol_muzzleflash#76089"
+  ]
 }

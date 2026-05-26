@@ -10,7 +10,7 @@ public class AdminGun : BaseBulletWeapon
 	[Property, Group( "Admin Gun" )] public float ExplosionRadius    { get; set; } = 256f;
 
 	// Rapid autofire on primary
-	protected override float GetPrimaryFireRate() => 0.05f;
+	protected override float GetPrimaryFireRate() => 0.003f;
 
 	public override void PrimaryAttack()
 	{

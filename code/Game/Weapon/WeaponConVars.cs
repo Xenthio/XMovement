@@ -9,4 +9,12 @@ public static class WeaponConVars
 
 	public static bool UnlimitedAmmo => InfiniteAmmo >= 2;
 	public static bool InfiniteReserves => InfiniteAmmo >= 1;
+
+	/// <summary>
+	/// Use cheap particle-based brass ejection instead of full rigidbody physics.
+	/// The EjectBrass property on WeaponModel must point to a prefab with a
+	/// ParticleEffect + BrassEjectPhysics component for this to take effect.
+	/// </summary>
+	[ConVar( "cl_ejectbrass", Help = "0: off, 1: rigidbody (default), 2: cheap particle physics" )]
+	public static int EjectBrass { get; set; } = 1;
 }

@@ -1,0 +1,16 @@
+{
+  "UI": true,
+  "Volume": "0.8",
+  "Pitch": "0.9 1.1",
+  "Decibels": 75,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/Impacts/Bullets/hit_indicator-1.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "DistanceAttenuation": false,
+  "__references": [],
+  "__version": 1
+}

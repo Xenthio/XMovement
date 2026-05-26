@@ -1,0 +1,140 @@
+{
+  "RootObject": {
+    "__guid": "24d99820-ab8b-405c-ac35-108de79054fa",
+    "__version": 1,
+    "Flags": 0,
+    "Name": "eject_shotgun_cheap",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
+    "Enabled": true,
+    "NetworkMode": 0,
+    "Components": [
+      {
+        "__type": "TemporaryEffect",
+        "__guid": "694588b3-458a-4701-9e39-9484a008c174",
+        "__enabled": true,
+        "BecomeOrphan": false,
+        "DestroyAfterSeconds": 5.0,
+        "WaitForChildEffects": false,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
+      },
+      {
+        "__type": "Sandbox.ParticleEffect",
+        "__guid": "fbc900d6-b325-4684-997c-73db56dd80f5",
+        "__version": 1,
+        "Bounce": 1,
+        "Collision": true,
+        "CollisionIgnore": "player,trigger",
+        "CollisionRadius": 1,
+        "Damping": 0,
+        "Force": true,
+        "ForceDirection": "0,0,-800",
+        "ForceScale": 1,
+        "ForceSpace": "World",
+        "Lifetime": {
+          "Type": "Constant",
+          "Evaluation": "Seed",
+          "Constants": "4,4,0,0"
+        },
+        "MaxParticles": 1,
+        "Scale": 1.0,
+        "Space": "World",
+        "StartVelocity": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "OnParticleCreated": null,
+        "OnParticleDestroyed": null
+      },
+      {
+        "__type": "BrassEjectPhysics",
+        "__guid": "acbc2466-3da7-4dad-af68-ed9bfed7bf8a",
+        "__enabled": true,
+        "ImpactSound": "prefabs/effects/shell_case_bounce.wav.sound",
+        "StartAngles": "0,0,0",
+        "StartAngularVelocity": "0,0,0",
+        "StartVelocity": "0,0,0",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
+      },
+      {
+        "__type": "Sandbox.ParticleConeEmitter",
+        "__guid": "f94c8a41-8d30-4a33-bc47-c5f8251c0277",
+        "__enabled": true,
+        "Burst": 1,
+        "ConeAngle": 0,
+        "ConeFar": 0,
+        "ConeNear": 0,
+        "Delay": 0,
+        "DestroyOnEnd": false,
+        "Duration": 0.05,
+        "Loop": false,
+        "Rate": 0,
+        "VelocityMultiplier": 0,
+        "VelocityRandom": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
+      },
+      {
+        "__type": "Sandbox.ParticleModelRenderer",
+        "__guid": "b222d32a-af67-4baf-af5f-189886b309c6",
+        "__version": 1,
+        "CastShadows": false,
+        "Choices": [
+          {
+            "Model": "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl",
+            "MaterialGroup": null,
+            "BodyGroups": 2
+          }
+        ],
+        "MaterialOverride": null,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "Scale": 1.0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
+      }
+    ],
+    "Children": [],
+    "__variables": [],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {}
+    }
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "ResourceVersion": 1,
+  "__version": 1
+}

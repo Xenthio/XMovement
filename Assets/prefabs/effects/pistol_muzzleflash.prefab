@@ -18,6 +18,9 @@
       {
         "__type": "TemporaryEffect",
         "__guid": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+        "__enabled": true,
+        "Flags": 0,
+        "BecomeOrphan": false,
         "DestroyAfterSeconds": 0.25,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
@@ -25,7 +28,7 @@
         "OnComponentFixedUpdate": null,
         "OnComponentStart": null,
         "OnComponentUpdate": null,
-        "WaitForChildEffects": true
+        "WaitForChildEffects": false
       }
     ],
     "Children": [
@@ -37,7 +40,7 @@
         "Position": "0,0,0",
         "Rotation": "0,0,0,1",
         "Scale": "1,1,1",
-        "Tags": "particles",
+        "Tags": "",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkFlags": 0,
@@ -177,7 +180,7 @@
             "Lifetime": {
               "Type": "Range",
               "Evaluation": "Seed",
-              "Constants": "0.05,0.12,0,0"
+              "Constants": "0.0500000007,0.119999997,0,0"
             },
             "LocalSpace": 0,
             "MaxParticles": 12,
@@ -211,25 +214,22 @@
             "Scale": {
               "Type": "CurveRange",
               "Evaluation": "Life",
-              "CurveA": {
-                "rangey": "0,1",
-                "frames": [
-                  {
-                    "x": 0,
-                    "y": 1,
-                    "in": 0,
-                    "out": 0,
-                    "mode": "Mirrored"
-                  },
-                  {
-                    "x": 1,
-                    "y": 0.1,
-                    "in": 0,
-                    "out": 0,
-                    "mode": "Mirrored"
-                  }
-                ]
-              },
+              "CurveA": [
+                {
+                  "x": 0,
+                  "y": 1,
+                  "in": 0,
+                  "out": 0,
+                  "mode": "Mirrored"
+                },
+                {
+                  "x": 1,
+                  "y": 0.1,
+                  "in": 0,
+                  "out": 0,
+                  "mode": "Mirrored"
+                }
+              ],
               "CurveB": [
                 {
                   "x": 0,
@@ -291,7 +291,7 @@
             "Opaque": false,
             "PlaybackSpeed": 1,
             "RenderOptions": {
-              "GameLayer": false,
+              "GameLayer": true,
               "OverlayLayer": false,
               "BloomLayer": true,
               "AfterUILayer": false
@@ -326,16 +326,19 @@
             "TextureFilter": "Bilinear"
           },
           {
-            "__type": "Sandbox.ParticleBurstEmitter",
-            "__guid": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+            "__type": "Sandbox.ParticleConeEmitter",
+            "__guid": "7063dcb8-ef22-4895-a2fe-f76ee20f7b93",
             "__enabled": true,
-            "Flags": 0,
-            "Count": {
-              "Type": "Range",
-              "Evaluation": "Seed",
-              "Constants": "6,10,0,0"
-            },
+            "Burst": 10,
+            "CenterBias": 0,
+            "CenterBiasVelocity": 0,
+            "ConeAngle": 360,
+            "ConeFar": 1,
+            "ConeNear": 0,
+            "Delay": 0,
             "DestroyOnEnd": true,
+            "Duration": 0.1,
+            "InVolume": false,
             "Loop": false,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
@@ -343,7 +346,11 @@
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "Delay": 0
+            "OnEdge": false,
+            "Rate": 0,
+            "RateOverDistance": 0,
+            "VelocityMultiplier": 1,
+            "VelocityRandom": 0
           },
           {
             "__type": "Sandbox.ParticleLightRenderer",
@@ -368,7 +375,28 @@
         ],
         "Children": []
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
+    "__variables": []
   },
   "ResourceVersion": 2,
   "ShowInMenu": false,

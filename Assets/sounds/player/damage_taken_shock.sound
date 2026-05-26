@@ -1,0 +1,18 @@
+{
+  "UI": true,
+  "Volume": "0.85",
+  "Pitch": "0.8 1.0",
+  "Decibels": 75,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/kenney/ui/glitch_001.vsnd",
+    "sounds/kenney/ui/glitch_002.vsnd",
+    "sounds/kenney/ui/glitch_003.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "DistanceAttenuation": false,
+  "__references": [],
+  "__version": 1
+}

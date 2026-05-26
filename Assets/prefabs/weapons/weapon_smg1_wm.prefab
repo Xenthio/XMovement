@@ -78,7 +78,8 @@
   "ShowInMenu": false,
   "ResourceVersion": 2,
   "__references": [
-    "facepunch.w_mp5#145410"
+    "facepunch.w_mp5#145410",
+    "facepunch.rifle_muzzleflash#76090"
   ],
   "__version": 2
 }

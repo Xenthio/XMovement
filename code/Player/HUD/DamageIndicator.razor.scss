@@ -13,10 +13,10 @@ damageindicator {
 		width: 48px;
 		height: 96px;
 		margin-left: -24px;
-		margin-top: -168px; /* -96px arrow height - 120px radius offset, negative = up = toward attacker */
+		margin-top: -216px; /* tip at 120px radius from center, arrow is 96px tall: 120+96=216 */
 		background: rgba(255, 30, 30, 0.85);
 		clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-		transform-origin: 24px 168px; /* rotate around screen center offset */
+		transform-origin: 24px 216px; /* rotate around screen center: 24px = half width, 216px = tip dist + height */
 		transition: opacity 0.05s linear;
 	}
 }

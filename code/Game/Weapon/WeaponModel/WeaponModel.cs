@@ -57,17 +57,71 @@ public abstract class WeaponModel : Component
 
 	public void DoEjectBrass()
 	{
-		if ( !EjectBrass.IsValid() ) return;
+		if ( WeaponConVars.EjectBrass == 0 ) return;
+
 		if ( !EjectTransform.IsValid() ) return;
 
-		var effect = EjectBrass.Clone( new CloneConfig { Transform = EjectTransform.WorldTransform.WithScale( 1 ), StartEnabled = true } );
-		effect.WorldRotation = effect.WorldRotation * new Angles( 90, 0, 0 );
+		// cl_ejectbrass 2 = cheap particle physics
+		if ( WeaponConVars.EjectBrass == 2 )
+		{
+			// Auto-look for <name>_cheap.prefab via ResourceLibrary
+			GameObject cheapPrefab = null;
+			if ( EjectBrass.IsValid() )
+			{
+				// Try to find the cheap variant by searching for a prefab whose
+				// root object name matches <this prefab name>_cheap
+				var cheapName = EjectBrass.Name + "_cheap";
+				var cheapFile = ResourceLibrary.GetAll<PrefabFile>()
+					.FirstOrDefault( p => p.RootObject?["Name"]?.ToString() == cheapName );
+				if ( cheapFile is not null )
+					cheapPrefab = GameObject.GetPrefab( cheapFile.ResourcePath );
+			}
+			var prefab = cheapPrefab.IsValid() ? cheapPrefab : EjectBrass;
+			if ( !prefab.IsValid() ) return;
 
-		var ejectDirection = (EjectTransform.WorldRotation.Forward * 250 + (EjectTransform.WorldRotation.Right + Vector3.Random * -0.35f) * 250);
+			// Inherit owner velocity
+			var ownerVelocity = Vector3.Zero;
+			var ownerCC = GameObject.Root.Components.Get<CharacterController>( FindMode.EverythingInSelfAndDescendants );
+			if ( ownerCC.IsValid() ) ownerVelocity = ownerCC.Velocity;
+
+			// TTT-style: local eject direction transformed to world space
+			var ejectDir = EjectTransform.WorldRotation.Forward * 250
+			             + (EjectTransform.WorldRotation.Right + Vector3.Random * -0.35f) * 250
+			             + EjectTransform.WorldRotation.Up * Game.Random.Float( 0f, 64f )
+			             + ownerVelocity;
+
+			var go = prefab.Clone( new CloneConfig { Transform = EjectTransform.WorldTransform, StartEnabled = false } );
+
+			if ( go.IsValid() )
+			{
+				// Set velocity before enabling — applied on first OnParticleStep, not OnParticleCreated
+				var brass = go.Components.Get<BrassEjectPhysics>( FindMode.EverythingInSelfAndDescendants );
+				if ( brass.IsValid() )
+				{
+					brass.StartVelocity        = ejectDir;
+					brass.StartAngles          = EjectTransform.WorldRotation.Angles();
+					brass.StartAngularVelocity = Vector3.Random * 300f;
+				}
+				go.Transform.ClearInterpolation();
+				go.Enabled = true;
+			}
+			return;
+		}
+
+		// cl_ejectbrass 1 = full rigidbody (default)
+		if ( !EjectBrass.IsValid() ) return;
+
+		var effect = EjectBrass.Clone( new CloneConfig { Transform = EjectTransform.WorldTransform.WithScale( 1 ), StartEnabled = true } );
+
+		var ejectDirection = EjectTransform.WorldRotation.Forward * 250
+		                   + (EjectTransform.WorldRotation.Right + Vector3.Random * -0.35f) * 250;
 
 		var rb = effect.GetComponentInChildren<Rigidbody>();
-		rb.Velocity = ejectDirection;
-		rb.AngularVelocity = EjectTransform.WorldRotation.Right * 50f;
+		if ( rb.IsValid() )
+		{
+			rb.Velocity        = ejectDirection;
+			rb.AngularVelocity = EjectTransform.WorldRotation.Right * 50f;
+		}
 	}
 
 	/// <summary>
@@ -107,7 +161,15 @@ public abstract class WeaponModel : Component
 		if ( !MuzzleEffect.IsValid() ) return;
 		if ( !MuzzleTransform.IsValid() ) return;
 
-		MuzzleEffect.Clone( new CloneConfig { Parent = MuzzleTransform, Transform = global::Transform.Zero, StartEnabled = true } );
+		var go = MuzzleEffect.Clone( new CloneConfig { Parent = MuzzleTransform, Transform = global::Transform.Zero, StartEnabled = true } );
+
+		// Fallback: if the prefab has no TemporaryEffect, add one so it always cleans itself up
+		if ( go.IsValid() && !go.Components.Get<TemporaryEffect>( FindMode.InSelf ) .IsValid() )
+		{
+			var te = go.Components.Create<TemporaryEffect>();
+			te.DestroyAfterSeconds = 0.5f;
+			te.WaitForChildEffects = false;
+		}
 	}
 
 	public virtual void OnAttack() { }
