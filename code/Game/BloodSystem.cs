@@ -56,7 +56,7 @@ public static class BloodSystem
 		{
 			// Fall back: try the flesh surface's built-in BulletImpact prefab
 			var flesh = Surface.FindByName( "flesh" );
-			var fallback = flesh?.PrefabCollection.BulletImpact ?? flesh?.GetBaseSurface()?.PrefabCollection.BulletImpact;
+			PrefabFile fallback = flesh?.PrefabCollection.BulletImpact ?? flesh?.GetBaseSurface()?.PrefabCollection.BulletImpact;
 			if ( fallback is null ) return;
 
 			var rot2 = Rotation.LookAt( normal * -1f, Vector3.Up );

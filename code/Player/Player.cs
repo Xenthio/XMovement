@@ -102,7 +102,6 @@ public sealed partial class Player : Component, Component.IDamageable
 		Kill( dmg );
 	}
 
-	[Rpc.Broadcast( NetFlags.HostOnly | NetFlags.Reliable )]
 	private SoundHandle _dmgSound;
 
 	[Rpc.Broadcast( NetFlags.HostOnly | NetFlags.Reliable )]

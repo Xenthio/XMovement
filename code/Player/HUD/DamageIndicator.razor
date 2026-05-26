@@ -1,70 +1,58 @@
 @using Sandbox;
 @using Sandbox.UI;
 @using Player = global::Player;
+@inherits PanelComponent
 
 @* Radial damage direction indicator — red arrow on screen pointing toward attacker.
-   CS2 / Source style: appears on hit, fades out over DamageFadeTime seconds. *@
+   CS2 / Source style: appears on hit, fades out over DamageFadeTime seconds.
+   Each indicator is a CSS-positioned div rotated to point at the attacker. *@
+
+@foreach ( var ind in _indicators )
+{
+	float alpha = 1f - (ind.Since / DamageFadeTime);
+	float angleDeg = ComputeAngleDeg( ind.WorldPos );
+	<div class="damage-arrow" style="transform: rotate(@(angleDeg)deg); opacity: @(alpha.ToString("F2", System.Globalization.CultureInfo.InvariantCulture));"></div>
+}
 
 @code
 {
-	const float DamageFadeTime    = 2.0f;
-	const float RadialDistancePx  = 120f;   // px from screen center to arrow tip
-	const float ArrowSize         = 48f;    // px, square texture
+	const float DamageFadeTime   = 2.0f;
+	const float RadialDistancePx = 120f;
+	const float ArrowSize        = 48f;
 
 	Player LocalPlayer => Player.FindLocalPlayer();
 
 	readonly List<(Vector3 WorldPos, TimeSince Since)> _indicators = new();
 
-	// IPlayerEvents lives on the Player GO, not the panel. We poll via BuildHash instead.
-	// But we need OnDamage — so subscribe via a companion component below.
 	public void AddIndicator( Vector3 attackerWorldPos )
 	{
 		_indicators.Add( (attackerWorldPos, new TimeSince()) );
 		StateHasChanged();
 	}
 
-	protected override void OnPreRender()
+	float ComputeAngleDeg( Vector3 worldPos )
 	{
-		// Prune expired
+		var player = LocalPlayer;
+		if ( !player.IsValid() ) return 0f;
+		var eyePos = player.EyeTransform.Position;
+		var eyeRot = player.EyeTransform.Rotation;
+		var focal  = eyePos + eyeRot.Forward * 24f;
+		var dir    = (worldPos - focal).Normal;
+		float angle = -MathF.Atan2( dir.y, dir.x )
+		              + eyeRot.Angles().yaw.DegreeToRadian()
+		              - MathF.PI / 2f;
+		return angle.RadianToDegree();
+	}
+
+	protected override void OnUpdate()
+	{
+		// Prune expired indicators and trigger re-render if anything changed
+		int before = _indicators.Count;
 		for ( int i = _indicators.Count - 1; i >= 0; i-- )
 			if ( _indicators[i].Since >= DamageFadeTime )
 				_indicators.RemoveAt( i );
-
-		if ( _indicators.Count == 0 ) return;
-
-		var player = LocalPlayer;
-		if ( !player.IsValid() ) return;
-		var cam = Scene.Camera;
-		if ( !cam.IsValid() ) return;
-
-		var hud    = cam.Hud;
-		var center = Screen.Size / 2f;
-		var eyePos = player.EyeTransform.Position;
-		var eyeRot = player.EyeTransform.Rotation;
-		// Focal point slightly in front of eyes for better close-range accuracy
-		var focal  = eyePos + eyeRot.Forward * 24f;
-
-		foreach ( var ind in _indicators )
-		{
-			float alpha  = 1f - (ind.Since / DamageFadeTime);
-			var   dir    = (ind.WorldPos - focal).Normal;
-			// Angle in screen space: atan2 of the projected XY, offset by player yaw
-			float angle  = -MathF.Atan2( dir.y, dir.x )
-			               + eyeRot.Angles().yaw.DegreeToRadian()
-			               - MathF.PI / 2f;
-
-			var matrix = Matrix.CreateRotation( Rotation.From( 0, angle.RadianToDegree(), 0 ) );
-			matrix    *= Matrix.CreateTranslation( center );
-			hud.SetMatrix( matrix );
-
-			var size = new Vector2( ArrowSize, ArrowSize * 2f ) * Hud.Scale;
-			var rect = new Rect( new Vector2( -size.x / 2f, RadialDistancePx * Hud.Scale ), size );
-
-			// Draw a filled triangle pointing outward
-			hud.DrawTexture( Texture.White, rect, Color.Red.WithAlpha( alpha * 0.85f ) );
-		}
-
-		hud.SetMatrix( Matrix.Identity );
+		if ( _indicators.Count != before || _indicators.Count > 0 )
+			StateHasChanged();
 	}
 
 	protected override int BuildHash() => _indicators.Count;
