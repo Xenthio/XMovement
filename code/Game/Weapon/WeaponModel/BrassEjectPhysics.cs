@@ -47,7 +47,15 @@ public sealed class BrassEjectPhysics : ParticleController
 				particle.Angles = new Angles( 0, Game.Random.Float( 0, 360f ), 0 );
 				particle.Set<Vector3>( "angvel", Vector3.Random * 300 );
 				if ( !string.IsNullOrWhiteSpace( ImpactSound ) )
-					Sound.Play( ImpactSound, particle.Position );
+				{
+					var sound = ImpactSound;
+					var pos = particle.Position;
+					GameTask.RunInThreadAsync( async () =>
+					{
+						await GameTask.MainThread();
+						Sound.Play( sound, pos );
+					} );
+				}
 			}
 			else
 			{

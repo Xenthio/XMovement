@@ -121,6 +121,19 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 	}
 
 	/// <summary>
+	/// Force-respawn yourself immediately, bypassing the gamemode's respawn delay.
+	/// </summary>
+	[ConCmd( "respawn", ConVarFlags.Server | ConVarFlags.Cheat )]
+	public static void RespawnSelf( Connection source )
+	{
+		var playerData = PlayerData.For( source );
+		if ( GameRulesService.Current is not null )
+			GameRulesService.Current.RequestRespawn( playerData );
+		else
+			Current?.SpawnPlayer( playerData );
+	}
+
+	/// <summary>
 	/// Ignite the entity you're aiming at.
 	/// Usage: ignite [durationSeconds]
 	/// </summary>

@@ -159,8 +159,8 @@ public abstract class WeaponModel : Component
 		if ( go.IsValid() && !go.Components.Get<TemporaryEffect>( FindMode.InSelf ) .IsValid() )
 		{
 			var te = go.Components.Create<TemporaryEffect>();
-			te.DestroyAfterSeconds = 0.5f;
-			te.WaitForChildEffects = false;
+			te.DestroyAfterSeconds = 0.05f;
+			te.WaitForChildEffects = true;
 		}
 	}
 
