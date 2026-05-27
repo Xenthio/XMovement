@@ -122,15 +122,29 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 
 	/// <summary>
 	/// Force-respawn yourself immediately, bypassing the gamemode's respawn delay.
+	/// If already alive, teleports to a fresh spawnpoint and resets state.
+	/// If dead, goes through the normal SpawnPlayer path (creates a new player GO).
 	/// </summary>
 	[ConCmd( "respawn", ConVarFlags.Server | ConVarFlags.Cheat )]
 	public static void RespawnSelf( Connection source )
 	{
-		var playerData = PlayerData.For( source );
-		if ( GameRulesService.Current is not null )
-			GameRulesService.Current.RequestRespawn( playerData );
+		var manager = Current;
+		if ( manager is null ) return;
+
+		var player = Game.ActiveScene.GetAll<Player>().FirstOrDefault( p => p.Network.Owner?.Id == source.Id );
+		if ( player.IsValid() )
+		{
+			// Player GO already exists (alive or mid-death) — respawn in place with a new spawnpoint.
+			var playerData = player.PlayerData;
+			var location = manager.ResolveSpawnLocation( playerData );
+			player.Respawn( location );
+		}
 		else
-			Current?.SpawnPlayer( playerData );
+		{
+			// No player GO — create one the normal way.
+			var playerData = PlayerData.For( source );
+			manager.SpawnPlayer( playerData );
+		}
 	}
 
 	/// <summary>
@@ -278,8 +292,7 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 
 		// Ask the gamerules service for a spawn location first (e.g. team spawns in TDM).
 		// GamemodeManager registers itself into GameRulesService — the base never references it directly.
-		var gamemodeSpawn = GameRulesService.Current?.GetSpawnLocation( playerData );
-		var startLocation = (gamemodeSpawn ?? FindSpawnLocation()).WithScale( 1 );
+		var startLocation = ResolveSpawnLocation( playerData );
 
 		// Fire pre-spawn event — listeners can modify the spawn location
 		var respawnEvent = new PlayerRespawnEvent { PlayerData = playerData, SpawnLocation = startLocation };
@@ -315,6 +328,17 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 	}
 
 	public static Transform EditorSpawnLocation { get; set; }
+
+	/// <summary>
+	/// Resolves the best spawn location for a player, asking the active gamemode first,
+	/// then falling back to the standard SpawnPoint furthest-from-players logic.
+	/// This is the single authoritative place for spawnpoint selection.
+	/// </summary>
+	public Transform ResolveSpawnLocation( PlayerData playerData )
+	{
+		var gamemodeSpawn = GameRulesService.Current?.GetSpawnLocation( playerData );
+		return (gamemodeSpawn ?? FindSpawnLocation()).WithScale( 1 );
+	}
 
 	Transform FindSpawnLocation()
 	{

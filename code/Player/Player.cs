@@ -119,6 +119,28 @@ public sealed partial class Player : Component, Component.IDamageable
 		}
 	}
 
+	/// <summary>
+	/// Respawn this player in-place, restoring health and firing spawn events.
+	/// If you want to teleport to a spawnpoint first, pass a transform — null keeps current position.
+	/// </summary>
+	[Rpc.Broadcast( NetFlags.HostOnly | NetFlags.Reliable )]
+	public void Respawn( Transform? location = null )
+	{
+		Assert.True( Networking.IsHost, "Respawn must be called on the host" );
+
+		Health = MaxHealth;
+		Armour = 0;
+
+		if ( location.HasValue )
+			WorldTransform = location.Value;
+
+		GameObject.Enabled = true;
+		WalkController.Enabled = true;
+
+		Local.IPlayerEvents.PostToGameObject( GameObject, x => x.OnSpawned() );
+		GameRulesService.Current?.EquipPlayer( this );
+	}
+
 	public T GetWeapon<T>() where T : BaseCarryable
 	{
 		return Components.Get<PlayerInventory>()?.GetWeapon<T>();
