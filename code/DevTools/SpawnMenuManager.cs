@@ -72,6 +72,8 @@ public sealed class SpawnMenuManager : GameObjectSystem<SpawnMenuManager>, IScen
 
 	void ISceneStartup.OnClientInitialize()
 	{
+		// return if scene doesnt want engine scene.
+		if ( Scene.WantsSystemScene ) return;
 		var screenPanel = Scene.GetAllComponents<ScreenPanel>().FirstOrDefault();
 		if ( screenPanel is not null )
 		{

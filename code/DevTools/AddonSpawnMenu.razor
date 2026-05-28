@@ -170,19 +170,8 @@
 
 	protected override void OnUpdate()
 	{
-		var open = SpawnMenuManager.IsOpen;
-		SetClass( "hidden", !open );
-
-		if ( open )
-		{
-			Mouse.Visible    = true;
-			Mouse.Visibility = MouseVisibility.Auto;
-		}
-		else
-		{
-			Mouse.Visible    = false;
-			Mouse.Visibility = MouseVisibility.Hidden;
-		}
+		// pointer-events: all/none in the scss handles cursor visibility automatically.
+		SetClass( "hidden", !SpawnMenuManager.IsOpen );
 	}
 
 	void Close() => SpawnMenuManager.IsOpen = false;
