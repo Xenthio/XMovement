@@ -94,6 +94,11 @@ public static class Bullet
 
 		if ( !Networking.IsHost ) return tr;
 
+		// Impact push before the damage, so the prop gets the impulse and can pass it down to gibs.
+		// Physics push
+		if ( tr.Body.IsValid() && info.Force > 0f )
+			tr.Body.ApplyImpulseAt( tr.HitPosition, direction * info.Force * tr.Body.Mass );
+
 		// Damage
 		if ( tr.Hit && tr.GameObject.IsValid() )
 		{
@@ -110,10 +115,6 @@ public static class Bullet
 				damageable.Damage( dmg );
 			}
 		}
-
-		// Physics push
-		if ( tr.Body.IsValid() && info.Force > 0f )
-			tr.Body.ApplyImpulseAt( tr.HitPosition, direction * info.Force * tr.Body.Mass );
 
 		// Emit a gunshot sound stimulus so nearby NPCs react
 		NpcStimulusSystem.EmitSound( info.Origin, "gunshot", volume: 1f, source: info.Attacker );
