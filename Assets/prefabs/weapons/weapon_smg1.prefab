@@ -66,6 +66,10 @@
         "WorldModelPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/weapons/weapon_smg1_wm.prefab"
+        },
+        "FlybySound": {
+          "_type": "soundevent",
+          "path": "prefabs/effects/bullet_flyby_pistol.sound"
         }
       },
       {

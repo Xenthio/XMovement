@@ -51,5 +51,18 @@ public class PlayerCameraEvents : Component, ICameraSetup
 			cc.RenderExcludeTags.Remove( "thirdperson" );
 			cc.RenderExcludeTags.Add( "firstperson" );
 		}
+
+		// Set worldmodel render type: ShadowsOnly in first-person (cast shadow but don't render mesh),
+		// On in third-person. Done here so it updates the same frame the camera mode changes,
+		// bypassing XMovement's FixedUpdate timing and NotNetworked traversal issues.
+		var worldModel = Player.GetComponent<PlayerInventory>()?.ActiveWeapon?.WorldModel;
+		if ( worldModel.IsValid() )
+		{
+			var renderType = isFirstPerson
+				? ModelRenderer.ShadowRenderType.ShadowsOnly
+				: ModelRenderer.ShadowRenderType.On;
+			foreach ( var mr in worldModel.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
+				mr.RenderType = renderType;
+		}
 	}
 }

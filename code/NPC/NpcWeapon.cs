@@ -105,6 +105,7 @@ public class NpcBulletWeapon : NpcWeaponBase
 		var sound   = weapon?.ShootSound;
 		var attacker = GetComponentInParent<BaseNpc>();
 
+		var fireOrigin = origin; // capture for broadcast
 		Bullet.Fire( new BulletInfo
 		{
 			Origin    = origin,
@@ -117,8 +118,18 @@ public class NpcBulletWeapon : NpcWeaponBase
 			Count     = BurstCount,
 			Attacker  = attacker?.GameObject,
 			Weapon    = WeaponPrefab,
-			ShootSound = sound,
 		} );
+
+		// Broadcast shoot sound spatialised at the fire origin
+		if ( sound.IsValid() )
+			BroadcastShootSound( sound, fireOrigin );
+	}
+
+	[Rpc.Broadcast]
+	void BroadcastShootSound( SoundEvent sound, Vector3 origin )
+	{
+		if ( Application.IsDedicatedServer || !sound.IsValid() ) return;
+		Sound.Play( sound, origin );
 	}
 }
 

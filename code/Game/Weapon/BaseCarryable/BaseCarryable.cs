@@ -4,7 +4,7 @@ using XMovement;
 /// <summary>
 /// Info about a trace attack.
 /// </summary>
-public record struct TraceAttackInfo( GameObject Target, float Damage, TagSet Tags = null, Vector3 Position = default, Vector3 Origin = default, Hitbox Hitbox = null )
+public record struct TraceAttackInfo( GameObject Target, float Damage, TagSet Tags = null, Vector3 Position = default, Vector3 Origin = default )
 {
 	public static TraceAttackInfo From( SceneTraceResult tr, float damage, TagSet tags = default, bool localise = true )
 	{
@@ -13,7 +13,7 @@ public record struct TraceAttackInfo( GameObject Target, float Damage, TagSet Ta
 		if ( localise && tr.Hitbox?.Tags is not null )
 			tags.Add( tr.Hitbox?.Tags );
 
-		return new TraceAttackInfo( tr.GameObject, damage, tags, tr.HitPosition, tr.StartPosition, tr.Hitbox );
+		return new TraceAttackInfo( tr.GameObject, damage, tags, tr.HitPosition, tr.StartPosition );
 	}
 }
 
@@ -196,26 +196,9 @@ public partial class BaseCarryable : Component
 
 		// Always create the viewmodel — hiding/showing is handled via the "firstperson"
 		// RenderExcludeTag on the camera (set in PlayerCameraEvents), matching sandbox's approach.
-		// This avoids destroying + recreating the viewmodel every time you toggle camera mode.
 		CreateViewModel();
 
-		// World model shadow mode: shadows-only in first person, fully visible in third person
-		var isThirdPerson = player.Controller.ThirdPerson;
-		SetWorldModelRenderType( isThirdPerson
-			? ModelRenderer.ShadowRenderType.On
-			: ModelRenderer.ShadowRenderType.ShadowsOnly );
-
 		GameObject.Network.Interpolation = false;
-	}
-
-	private ModelRenderer.ShadowRenderType _lastWorldModelRenderType = (ModelRenderer.ShadowRenderType)(-1);
-	private void SetWorldModelRenderType( ModelRenderer.ShadowRenderType type )
-	{
-		if ( !WorldModel.IsValid() ) return;
-		if ( _lastWorldModelRenderType == type ) return;
-		_lastWorldModelRenderType = type;
-		foreach ( var mr in WorldModel.GetComponentsInChildren<ModelRenderer>() )
-			mr.RenderType = type;
 	}
 
 	public virtual void OnPlayerUpdate( Player player )
@@ -245,15 +228,17 @@ public partial class BaseCarryable : Component
 
 		var attacker = EffectiveAttacker;
 
-		var damagable = attack.Target.GetComponentInParent<IDamageable>();
-		if ( damagable is not null )
+		var dmg = attack.Target.GetComponentInParent<IDamageable>();
+		if ( dmg is not null )
 		{
-			var info = new DamageInfo( attack.Damage, attacker, GameObject );
-			info.Position = attack.Position;
-			info.Origin = attack.Origin;
-			info.Tags = attack.Tags;
+			var info = new DamageInfo( attack.Damage, attacker, GameObject )
+			{
+				Position = attack.Position,
+				Origin = attack.Origin,
+				Tags = attack.Tags
+			};
 
-			damagable.OnDamage( info );
+			dmg.OnDamage( info );
 		}
 
 		if ( attack.Target.GetComponentInChildren<Rigidbody>() is var rb && rb.IsValid() )

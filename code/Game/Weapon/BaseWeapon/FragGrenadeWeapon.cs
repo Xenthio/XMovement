@@ -131,7 +131,8 @@ public sealed class FragGrenadeWeapon : BaseWeapon
 
 		SpawnThrownGrenade( startPos, velocity, fuseTime );
 
-		WeaponModel?.GameObject.RunEvent<WeaponModel>( x => x.OnAttack() );
+		ViewModel?.RunEvent<WeaponModel>( x => x.OnAttack() );
+		WorldModel?.RunEvent<WeaponModel>( x => x.OnAttack() );
 		Owner?.WalkController?.BodyModelRenderer?.Set( "b_attack", true );
 
 		AddShootDelay( 1f );

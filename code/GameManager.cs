@@ -270,11 +270,8 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 	{
 		var go = new GameObject( true, $"PlayerInfo - {channel.DisplayName}" );
 		var data = go.AddComponent<PlayerData>();
-		data.SteamId = (long)channel.SteamId;
-		data.PlayerId = channel.Id;
-		data.DisplayName = channel.DisplayName;
 
-		go.NetworkSpawn( null );
+		go.NetworkSpawn( channel );
 		go.Network.SetOwnerTransfer( OwnerTransfer.Fixed );
 
 		return data;
@@ -287,7 +284,7 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 		Assert.NotNull( playerData, "PlayerData is null" );
 		Assert.True( Networking.IsHost, $"Client tried to SpawnPlayer: {playerData.DisplayName}" );
 
-		if ( Scene.GetAll<Player>().Where( x => x.Network.Owner?.Id == playerData.PlayerId ).Any() )
+		if ( Scene.GetAll<Player>().Any( x => x.Network.Owner == playerData.Network.Owner ) )
 			return;
 
 		// Ask the gamerules service for a spawn location first (e.g. team spawns in TDM).
@@ -310,8 +307,7 @@ public sealed partial class GameManager : GameObjectSystem<GameManager>, Compone
 		if ( !player.IsValid() ) { playerGo.Destroy(); return; }
 		player.PlayerData = playerData;
 
-		var owner = Connection.Find( playerData.PlayerId );
-		playerGo.NetworkSpawn( owner );
+		playerGo.NetworkSpawn( playerData.Connection );
 
 		Local.IPlayerEvents.PostToGameObject( player.GameObject, x => x.OnSpawned() );
 		GameRulesService.Current?.EquipPlayer( player );

@@ -37,11 +37,14 @@ public struct BulletInfo
 	/// <summary>The weapon that fired (used for damage attribution and tracer origin).</summary>
 	public GameObject Weapon { get; set; }
 
-	/// <summary>Sound to play at the muzzle. Optional.</summary>
-	public SoundEvent ShootSound { get; set; }
-
 	/// <summary>Impact particle prefab override. If null, falls back to per-surface impact prefabs.</summary>
 	public GameObject ImpactEffectOverride { get; set; }
+
+	/// <summary>
+	/// Sound to play for nearby players when the bullet whizzes past them.
+	/// Null = no flyby sound. Typically assigned from a weapon's FlybySound property.
+	/// </summary>
+	public SoundEvent FlybySound { get; set; }
 
 	/// <summary>Tags added to the DamageInfo produced by this bullet.</summary>
 	public TagSet DamageTags { get; set; }
@@ -55,16 +58,19 @@ public static class Bullet
 {
 	/// <summary>
 	/// Fire one or more bullets described by <paramref name="info"/>.
+	/// Returns the trace result of the last pellet fired (useful for single-bullet callers).
 	/// Must be called on the host for damage; effects are broadcast to all clients.
 	/// </summary>
-	public static void Fire( BulletInfo info )
+	public static SceneTraceResult Fire( BulletInfo info )
 	{
 		var count = Math.Max( 1, info.Count );
+		var result = default( SceneTraceResult );
 		for ( int i = 0; i < count; i++ )
-			FireOne( info );
+			result = FireOne( info );
+		return result;
 	}
 
-	static void FireOne( in BulletInfo info )
+	static SceneTraceResult FireOne( in BulletInfo info )
 	{
 		var direction = info.Spread > 0
 			? info.Direction.WithAimCone( info.Spread )
@@ -81,10 +87,12 @@ public static class Bullet
 			.UseHitboxes()
 			.Run();
 
-		// Effects — broadcast to all clients
-		BroadcastEffects( info.Weapon, tr.StartPosition, tr.EndPosition, tr.Hit, tr.Normal, tr.GameObject, tr.Surface, info.ShootSound, info.ImpactEffectOverride );
+		// Impact effects + flyby sound — broadcast to all clients
+		BroadcastImpact( tr.EndPosition, tr.Hit, tr.Normal, tr.GameObject, tr.Surface, info.ImpactEffectOverride );
+		if ( info.FlybySound.IsValid() )
+			BroadcastFlyby( info.FlybySound, info.Origin, tr.EndPosition, info.Attacker );
 
-		if ( !Networking.IsHost ) return;
+		if ( !Networking.IsHost ) return tr;
 
 		// Damage
 		if ( tr.Hit && tr.GameObject.IsValid() )
@@ -113,6 +121,35 @@ public static class Bullet
 		// If we hit something biological, emit a blood splat
 		if ( tr.Hit && tr.GameObject.IsValid() && tr.GameObject.Tags.HasAny( "npc", "player" ) )
 			BloodSystem.Splat( tr.HitPosition, tr.Normal, tr.GameObject );
+
+		return tr;
+	}
+
+	/// <summary>
+	/// Broadcast a bullet whiz/flyby sound to nearby clients.
+	/// Skips the shooter's own client. Sound is played at the closest point on the bullet
+	/// path to each listener's camera, clamped to the segment.
+	/// </summary>
+	[Rpc.Broadcast]
+	static void BroadcastFlyby( SoundEvent sound, Vector3 origin, Vector3 endPoint, GameObject attacker )
+	{
+		if ( Application.IsDedicatedServer ) return;
+		if ( !sound.IsValid() ) return;
+
+		// Don't play for the shooter
+		if ( attacker.IsValid() && attacker.Network.Owner == Connection.Local ) return;
+
+		var cam = Game.ActiveScene.Camera?.WorldPosition ?? Vector3.Zero;
+		var dir = (endPoint - origin);
+		var len = dir.Length;
+		if ( len < 1f ) return;
+		var dirN = dir / len;
+
+		// Closest point on the bullet segment to the camera
+		var t = MathX.Clamp( Vector3.Dot( cam - origin, dirN ), 70f, len );
+		var soundPos = origin + dirN * t;
+
+		Sound.Play( sound, soundPos );
 	}
 
 	/// <summary>
@@ -129,73 +166,38 @@ public static class Bullet
 	{
 		if ( Application.IsDedicatedServer ) return;
 		if ( !hitObject.IsValid() ) return;
-
-		var prefab = impactOverride;
-		if ( !prefab.IsValid() && hitSurface.IsValid() )
-		{
-			prefab = hitSurface.PrefabCollection.BulletImpact
-				?? hitSurface.GetBaseSurface()?.PrefabCollection.BulletImpact;
-		}
-
-		// Impact sound
-		var bulletSound = hitSurface.IsValid()
-			? hitSurface.SoundCollection.Bullet ?? hitSurface.GetBaseSurface()?.SoundCollection.Bullet
-			: null;
-		if ( bulletSound.IsValid() ) Sound.Play( bulletSound, hitPoint );
-
-		if ( !prefab.IsValid() ) return;
-
-		var rot = Rotation.LookAt( normal * -1f, Vector3.Random );
-		var impact = prefab.Clone( new CloneConfig
-		{
-			Transform    = new Transform( hitPoint, rot ),
-			StartEnabled = true,
-		} );
-		impact.SetParent( hitObject, true );
+		DoImpact( hitPoint, normal, hitObject, hitSurface, impactOverride );
 	}
 
+	/// <summary>
+	/// Internal: broadcast impact sound + decal. Called by Bullet.Fire (directly) and SpawnImpactEffect (via RPC).
+	/// Does NOT include weapon animations, muzzleflashes or shoot sounds — those are the weapon's job.
+	/// </summary>
 	[Rpc.Broadcast]
-	static void BroadcastEffects(
-		GameObject weapon,
-		Vector3 origin,
+	static void BroadcastImpact(
 		Vector3 hitPoint,
 		bool hit,
 		Vector3 normal,
 		GameObject hitObject,
 		Surface hitSurface,
-		SoundEvent shootSound,
 		GameObject impactOverride )
 	{
 		if ( Application.IsDedicatedServer ) return;
-
-		// Cache owner for re-use below
-		var ownerPlayer = weapon.IsValid() ? weapon.GetComponentInParent<Player>( true ) : null;
-
-		// Weapon model effects — RunEvent broadcasts to ALL WeaponModel components (hits both ViewModel and WorldModel)
-		if ( weapon.IsValid() )
-		{
-			var weaponModel = weapon.GetComponentInChildren<WeaponModel>();
-			if ( weaponModel.IsValid() )
-			{
-				weaponModel.GameObject.RunEvent<WeaponModel>( x => x.OnAttack() );
-				weaponModel.GameObject.RunEvent<WeaponModel>( x => x.CreateRangedEffects( weapon.GetComponent<BaseWeapon>(), hitPoint, origin ) );
-			}
-
-			// Drive the player body's attack animation (3rd person anim + muzzleflash timing)
-			ownerPlayer?.WalkController?.BodyModelRenderer?.Set( "b_attack", true );
-		}
-
-		// Shoot sound
-		if ( shootSound.IsValid() && weapon.IsValid() )
-		{
-			var snd = weapon.PlaySound( shootSound );
-			// De-spatialize for the local shooter
-			if ( ownerPlayer.IsValid() && ownerPlayer.IsLocalPlayer && snd.IsValid() )
-				snd.SpacialBlend = 0;
-		}
-
 		if ( !hit || !hitObject.IsValid() ) return;
+		DoImpact( hitPoint, normal, hitObject, hitSurface, impactOverride );
+	}
 
+	/// <summary>
+	/// Shared impact logic — spawns sound + decal with bone-closest parenting.
+	/// Called locally from both BroadcastImpact and SpawnImpactEffect after their RPC guards.
+	/// </summary>
+	static void DoImpact(
+		Vector3 hitPoint,
+		Vector3 normal,
+		GameObject hitObject,
+		Surface hitSurface,
+		GameObject impactOverride )
+	{
 		// Impact sound
 		var bulletSound = hitSurface.IsValid()
 			? hitSurface.SoundCollection.Bullet ?? hitSurface.GetBaseSurface()?.SoundCollection.Bullet
@@ -218,6 +220,27 @@ public static class Bullet
 			Transform    = new Transform( hitPoint, rot ),
 			StartEnabled = true
 		} );
-		impact.SetParent( hitObject, true );
+
+		// Bone-closest parenting on skinned meshes so decals follow ragdolls
+		var skinned = hitObject.GetComponentInChildren<SkinnedModelRenderer>();
+		if ( skinned.IsValid() && skinned.CreateBoneObjects )
+		{
+			var bones = skinned.GetBoneTransforms( true );
+			var closestDist = float.MaxValue;
+			GameObject closestBone = null;
+			for ( var i = 0; i < bones.Length; i++ )
+			{
+				var dist = bones[i].Position.Distance( hitPoint );
+				if ( dist < closestDist ) { closestDist = dist; closestBone = skinned.GetBoneObject( i ); }
+			}
+			if ( closestBone.IsValid() )
+				impact.SetParent( closestBone, true );
+			else
+				impact.SetParent( hitObject, true );
+		}
+		else
+		{
+			impact.SetParent( hitObject, true );
+		}
 	}
 }

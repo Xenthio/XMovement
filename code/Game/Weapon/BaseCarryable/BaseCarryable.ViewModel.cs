@@ -15,6 +15,11 @@ public partial class BaseCarryable : Component
 
 		ViewModel = ViewModelPrefab.Clone( new CloneConfig { Parent = GameObject, StartEnabled = false, Transform = global::Transform.Zero } );
 		ViewModel.Flags |= GameObjectFlags.NotSaved | GameObjectFlags.NotNetworked | GameObjectFlags.Absolute;
+
+		// Set ShadowRenderType.Off immediately so there's no one-frame shadow flicker on enable
+		foreach ( var mr in ViewModel.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
+			mr.RenderType = ModelRenderer.ShadowRenderType.Off;
+
 		ViewModel.Enabled = true;
 		ViewModel.Tags.Add( "firstperson", "viewmodel" );
 

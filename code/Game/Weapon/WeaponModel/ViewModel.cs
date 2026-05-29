@@ -37,7 +37,7 @@ public sealed partial class ViewModel : WeaponModel, ICameraSetup
 
 	protected override void OnStart()
 	{
-		foreach ( var renderer in GetComponentsInChildren<ModelRenderer>() )
+		foreach ( var renderer in Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
 			renderer.RenderType = ModelRenderer.ShadowRenderType.Off;
 	}
 
@@ -161,6 +161,7 @@ public sealed partial class ViewModel : WeaponModel, ICameraSetup
 
 	public override void CreateRangedEffects( BaseWeapon weapon, Vector3 hitPoint, Vector3? origin )
 	{
+		// Viewmodel always fires the tracer from its own muzzle point
 		DoTracerEffect( hitPoint, origin );
 	}
 

@@ -39,6 +39,7 @@ public partial class BaseCarryable : Component
 	public void CreateWorldModel( SkinnedModelRenderer renderer )
 	{
 		if ( renderer is null ) return;
+		if ( WorldModel.IsValid() ) return; // already created
 
 		if ( Networking.IsHost )
 			IsItem = false;
@@ -55,20 +56,25 @@ public partial class BaseCarryable : Component
 		if ( worldModel.IsValid() )
 		{
 			worldModel.Flags |= GameObjectFlags.NotSaved | GameObjectFlags.NotNetworked;
-
-			// Set initial render type based on current camera mode.
-			// OnFrameUpdate will keep this in sync each frame.
-			var initialType = ( Owner?.Controller?.ThirdPerson ?? true )
-				? ModelRenderer.ShadowRenderType.On
-				: ModelRenderer.ShadowRenderType.ShadowsOnly;
-
-			foreach ( var mr in worldModel.GetComponentsInChildren<ModelRenderer>() )
-				mr.RenderType = initialType;
-
-			_lastWorldModelRenderType = initialType;
-
 			WorldModel = worldModel;
 			IEvent.PostToGameObject( WorldModel, x => x.OnCreateWorldModel() );
+
+			// Immediately set correct render type — FixedUpdate/OnUpdate may not run for another frame.
+			// Also calls UpdateBodyVisibility in case it can sweep the bone hierarchy.
+			var walkController = GetComponentInParent<PlayerWalkControllerComplex>();
+			if ( walkController is not null )
+			{
+				walkController.UpdateBodyVisibility();
+			}
+			// Belt-and-suspenders: set directly on the worldmodel renderers
+			var isFirstPerson = walkController?.CameraMode ==
+				XMovement.PlayerWalkControllerComplex.CameraModes.FirstPerson &&
+				!walkController.IsProxy;
+			var renderType = isFirstPerson
+				? ModelRenderer.ShadowRenderType.ShadowsOnly
+				: ModelRenderer.ShadowRenderType.On;
+			foreach ( var mr in worldModel.Components.GetAll<ModelRenderer>( FindMode.EverythingInSelfAndChildren ) )
+				mr.RenderType = renderType;
 		}
 	}
 

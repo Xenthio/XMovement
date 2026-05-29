@@ -172,5 +172,11 @@ public abstract class WeaponModel : Component
 	/// </summary>
 	public virtual void OnMeleeAttack( bool hasHit ) { }
 
+	/// <summary>
+	/// Spawn ranged effects (tracer) from this model's muzzle point.
+	/// RunEvent hits both ViewModel and WorldModel; WorldModel skips if a ViewModel is present
+	/// so the tracer always originates from whichever model is actually visible.
+	/// </summary>
 	public virtual void CreateRangedEffects( BaseWeapon weapon, Vector3 hitPoint, Vector3? origin ) { }
+
 }

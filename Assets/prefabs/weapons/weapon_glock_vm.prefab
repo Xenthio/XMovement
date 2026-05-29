@@ -77,7 +77,10 @@
           "component_type": "SkinnedModelRenderer"
         },
         "ThrowableType": "HEGrenade",
-        "TracerEffect": null,
+        "TracerEffect": {
+          "_type": "gameobject",
+          "prefab": "prefabs/effects/tracer_9mm.prefab"
+        },
         "UseFastAnimations": false
       },
       {

@@ -27,6 +27,9 @@ public partial class BaseBulletWeapon : BaseWeapon
 	/// <summary>Impact particle override. Null = use per-surface defaults.</summary>
 	[Property, Group( "Effects" )] public GameObject ImpactEffectOverride { get; set; }
 
+	/// <summary>Sound played near players when the bullet flies past them. Null = no flyby.</summary>
+	[Property, Group( "Effects" )] public SoundEvent FlybySound { get; set; }
+
 	protected TimeSince TimeSinceShoot;
 
 	/// <summary>0 = no spread, 1 = full AimConeSpread.</summary>
@@ -43,21 +46,24 @@ public partial class BaseBulletWeapon : BaseWeapon
 		var amount = GetAimConeAmount() * aimConeScale;
 		var spread = AimConeBase.x + amount * AimConeSpread.x;
 
-		Bullet.Fire( new BulletInfo
+		var tr = Bullet.Fire( new BulletInfo
 		{
-			Origin             = AimRay.Position,
-			Direction          = AimRay.Forward,
-			Damage             = Damage,
-			Radius             = BulletRadius,
-			Range              = Range,
-			Force              = ShootForce,
-			Spread             = spread,
-			Count              = 1,
-			Attacker           = Owner?.GameObject,
-			Weapon             = GameObject,
-			ShootSound         = ShootSound,
+			Origin               = AimRay.Position,
+			Direction            = AimRay.Forward,
+			Damage               = Damage,
+			Radius               = BulletRadius,
+			Range                = Range,
+			Force                = ShootForce,
+			Spread               = spread,
+			Count                = 1,
+			Attacker             = Owner?.GameObject,
+			Weapon               = GameObject,
 			ImpactEffectOverride = ImpactEffectOverride,
+			FlybySound           = FlybySound,
 		} );
+
+		// Weapon-side effects: sound, attack anim, muzzleflash, tracer (per-model muzzle)
+		BroadcastShootEffects( tr.EndPosition );
 
 		if ( !HasOwner ) return;
 
@@ -66,6 +72,52 @@ public partial class BaseBulletWeapon : BaseWeapon
 			Random.Shared.Float( RecoilYaw.x, RecoilYaw.y ),
 			0 );
 	}
+
+	/// <summary>
+	/// Broadcasts weapon-side fire effects to all clients: shoot sound, attack animation, muzzleflash, tracer.
+	/// Tracer is spawned per-model via CreateRangedEffects so each model uses its own muzzle point
+	/// (viewmodel for first-person, worldmodel for third-person/spectators — matching sandbox behaviour).
+	/// Subclasses can override OnShootEffects() for extras (e.g. casing eject, pump anim).
+	/// </summary>
+	[Rpc.Broadcast]
+	protected void BroadcastShootEffects( Vector3 hitPoint )
+	{
+		if ( Application.IsDedicatedServer ) return;
+
+		// Body anim
+		Owner?.WalkController?.BodyModelRenderer?.Set( "b_attack", true );
+
+		// Viewmodel: fire anim, muzzleflash
+		if ( ViewModel.IsValid() )
+			ViewModel.RunEvent<WeaponModel>( x => x.OnAttack() );
+
+		// WorldModel: fire anim, muzzleflash
+		if ( WorldModel.IsValid() )
+			WorldModel.RunEvent<WeaponModel>( x => x.OnAttack() );
+
+		// Tracer: viewmodel fires from vm muzzle, worldmodel fires from wm muzzle only if no viewmodel
+		// (matches sandbox behaviour: each model handles its own muzzle origin)
+		if ( ViewModel.IsValid() )
+			ViewModel.RunEvent<WeaponModel>( x => x.CreateRangedEffects( this, hitPoint, null ) );
+		if ( WorldModel.IsValid() )
+			WorldModel.RunEvent<WeaponModel>( x => x.CreateRangedEffects( this, hitPoint, null ) );
+
+		// Shoot sound — despatialised for the local shooter
+		if ( ShootSound.IsValid() )
+		{
+			var snd = GameObject.PlaySound( ShootSound );
+			if ( HasOwner && Owner.IsLocalPlayer && snd.IsValid() )
+				snd.SpacialBlend = 0;
+		}
+
+		OnShootEffects();
+	}
+
+	/// <summary>
+	/// Override to add extra weapon-specific shoot effects (e.g. casing eject, pump anim).
+	/// Called client-side inside BroadcastShootEffects.
+	/// </summary>
+	protected virtual void OnShootEffects() { }
 
 	public override void PrimaryAttack() => ShootBullet();
 

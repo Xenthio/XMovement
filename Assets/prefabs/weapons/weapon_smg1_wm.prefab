@@ -35,6 +35,10 @@
         "MuzzleTransform": {
           "_type": "gameobject",
           "go": "f02432a0-5ff2-4e61-bfc2-258ad616ab08"
+        },
+        "TracerEffect": {
+          "_type": "gameobject",
+          "prefab": "prefabs/effects/tracer_9mm.prefab"
         }
       },
       {

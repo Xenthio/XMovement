@@ -7,30 +7,28 @@ using System;
 public sealed partial class PlayerData : Component
 {
 	/// <summary>
-	/// Unique Id per each player and bot, equal to owning Player connection Id if it's a real player.
+	/// Connection Id of the owning player. Derived from Network.Owner.
 	/// </summary>
-	[Property] public Guid PlayerId { get; set; }
-	[Property] public long SteamId { get; set; } = -1L;
-	[Property] public string DisplayName { get; set; }
+	public Guid PlayerId => Network.Owner?.Id ?? Guid.Empty;
+	public long SteamId => (long)(Network.Owner?.SteamId ?? 0);
+	public string DisplayName => Network.Owner?.DisplayName ?? "?";
 
-	[Sync] public int Kills { get; set; }
-	[Sync] public int Deaths { get; set; }
+	[Sync( SyncFlags.FromHost )] public int Kills { get; set; }
+	[Sync( SyncFlags.FromHost )] public int Deaths { get; set; }
 
-	[Sync] public bool IsGodMode { get; set; }
+	[Sync( SyncFlags.FromHost )] public bool IsGodMode { get; set; }
 
 	/// <summary>
-
 	/// Which team this player belongs to. -1 = unassigned.
-
 	/// </summary>
 	[Sync( SyncFlags.FromHost )] public int TeamIndex { get; set; } = -1;
 
-	public Connection Connection => Connection.Find( PlayerId );
+	public Connection Connection => Network.Owner;
 
 	/// <summary>
 	/// Is this player data me?
 	/// </summary>
-	public bool IsMe => PlayerId == Connection.Local.Id;
+	public bool IsMe => Network.Owner == Connection.Local;
 
 	/// <inheritdoc cref="Connection.Ping"/>
 	public float Ping => Connection?.Ping ?? 0;
@@ -43,21 +41,17 @@ public sealed partial class PlayerData : Component
 	/// <summary>
 	/// Get player data for a player
 	/// </summary>
-	/// <param name="connection"></param>
-	/// <returns></returns>
-	public static PlayerData For( Connection connection ) => For( connection.Id );
+	public static PlayerData For( Connection connection ) => connection == null ? default : All.FirstOrDefault( x => x.Network.Owner == connection );
 
 	/// <summary>
 	/// Get player data for a player's id
 	/// </summary>
-	/// <param name="playerId"></param>
-	/// <returns></returns>
 	public static PlayerData For( Guid playerId )
 	{
 		return All.FirstOrDefault( x => x.PlayerId == playerId );
 	}
 
-	[Rpc.Broadcast]
+	[Rpc.Broadcast( NetFlags.HostOnly )]
 	private void RpcAddStat( string identifier, int amount = 1 )
 	{
 		Sandbox.Services.Stats.Increment( identifier, amount );
@@ -66,15 +60,13 @@ public sealed partial class PlayerData : Component
 	/// <summary>
 	/// Called on the host, calls a RPC on the player and adds a stat
 	/// </summary>
-	/// <param name="identifier"></param>
-	/// <param name="amount"></param>
 	public void AddStat( string identifier, int amount = 1 )
 	{
 		if ( Application.CheatsEnabled ) return;
 
 		Assert.True( Networking.IsHost, "PlayerData.AddStat is host-only!" );
 
-		using ( Rpc.FilterInclude( Connection ) )
+		using ( Rpc.FilterInclude( Network.Owner ) )
 		{
 			RpcAddStat( identifier, amount );
 		}
