@@ -39,8 +39,27 @@ public class MagazineAnimator : Component
 		_gunRenderer = GetComponentInChildren<SkinnedModelRenderer>();
 	}
 
+	private void UpdateRenderMode()
+	{
+		// copy shadow rendering mode from gun
+		if ( _gunRenderer.IsValid() )
+		{
+			if ( _thrownMagazine.IsValid() && _thrownMagazine.GetComponent<ModelRenderer>() is ModelRenderer thrownRenderer )
+			{ 
+				thrownRenderer.RenderType = _gunRenderer.RenderType;
+			}
+			if ( _insertMagazine.IsValid() && _insertMagazine.GetComponent<ModelRenderer>() is ModelRenderer insertRenderer )
+			{
+				insertRenderer.RenderType = _gunRenderer.RenderType;
+			}
+		}
+	}
+
 	protected override void OnUpdate()
 	{
+		// copy shadow rendering mode from gun
+		UpdateRenderMode();
+
 		// Track hand velocity while holding thrown magazine
 		if ( _thrownMagazine.IsValid() && _playerRenderer.IsValid() )
 		{
@@ -164,6 +183,8 @@ public class MagazineAnimator : Component
 			//velocity calc
 			_lastHandPosition = boneObject.WorldPosition;
 			_handVelocity = Vector3.Zero;
+			// copy shadow rendering mode from gun
+			UpdateRenderMode();
 
 			Log.Info( $"Spawning thrown magazine {_thrownMagazine}" );
 		}
@@ -192,6 +213,11 @@ public class MagazineAnimator : Component
 			Log.Info( $"Releasing magazine with hand velocity: {_handVelocity}" );
 		}
 
+		if ( _thrownMagazine.GetComponentInChildren<ModelRenderer>() is ModelRenderer thrownRenderer )
+		{
+			// we want it to be visible in first person after being thrown
+			thrownRenderer.RenderType = ModelRenderer.ShadowRenderType.On;
+		}
 		_thrownMagazine = null;
 	}
 
@@ -207,6 +233,8 @@ public class MagazineAnimator : Component
 			_insertMagazine.Parent = boneObject;
 
 			_insertMagazine.LocalRotation = HeldRotation;
+			// copy shadow rendering mode from gun
+			UpdateRenderMode();
 
 			if ( _insertMagazine.GetComponentInChildren<Rigidbody>() is { } rb )
 			{
