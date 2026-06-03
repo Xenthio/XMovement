@@ -118,7 +118,7 @@
         "OnComponentFixedUpdate": null,
         "OnComponentStart": null,
         "OnComponentUpdate": null,
-        "ReleaseThrownTime": 0.57,
+        "ReleaseThrownTime": 0.5,
         "ThrownMagazinePrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/effects/magazine_mp5.prefab"

@@ -4,22 +4,23 @@
     "__version": 2,
     "Flags": 0,
     "Name": "weapon_glock_wm",
-    "Position": "0,0,0",
+    "Position": "2.57254863,0,-1.52975535",
     "Rotation": "0,0,0,1",
     "Scale": "1,1,1",
     "Tags": "",
     "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "WorldModel",
         "__guid": "951cdffa-b25a-40f9-84d6-c6a12df3463e",
         "__enabled": true,
-        "Renderer": {
-          "_type": "component",
-          "component_id": "d0f806d0-7b1f-478c-944e-c12df96a2a59",
-          "go": "cc43090d-ef0e-4b4d-a2f0-d732b9e658ed",
-          "component_type": "SkinnedModelRenderer"
-        },
+        "Flags": 0,
+        "DeploySound": null,
         "EjectBrass": {
           "_type": "gameobject",
           "prefab": "prefabs/effects/eject_9mm.prefab"
@@ -36,6 +37,18 @@
           "_type": "gameobject",
           "go": "3ab1f546-38f6-4852-85d1-8c61877f962b"
         },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Renderer": {
+          "_type": "component",
+          "component_id": "d0f806d0-7b1f-478c-944e-c12df96a2a59",
+          "go": "cc43090d-ef0e-4b4d-a2f0-d732b9e658ed",
+          "component_type": "SkinnedModelRenderer"
+        },
         "TracerEffect": {
           "_type": "gameobject",
           "prefab": "prefabs/effects/tracer_9mm.prefab"
@@ -45,11 +58,71 @@
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "d0f806d0-7b1f-478c-944e-c12df96a2a59",
         "__enabled": true,
-        "Model": "models/weapons/sbox_pistol_usp/w_usp.vmdl",
+        "Flags": 0,
+        "AnimationGraph": null,
+        "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
         "CreateAttachments": true,
+        "CreateBoneObjects": false,
+        "LodOverride": null,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Materials": null,
+        "Model": "models/weapons/sbox_pistol_usp/w_usp.vmdl",
+        "Morphs": {},
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
         "PlaybackRate": 1,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
-        "Tint": "1,1,1,1"
+        "Sequence": {
+          "Name": null,
+          "Looping": true,
+          "Blending": false
+        },
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "MagazineAnimator",
+        "__guid": "52ef4275-0947-4b61-b8fa-3ecd7c49a216",
+        "__enabled": true,
+        "Flags": 0,
+        "GrabInsertTime": 0.5,
+        "GrabThrownTime": 0.1,
+        "HandBoneName": "hold_l",
+        "InsertCompleteTime": 1.17,
+        "InsertMagazinePrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/effects/magazine_pistol.prefab"
+        },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "ReleaseThrownTime": 0.26,
+        "ThrownMagazinePrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/effects/magazine_pistol.prefab"
+        }
       }
     ],
     "Children": [
@@ -61,7 +134,13 @@
         "Position": "0,0,0",
         "Rotation": "0,0,0,1",
         "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
         "Components": [],
         "Children": []
       },
@@ -73,16 +152,47 @@
         "Position": "0,0,0",
         "Rotation": "0,0,0,1",
         "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
         "Components": [],
         "Children": []
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
+    "__variables": []
   },
-  "ShowInMenu": false,
   "ResourceVersion": 2,
-  "__version": 2,
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "__references": [
-    "facepunch.pistol_muzzleflash#76089"
-  ]
+    "facepunch.pistol_muzzleflash#76089",
+    "facepunch.w_usp#152497"
+  ],
+  "__version": 2
 }

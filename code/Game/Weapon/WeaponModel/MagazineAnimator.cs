@@ -19,7 +19,7 @@ public class MagazineAnimator : Component
 
 	/// Reload animation timings (in seconds), these defaults are for the smg hold type
 	[Property] public float GrabThrownTime { get; set; } = 0.23f;
-	[Property] public float ReleaseThrownTime { get; set; } = 0.57f;
+	[Property] public float ReleaseThrownTime { get; set; } = 0.50f;
 	[Property] public float GrabInsertTime { get; set; } = 0.73f;
 	[Property] public float InsertCompleteTime { get; set; } = 1.20f;
 
@@ -29,7 +29,7 @@ public class MagazineAnimator : Component
 	private SkinnedModelRenderer _gunRenderer;
 	private Player _player;
 	private Vector3 _lastHandPosition;
-	private float _lastHandUpdateTime;
+	private Vector3 _handVelocity;
 
 	// hard coded rotation, bit annoying to setup.
 	private Rotation HeldRotation = Rotation.From( 0, 90, 0 );
@@ -41,13 +41,20 @@ public class MagazineAnimator : Component
 
 	protected override void OnUpdate()
 	{
-		// Track hand position while holding thrown magazine for velocity calculation
+		// Track hand velocity while holding thrown magazine
 		if ( _thrownMagazine.IsValid() && _playerRenderer.IsValid() )
 		{
 			if ( _playerRenderer.GetBoneObject( HandBoneName ) is GameObject boneObject )
 			{
-				_lastHandPosition = boneObject.WorldPosition;
-				_lastHandUpdateTime = Time.Now;
+				var currentHandPosition = boneObject.WorldPosition;
+
+				// Calculate velocity using Time.Delta (frame time)
+				if ( Time.Delta > 0 )
+				{
+					_handVelocity = (currentHandPosition - _lastHandPosition) / Time.Delta;
+				}
+
+				_lastHandPosition = currentHandPosition;
 			}
 		}
 	}
@@ -156,7 +163,7 @@ public class MagazineAnimator : Component
 
 			//velocity calc
 			_lastHandPosition = boneObject.WorldPosition;
-			_lastHandUpdateTime = Time.Now;
+			_handVelocity = Vector3.Zero;
 
 			Log.Info( $"Spawning thrown magazine {_thrownMagazine}" );
 		}
@@ -165,36 +172,24 @@ public class MagazineAnimator : Component
 	private void ReleaseThrownMagazine()
 	{
 		if ( !_thrownMagazine.IsValid() ) return;
-		if ( !_playerRenderer.IsValid() ) return;
 
 		var pos = _thrownMagazine.WorldPosition;
 		var rot = _thrownMagazine.WorldRotation;
 
-		// get velocity from last frame
-		Vector3 handVelocity = Vector3.Zero;
-		if ( _playerRenderer.GetBoneObject( HandBoneName ) is GameObject boneObject )
-		{
-			var currentHandPosition = boneObject.WorldPosition;
-			var deltaTime = Time.Now - _lastHandUpdateTime;
-
-			if ( deltaTime > 0 )
-			{
-				handVelocity = (currentHandPosition - _lastHandPosition) / deltaTime;
-			}
-		}
-
 		_thrownMagazine.Parent = null;
 		_thrownMagazine.WorldPosition = pos;
 		_thrownMagazine.WorldRotation = rot;
-		 
+
 		if ( _thrownMagazine.GetComponentInChildren<Rigidbody>() is { } rb )
 		{
 			rb.MotionEnabled = true;
 
-			// velocity plus some
+			// Use the pre-calculated hand velocity from OnUpdate() plus additional throw force
 			var throwDir = GameObject.WorldTransform.Rotation.Backward;
-			rb.Velocity = handVelocity + (throwDir * 250f + Vector3.Down * 80f);
+			rb.Velocity = _handVelocity; // + (throwDir * 25f + Vector3.Down * 0f);
 			rb.AngularVelocity = Vector3.Random * 10f;
+
+			Log.Info( $"Releasing magazine with hand velocity: {_handVelocity}" );
 		}
 
 		_thrownMagazine = null;
