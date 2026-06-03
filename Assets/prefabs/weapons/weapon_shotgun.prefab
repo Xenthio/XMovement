@@ -1,51 +1,86 @@
 {
   "RootObject": {
-    "__guid": "b641a718-ca83-4188-91ee-1c604b1cb53a",
+    "__guid": "a1b2c3d4-1111-4aaa-b111-111111111111",
     "__version": 2,
     "Flags": 0,
-    "Name": "weapon_glock",
+    "Name": "weapon_shotgun",
     "Position": "0,0,0",
     "Rotation": "0,0,0,1",
-    "Scale": "1,1,1",
-    "Tags": "weapon",
+    "Scale": "1.5,1.5,1.5",
+    "Tags": "",
     "Enabled": true,
-    "NetworkMode": 1,
+    "NetworkMode": 2,
     "NetworkFlags": 0,
-    "NetworkOrphaned": 1,
+    "NetworkOrphaned": 0,
     "NetworkTransmit": true,
     "OwnerTransfer": 1,
     "Components": [
       {
-        "__type": "IronSightsWeapon",
-        "__guid": "c3ed7c69-40b6-49db-bf61-9ce5965520b3",
+        "__type": "ShotgunWeapon",
+        "__guid": "a1b2c3d4-2222-4aaa-b222-222222222222",
         "__enabled": true,
         "Flags": 0,
         "AimConeBase": "0.5,0.25",
         "AimConeRecovery": 0.2,
         "AimConeSpread": "3,3",
         "AimScale": 0.2,
-        "AmmoType": "resource/ammotypes/9mm.ammo",
+        "AmmoType": "resource/ammotypes/shotgun.ammo",
+        "Bucket": "Melee",
         "BulletRadius": 1,
         "CanCancelReload": true,
-        "ClipContents": 17,
-        "ClipMaxSize": 17,
-        "Damage": 12,
+        "ClipContents": 6,
+        "ClipMaxSize": 6,
+        "Damage": 18,
         "DeployTime": 0.5,
-        "DisplayIcon": null,
-        "DisplayName": "Glock",
+        "DisplayIcon": {
+          "$compiler": "texture",
+          "$source": "imagefile",
+          "data": {
+            "FilePath": "ui/weapons/spaghellim4_01.png",
+            "MaxSize": 4096,
+            "ConvertHeightToNormals": false,
+            "NormalScale": 1,
+            "Rotate": 0,
+            "FlipVertical": false,
+            "FlipHorizontal": false,
+            "Cropping": {
+              "Left": 0,
+              "Top": 0,
+              "Right": 0,
+              "Bottom": 0
+            },
+            "Padding": {
+              "Left": 0,
+              "Top": 0,
+              "Right": 0,
+              "Bottom": 0
+            },
+            "InvertColor": false,
+            "Tint": "1,1,1,1",
+            "Blur": 0,
+            "Sharpen": 0,
+            "Brightness": 1,
+            "Contrast": 1,
+            "Saturation": 1,
+            "Hue": 0,
+            "Colorize": false,
+            "TargetColor": "1,1,1,1",
+            "CacheToDisk": true
+          },
+          "compiled": null
+        },
+        "DisplayName": "Shotgun",
         "DroppedGameObject": {
           "_type": "gameobject",
-          "go": "1f838394-9b8a-44e7-ad84-84a93c64a053"
+          "go": "da725ca9-1b64-40ba-a2c2-fad3776e75be"
         },
-        "HoldType": "Pistol",
+        "FlybySound": null,
+        "HoldType": "Shotgun",
         "HolsterTime": 0,
         "ImpactEffectOverride": null,
-        "IncrementalReloading": false,
-        "MaxReserveAmmo": 300,
-        "MuzzleGameObject": {
-          "_type": "gameobject",
-          "go": "b1308d16-8440-428c-8187-267a413c71b9"
-        },
+        "IncrementalReloading": true,
+        "MaxReserveAmmo": 32,
+        "MuzzleGameObject": null,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -53,46 +88,46 @@
         "OnComponentStart": null,
         "OnComponentUpdate": null,
         "ParentBone": "hold_r",
+        "PelletCount": 8,
+        "PelletSpreadMultiplier": 1.5,
         "Range": 4096,
         "RecoilPitch": "-0.300000012,-0.100000001",
         "RecoilYaw": "-0.100000001,0.100000001",
-        "ReloadTime": 1.5,
+        "ReloadTime": 0.5,
         "ReserveAmmo": 0,
         "ShootForce": 80,
-        "ShootSound": "sounds/weapons/glock/glock_shoot.sound",
-        "StartingAmmo": 51,
+        "ShootSound": {
+          "_type": "soundevent",
+          "path": "sounds/weapons/shotgun/shotgun_shoot.sound"
+        },
+        "StartingAmmo": 6,
         "UsesAmmo": true,
         "UsesClips": true,
-        "Value": 2,
+        "Value": 10,
         "ViewModelPrefab": {
           "_type": "gameobject",
-          "prefab": "prefabs/weapons/weapon_glock_vm.prefab"
+          "prefab": "prefabs/weapons/weapon_shotgun_vm.prefab"
         },
         "WorldModelPrefab": {
           "_type": "gameobject",
-          "prefab": "prefabs/weapons/weapon_glock_wm.prefab"
-        },
-        "Bucket": 1,
-        "FlybySound": {
-          "_type": "soundevent",
-          "path": "prefabs/effects/bullet_flyby_pistol.sound"
+          "prefab": "prefabs/weapons/weapon_shotgun_wm.prefab"
         },
         "ReloadSoundEvents": [
           {
             "_type": "soundevent",
-            "path": "sounds/weapons/glock/pistol_mag_out.sound"
+            "path": "sounds/weapons/shotgun/shotgun_load.sound"
           }
         ],
         "ReloadFinishSoundEvents": [
           {
             "_type": "soundevent",
-            "path": "sounds/weapons/glock/pistol_mag_in.sound"
+            "path": "sounds/weapons/shotgun/shotgun_cock.sound"
           }
         ]
       },
       {
         "__type": "DroppedWeapon",
-        "__guid": "c77ce8a6-1f12-453c-a8a2-61b74024a31e",
+        "__guid": "a1b2c3d4-5556-4aaa-b556-555555555556",
         "__enabled": true,
         "Flags": 0,
         "OnComponentDestroy": null,
@@ -105,14 +140,14 @@
       },
       {
         "__type": "Sandbox.ModelCollider",
-        "__guid": "d33b92b5-8580-4256-be09-b34f33c5a457",
+        "__guid": "0da58fdc-4e97-73ed-d5f5-2da6aaa92edf",
         "__enabled": true,
         "Flags": 0,
         "ColliderFlags": 0,
         "Elasticity": null,
         "Friction": null,
         "IsTrigger": false,
-        "Model": "models/weapons/sbox_pistol_usp/w_usp.vmdl",
+        "Model": "models/weapons/sbox_shotgun_spaghellim4/w_spaghellim4.vmdl",
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -130,7 +165,7 @@
       },
       {
         "__type": "Sandbox.Rigidbody",
-        "__guid": "0391e9ea-fed8-47ce-99ff-84f7d15550ff",
+        "__guid": "a1b2c3d4-5557-4aaa-b557-555555555557",
         "__enabled": true,
         "Flags": 0,
         "AngularDamping": 0,
@@ -160,6 +195,7 @@
         "OnComponentUpdate": null,
         "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
+        "SleepThreshold": 2,
         "StartAsleep": false
       },
       {
@@ -191,7 +227,7 @@
     ],
     "Children": [
       {
-        "__guid": "1f838394-9b8a-44e7-ad84-84a93c64a053",
+        "__guid": "da725ca9-1b64-40ba-a2c2-fad3776e75be",
         "__version": 2,
         "Flags": 0,
         "Name": "standalone_wm",
@@ -208,33 +244,50 @@
         "Components": [
           {
             "__type": "WorldModel",
-            "__guid": "f4894998-edce-453f-9289-005c6732028e",
+            "__guid": "eb836dba-2c75-51cb-b3d3-0be488700cbd",
             "__enabled": true,
             "Flags": 0,
             "DeploySound": null,
             "EjectBrass": null,
-            "EjectTransform": null,
+            "EjectTransform": {
+              "_type": "gameobject",
+              "go": "2fc7abfe-6fb9-95af-f717-4fc8ccc140e1"
+            },
             "MagazineDropPrefab": null,
             "MagazineDropTime": 0.2,
             "MagazineTransform": null,
-            "MuzzleEffect": null,
-            "MuzzleTransform": null,
+            "MuzzleEffect": {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapon_effects/pistol_muzzleflash.prefab"
+            },
+            "MuzzleTransform": {
+              "_type": "gameobject",
+              "go": "1eb69aed-5fa8-84fe-e606-3eb7bbb03f00"
+            },
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "Renderer": null,
-            "TracerEffect": null
+            "Renderer": {
+              "_type": "component",
+              "component_id": "fc947ecb-3d86-62dc-c4e4-1cf599881dce",
+              "go": "da725ca9-1b64-40ba-a2c2-fad3776e75be",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "TracerEffect": {
+              "_type": "gameobject",
+              "prefab": "weapons/tracer_9mm.prefab"
+            }
           },
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "18355607-b222-4aaa-a2ff-8fa40bc7e9fe",
+            "__guid": "fc947ecb-3d86-62dc-c4e4-1cf599881dce",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
-            "BodyGroups": 18446744073709551615,
+            "BodyGroups": 9513,
             "BoneMergeTarget": null,
             "CreateAttachments": true,
             "CreateBoneObjects": false,
@@ -242,7 +295,7 @@
             "MaterialGroup": null,
             "MaterialOverride": null,
             "Materials": null,
-            "Model": "models/weapons/sbox_pistol_usp/w_usp.vmdl",
+            "Model": "models/weapons/sbox_shotgun_spaghellim4/w_spaghellim4.vmdl",
             "Morphs": {},
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
@@ -271,12 +324,12 @@
               "Blending": false
             },
             "Tint": "1,1,1,1",
-            "UseAnimGraph": true
+            "UseAnimGraph": false
           }
         ],
         "Children": [
           {
-            "__guid": "b1308d16-8440-428c-8187-267a413c71b9",
+            "__guid": "1eb69aed-5fa8-84fe-e606-3eb7bbb03f00",
             "__version": 2,
             "Flags": 8,
             "Name": "muzzle",
@@ -294,7 +347,7 @@
             "Children": []
           },
           {
-            "__guid": "603e7a3e-7286-4095-ae57-fe3816b25679",
+            "__guid": "2fc7abfe-6fb9-95af-f717-4fc8ccc140e1",
             "__version": 2,
             "Flags": 8,
             "Name": "eject",
@@ -342,7 +395,7 @@
   "MenuIcon": null,
   "DontBreakAsTemplate": false,
   "__references": [
-    "facepunch.w_usp#152497"
+    "facepunch.pistol_muzzleflash#76089"
   ],
   "__version": 2
 }

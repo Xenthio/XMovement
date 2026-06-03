@@ -1,9 +1,9 @@
 {
   "RootObject": {
-    "__guid": "563cbd1d-b6e3-4753-928a-57781db2f907",
+    "__guid": "2eeb09dd-fbe0-4270-a58b-b45ddba9b054",
     "__version": 2,
     "Flags": 0,
-    "Name": "item_healthvial",
+    "Name": "item_ammo_shotgun",
     "Position": "0,0,0",
     "Rotation": "0,0,0,1",
     "Scale": "1,1,1",
@@ -16,32 +16,32 @@
     "OwnerTransfer": 1,
     "Components": [
       {
-        "__type": "ItemHealth",
-        "__guid": "7897a4d9-e0f2-4e94-b078-54e675b589cc",
+        "__type": "ItemAmmo",
+        "__guid": "5c25e8de-8946-40f6-b00b-d9ee11eb93b8",
         "__enabled": true,
         "Flags": 0,
-        "HealAmount": 10,
-        "MaxHealthOverheal": 0,
+        "AmmoType": "resource/ammotypes/shotgun.ammo",
+        "Amount": 17,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
         "OnComponentFixedUpdate": null,
         "OnComponentStart": null,
         "OnComponentUpdate": null,
-        "PickupSound": "sounds/equip_health.sound",
-        "Respawns": true,
-        "RespawnTime": 15
+        "PickupSound": "sounds/weapons/ammo_pickup.sound",
+        "Respawns": false,
+        "RespawnTime": 30
       },
       {
         "__type": "Sandbox.Prop",
-        "__guid": "d0e8ef8c-cea8-44fc-a078-591c9038d3e0",
+        "__guid": "1e6a6df3-1c99-4ee9-8a22-5eae07acb640",
         "__enabled": true,
         "Flags": 0,
-        "BodyGroups": 18446744073709551615,
+        "BodyGroups": 1,
         "Health": 0,
         "IsStatic": false,
         "MaterialGroup": null,
-        "Model": "models/props/health_pickup/health_pickup.vmdl",
+        "Model": "models/weapons/sbox_ammo/9mm_ammobox/ammobox_9mm.vmdl",
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -55,10 +55,10 @@
       },
       {
         "__type": "Sandbox.BoxCollider",
-        "__guid": "a03f3a96-5267-4adc-b60d-448ee7c44a63",
+        "__guid": "5209817e-21ee-4c03-b69b-1b231b318efc",
         "__enabled": true,
         "Flags": 0,
-        "Center": "0,0,10",
+        "Center": "0,0,8",
         "ColliderFlags": 0,
         "Elasticity": null,
         "Friction": null,
@@ -74,10 +74,37 @@
         "OnTriggerEnter": null,
         "OnTriggerExit": null,
         "RollingResistance": null,
-        "Scale": "20,20,20",
+        "Scale": "24,24,16",
         "Static": false,
         "Surface": null,
         "SurfaceVelocity": "0,0,0"
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "0f17d79f-bc8f-45fc-b027-f89ad1accd24",
+        "__enabled": true,
+        "Flags": 0,
+        "BodyGroups": 1,
+        "CreateAttachments": false,
+        "LodOverride": null,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Materials": null,
+        "Model": "models/weapons/sbox_ammo/9mm_ammobox/ammobox_9mm.vmdl",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
       }
     ],
     "Children": [],
@@ -105,11 +132,11 @@
   },
   "ResourceVersion": 2,
   "ShowInMenu": true,
-  "MenuPath": "XenGameKit/Items/item_healthvial",
+  "MenuPath": "XenGameKit/Items/Ammo/item_ammo_pistol",
   "MenuIcon": null,
   "DontBreakAsTemplate": true,
   "__references": [
-    "facepunch.health_pickup#143311"
+    "facepunch.ammobox9mm#142897"
   ],
   "__version": 2
 }

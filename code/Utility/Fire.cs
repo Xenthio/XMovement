@@ -1,8 +1,9 @@
 /// <summary>
 /// Static fire system. Call FireSystem.Ignite() to add fire to any GameObject.
-/// Spawns the project-local override of /prefabs/engine/ignite.prefab which
-/// contains FireComponent (our full heat/spread system) instead of the engine's
-/// flat FireDamage. Cross-game compatible: Prop.Ignite() resolves the same path.
+/// Spawns the project-local override of /prefabs/engine/ignite.prefab as pure visuals
+/// (particles + sound) and attaches <see cref="FireComponent"/> directly to the burning
+/// object. That way the logic is destroyed automatically when the object dies — no
+/// orphaned invisible damage dealers possible.
 /// </summary>
 public static class FireSystem
 {
@@ -18,8 +19,8 @@ public static class FireSystem
 			return fire;
 		}
 
-		// Spawn ignite.prefab (our project override of the engine default).
-		// The prefab contains FireComponent with StartLit=true, so it self-starts.
+		// Spawn the ignite prefab as pure visuals (particles + sound).
+		// FireComponent is attached to `go` directly below, so it dies with `go`.
 		var prefab = ResourceLibrary.Get<PrefabFile>( "/prefabs/engine/ignite.prefab" );
 		if ( prefab == null )
 		{
@@ -27,22 +28,20 @@ public static class FireSystem
 			return null;
 		}
 
-		var cloned = GameObject.Clone( prefab, new CloneConfig { Parent = null, Transform = new global::Transform( go.WorldPosition ), StartEnabled = true } );
+		var visualGo = GameObject.Clone( prefab, new CloneConfig { Parent = null, Transform = new global::Transform( go.WorldPosition ), StartEnabled = true } );
+
+		// The prefab may contain a FireComponent (legacy setup) — strip it so logic
+		// is owned exclusively by the component we add to `go` below.
+		foreach ( var stray in visualGo.GetComponentsInChildren<FireComponent>( true ).ToList() )
+			stray.Destroy();
 
 		// Wire all ParticleModelEmitters to target the burning GO
-		cloned.RunEvent<ParticleModelEmitter>( x => x.Target = go );
+		visualGo.RunEvent<ParticleModelEmitter>( x => x.Target = go );
 
-		// Grab the FireComponent from the spawned prefab instance
-		fire = cloned.GetComponentInChildren<FireComponent>( true );
-		if ( !fire.IsValid() )
-		{
-			Log.Warning( "FireSystem.Ignite: ignite.prefab has no FireComponent" );
-			cloned.Destroy();
-			return null;
-		}
-
-		// Give FireComponent a reference so it can shut down emitters/sound on extinguish
-		fire._igniteInstance = cloned;
+		// Add FireComponent directly onto the burning object.
+		// When `go` is destroyed → OnDestroy fires → visuals shut down. No polling needed.
+		fire = go.Components.Create<FireComponent>();
+		fire._igniteInstance = visualGo;
 
 		return fire;
 	}
@@ -230,8 +229,10 @@ public static class FireSystem
 }
 
 /// <summary>
-/// Fire component. Add to a GameObject via FireSystem.Ignite() or directly as a component.
-/// Owns particles, sound, damage ticking, and heat state.
+/// Fire component. Attached directly to the burning GameObject by <see cref="FireSystem.Ignite"/>.
+/// Owns heat state, damage ticking, and a reference to the separate visual GO (particles + sound).
+/// Because this component lives on the burning object, it is automatically destroyed when that
+/// object is destroyed — no orphaned damage dealers or invisible fire possible.
 /// </summary>
 public sealed class FireComponent : Component
 {
@@ -268,7 +269,12 @@ public sealed class FireComponent : Component
 	internal float RemainingFuel { get; set; }
 	internal TimeUntil TimeUntilNextDamageTick { get; set; }
 
-	internal GameObject _igniteInstance; // reference to spawned ignite.prefab GO for shutdown
+	/// <summary>
+	/// The separate root-level GO that holds fire particles and sound.
+	/// Lives independently so BecomeOrphan/TemporaryEffect can fade it out on extinguish.
+	/// Its position is synced to this component's WorldPosition every frame.
+	/// </summary>
+	internal GameObject _igniteInstance;
 
 	protected override void OnStart()
 	{
@@ -285,6 +291,11 @@ public sealed class FireComponent : Component
 
 	protected override void OnUpdate()
 	{
+		// Keep the visual GO co-located with this (the burning object).
+		// It lives at root level for BecomeOrphan particle fade, so sync manually.
+		if ( _igniteInstance.IsValid() )
+			_igniteInstance.WorldPosition = WorldPosition;
+
 		FireSystem.Update( this, Time.Delta );
 	}
 
@@ -295,8 +306,8 @@ public sealed class FireComponent : Component
 
 	protected override void OnDestroy()
 	{
-		// BecomeOrphan=true on TemporaryEffect means the ignite GO survives
-		// independently — stop emitters so particles and sound finish cleanly.
+		// The burning object was destroyed — shut down the visual GO.
+		// Disabling emitters lets BecomeOrphan/WaitForChildEffects fade particles naturally.
 		ShutdownIgniteInstance();
 		IsBurning = false;
 	}
@@ -346,17 +357,13 @@ public sealed class FireComponent : Component
 }
 
 /// <summary>
-/// Thin wrapper component for map-placed fires. Calls FireSystem.Ignite() on start.
-/// Use this in the editor to create pre-placed burning entities.
+/// Thin wrapper component for map-placed fires. Calls FireSystem.Ignite() on start,
+/// which attaches FireComponent to this GameObject and spawns the visual ignite prefab.
 /// </summary>
 public sealed class EnvFire : Component
 {
 	protected override void OnStart()
 	{
-		var fireComponent = GetComponent<FireComponent>();
-		if ( !fireComponent.IsValid() )
-		{
-			fireComponent = Components.Create<FireComponent>();
-		}
+		FireSystem.Ignite( GameObject );
 	}
 }

@@ -72,14 +72,17 @@ public sealed class PlayerInventory : Component, Local.IPlayerEvents
 
 		var renderer = Player?.WalkController?.BodyModelRenderer;
 
-		if ( ActiveWeapon.IsValid() && ActiveWeapon != null )
+		// Cache locally — OnFrameUpdate/OnPlayerUpdate can trigger a weapon switch that
+		// destroys or clears ActiveWeapon mid-frame, causing a null deref on HoldType.
+		var currentWeapon = ActiveWeapon;
+		if ( currentWeapon.IsValid() )
 		{
-			ActiveWeapon.OnFrameUpdate( Player );
+			currentWeapon.OnFrameUpdate( Player );
 			if ( !IsProxy )
-				ActiveWeapon.OnPlayerUpdate( Player );
+				currentWeapon.OnPlayerUpdate( Player );
 
-			if ( renderer.IsValid() )
-				renderer.Set( "holdtype", (int)ActiveWeapon.HoldType );
+			if ( renderer.IsValid() && currentWeapon.IsValid() )
+				renderer.Set( "holdtype", (int)currentWeapon.HoldType );
 		}
 		else
 		{

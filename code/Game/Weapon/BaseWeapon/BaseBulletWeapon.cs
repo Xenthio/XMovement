@@ -87,20 +87,16 @@ public partial class BaseBulletWeapon : BaseWeapon
 		// Body anim
 		Owner?.WalkController?.BodyModelRenderer?.Set( "b_attack", true );
 
-		// Viewmodel: fire anim, muzzleflash
-		if ( ViewModel.IsValid() )
-			ViewModel.RunEvent<WeaponModel>( x => x.OnAttack() );
-
-		// WorldModel: fire anim, muzzleflash
-		if ( WorldModel.IsValid() )
-			WorldModel.RunEvent<WeaponModel>( x => x.OnAttack() );
-
-		// Tracer: viewmodel fires from vm muzzle, worldmodel fires from wm muzzle only if no viewmodel
-		// (matches sandbox behaviour: each model handles its own muzzle origin)
-		if ( ViewModel.IsValid() )
-			ViewModel.RunEvent<WeaponModel>( x => x.CreateRangedEffects( this, hitPoint, null ) );
-		if ( WorldModel.IsValid() )
-			WorldModel.RunEvent<WeaponModel>( x => x.CreateRangedEffects( this, hitPoint, null ) );
+		// Animation and effects from the active weapon model only:
+		// First-person: viewmodel; Third-person/spectators: worldmodel
+		var activeModel = WeaponModel;
+		if ( activeModel.IsValid() )
+		{
+			// Anim + muzzle + eject from active model
+			activeModel.GameObject.RunEvent<WeaponModel>( x => x.OnAttack() );
+			// Tracers from active model
+			activeModel.GameObject.RunEvent<WeaponModel>( x => x.CreateRangedEffects( this, hitPoint, null ) );
+		}
 
 		// Shoot sound — despatialised for the local shooter
 		if ( ShootSound.IsValid() )

@@ -10,22 +10,6 @@ public abstract class WeaponModel : Component
 	[Property] public GameObject EjectBrass { get; set; }
 	[Property] public GameObject TracerEffect { get; set; }
 
-	/// <summary>
-	/// Prefab to spawn as a dropped magazine during reload.
-	/// Should be a small physics prop with the mag mesh + Rigidbody.
-	/// </summary>
-	[Property] public GameObject MagazineDropPrefab { get; set; }
-
-	/// <summary>
-	/// Where the magazine detaches from (attach point on the weapon model).
-	/// </summary>
-	[Property] public GameObject MagazineTransform { get; set; }
-
-	/// <summary>
-	/// How many seconds into the reload animation to drop the magazine.
-	/// </summary>
-	[Property] public float MagazineDropTime { get; set; } = 0.2f;
-
 	public void Deploy()
 	{
 		Renderer?.Set( "b_deploy", true );
@@ -113,38 +97,6 @@ public abstract class WeaponModel : Component
 		{
 			rb.Velocity        = ejectDirection;
 			rb.AngularVelocity = EjectTransform.WorldRotation.Right * 50f;
-		}
-	}
-
-	/// <summary>
-	/// Drops a magazine prefab at the magazine attachment point.
-	/// Called automatically from OnReloadStart after MagazineDropTime seconds.
-	/// </summary>
-	public async void DoDropMagazine( CancellationToken ct = default )
-	{
-		if ( !MagazineDropPrefab.IsValid() ) return;
-		if ( MagazineDropTime > 0 )
-		{
-			try { await GameTask.DelaySeconds( MagazineDropTime, ct ); }
-			catch { return; }
-		}
-		if ( ct.IsCancellationRequested ) return;
-
-		var spawnAt = MagazineTransform.IsValid()
-			? MagazineTransform.WorldTransform
-			: WorldTransform;
-
-		var mag = MagazineDropPrefab.Clone( new CloneConfig
-		{
-			Transform = spawnAt.WithScale( 1 ),
-			StartEnabled = true
-		} );
-
-		// Give it a gentle downward + forward toss
-		if ( mag.GetComponentInChildren<Rigidbody>() is { } rb )
-		{
-			rb.Velocity = spawnAt.Rotation.Down * 60f + spawnAt.Rotation.Forward * 20f;
-			rb.AngularVelocity = Vector3.Random * 8f;
 		}
 	}
 

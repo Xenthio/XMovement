@@ -69,6 +69,7 @@ public partial class BaseWeapon
 		try
 		{
 			ViewModel?.RunEvent<ViewModel>( x => x.OnReloadStart() );
+			WorldModel?.RunEvent<WorldModel>( x => x.OnReloadStart( ct ) );
 			BroadcastReload();
 
 			while ( ClipContents < ClipMaxSize && !ct.IsCancellationRequested )

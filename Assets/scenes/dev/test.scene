@@ -3469,6 +3469,7 @@
                   "OnComponentUpdate": null,
                   "Priority": 0,
                   "Projection": "Sphere",
+                  "RenderExcludeTags": "",
                   "Resolution": "Small",
                   "Texture": null,
                   "TintColor": "1,1,1,1",
@@ -3497,7 +3498,8 @@
                   "OnComponentStart": null,
                   "OnComponentUpdate": null,
                   "ProbeDensity": 15,
-                  "RelocationTexture": "scenes/dev/test_scene_data/ddgi/big_relocation_17b27708-cfb3-4433-9bc5-ce31d6c3657f.vtex"
+                  "RelocationTexture": "scenes/dev/test_scene_data/ddgi/big_relocation_17b27708-cfb3-4433-9bc5-ce31d6c3657f.vtex",
+                  "RenderExcludeTags": ""
                 }
               ],
               "Children": []
@@ -3543,6 +3545,7 @@
                   "OnComponentUpdate": null,
                   "Priority": 1,
                   "Projection": "Sphere",
+                  "RenderExcludeTags": "",
                   "Resolution": "Huge",
                   "Texture": null,
                   "TintColor": "1,1,1,1",
@@ -3594,6 +3597,7 @@
                   "OnComponentUpdate": null,
                   "Priority": 1,
                   "Projection": "Sphere",
+                  "RenderExcludeTags": "",
                   "Resolution": "Huge",
                   "Texture": null,
                   "TintColor": "1,1,1,1",
@@ -3645,6 +3649,7 @@
                   "OnComponentUpdate": null,
                   "Priority": 1,
                   "Projection": "Sphere",
+                  "RenderExcludeTags": "",
                   "Resolution": "Huge",
                   "Texture": null,
                   "TintColor": "1,1,1,1",
@@ -3692,7 +3697,8 @@
                   "OnComponentStart": null,
                   "OnComponentUpdate": null,
                   "ProbeDensity": 128,
-                  "RelocationTexture": "scenes/dev/test_scene_data/ddgi/object_relocation_2ca96b17-155f-4a7f-9e5e-93541c80cfb7.vtex"
+                  "RelocationTexture": "scenes/dev/test_scene_data/ddgi/object_relocation_2ca96b17-155f-4a7f-9e5e-93541c80cfb7.vtex",
+                  "RenderExcludeTags": ""
                 }
               ],
               "Children": []
@@ -6212,6 +6218,179 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "160b02a0-942f-412e-969e-3dc3001683f7",
+      "__version": 2,
+      "__Prefab": "prefabs/weapons/weapon_shotgun.prefab",
+      "__PrefabInstancePatch": {
+        "AddedObjects": [],
+        "RemovedObjects": [],
+        "PropertyOverrides": [
+          {
+            "Target": {
+              "Type": "GameObject",
+              "IdValue": "a1b2c3d4-1111-4aaa-b111-111111111111"
+            },
+            "Property": "Position",
+            "Value": "127.999992,63.9999924,2.1790986E-06"
+          },
+          {
+            "Target": {
+              "Type": "GameObject",
+              "IdValue": "a1b2c3d4-1111-4aaa-b111-111111111111"
+            },
+            "Property": "Rotation",
+            "Value": "-3.9736423E-09,5.96046448E-08,1.19209265E-08,0.99999994"
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "a1b2c3d4-2222-4aaa-b222-222222222222"
+            },
+            "Property": "DisplayIcon",
+            "Value": {
+              "$compiler": "texture",
+              "$source": "imagefile",
+              "data": {
+                "FilePath": "ui/weapons/spaghellim4_01.png",
+                "MaxSize": 4096,
+                "ConvertHeightToNormals": false,
+                "NormalScale": 1,
+                "Rotate": 0,
+                "FlipVertical": false,
+                "FlipHorizontal": false,
+                "Cropping": {
+                  "Left": 0,
+                  "Top": 0,
+                  "Right": 0,
+                  "Bottom": 0
+                },
+                "Padding": {
+                  "Left": 0,
+                  "Top": 0,
+                  "Right": 0,
+                  "Bottom": 0
+                },
+                "InvertColor": false,
+                "Tint": "1,1,1,1",
+                "Blur": 0,
+                "Sharpen": 0,
+                "Brightness": 1,
+                "Contrast": 1,
+                "Saturation": 1,
+                "Hue": 0,
+                "Colorize": false,
+                "TargetColor": "1,1,1,1",
+                "CacheToDisk": true
+              },
+              "compiled": null
+            }
+          }
+        ],
+        "MovedObjects": []
+      },
+      "__PrefabIdToInstanceId": {
+        "a1b2c3d4-1111-4aaa-b111-111111111111": "160b02a0-942f-412e-969e-3dc3001683f7",
+        "a1b2c3d4-2222-4aaa-b222-222222222222": "68c88e57-631e-4d6d-a912-929b77b7a0e2",
+        "a1b2c3d4-5556-4aaa-b556-555555555556": "1c0d63fe-d660-4b54-b8d2-a08b820d28f1",
+        "0da58fdc-4e97-73ed-d5f5-2da6aaa92edf": "f10bbca4-0a82-4d0f-9f93-1c70c8e6f213",
+        "a1b2c3d4-5557-4aaa-b557-555555555557": "26c518f2-559f-4a31-bad5-de7858c136ab",
+        "da725ca9-1b64-40ba-a2c2-fad3776e75be": "e3e8910f-a399-43f4-9b54-bf2dc1b1c6d0",
+        "eb836dba-2c75-51cb-b3d3-0be488700cbd": "71955d1d-f95e-4ac3-9608-8fcf9d1126e2",
+        "fc947ecb-3d86-62dc-c4e4-1cf599881dce": "c432d744-cda6-4b91-a0fe-d329d52c7995",
+        "1eb69aed-5fa8-84fe-e606-3eb7bbb03f00": "425b5f1d-02ad-479e-ba55-6c0fe1507161",
+        "2fc7abfe-6fb9-95af-f717-4fc8ccc140e1": "8f4aff9e-d83c-45bd-b8d4-12ee82cdb738",
+        "3494a0bc-09fe-457e-b5a3-b109286731b7": "cc0959c2-eed9-4a49-aaf3-f07eec7792ce"
+      }
+    },
+    {
+      "__guid": "df33e38a-42a9-4b90-b277-3fc1300dfd8b",
+      "__version": 2,
+      "__Prefab": "prefabs/entities/item_ammo_shotgun.prefab",
+      "__PrefabInstancePatch": {
+        "AddedObjects": [
+          {
+            "Id": {
+              "Type": "Component",
+              "IdValue": "0ed4dce5-8225-4107-8ed5-d22d81ee9b46"
+            },
+            "Parent": {
+              "Type": "GameObject",
+              "IdValue": "2eeb09dd-fbe0-4270-a58b-b45ddba9b054"
+            },
+            "PreviousElement": {
+              "Type": "Component",
+              "IdValue": "5209817e-21ee-4c03-b69b-1b231b318efc"
+            },
+            "ContainerProperty": "Components",
+            "IsContainerArray": true,
+            "Data": {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "0ed4dce5-8225-4107-8ed5-d22d81ee9b46",
+              "__enabled": true,
+              "Flags": 0,
+              "BodyGroups": 1,
+              "CreateAttachments": false,
+              "LodOverride": null,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Materials": null,
+              "Model": "models/weapons/sbox_ammo/9mm_ammobox/ammobox_9mm.vmdl",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          }
+        ],
+        "RemovedObjects": [],
+        "PropertyOverrides": [
+          {
+            "Target": {
+              "Type": "GameObject",
+              "IdValue": "2eeb09dd-fbe0-4270-a58b-b45ddba9b054"
+            },
+            "Property": "Position",
+            "Value": "-159.999969,-159.999969,0.0365418047"
+          }
+        ],
+        "MovedObjects": [
+          {
+            "Id": {
+              "Type": "Component",
+              "IdValue": "0f17d79f-bc8f-45fc-b027-f89ad1accd24"
+            },
+            "NewParent": {
+              "Type": "GameObject",
+              "IdValue": "2eeb09dd-fbe0-4270-a58b-b45ddba9b054"
+            },
+            "NewContainerProperty": "Components",
+            "IsNewContainerArray": true,
+            "NewPreviousElement": {
+              "Type": "Component",
+              "IdValue": "0ed4dce5-8225-4107-8ed5-d22d81ee9b46"
+            }
+          }
+        ]
+      },
+      "__PrefabIdToInstanceId": {
+        "2eeb09dd-fbe0-4270-a58b-b45ddba9b054": "df33e38a-42a9-4b90-b277-3fc1300dfd8b",
+        "5c25e8de-8946-40f6-b00b-d9ee11eb93b8": "92c1d9f0-f55c-4d56-af7a-182a55cf8b36",
+        "1e6a6df3-1c99-4ee9-8a22-5eae07acb640": "63e4de1d-d8d8-4153-828f-be0118eb2ba0",
+        "5209817e-21ee-4c03-b69b-1b231b318efc": "413b7d2a-a262-41ac-ab59-d9217bde2f77",
+        "0f17d79f-bc8f-45fc-b027-f89ad1accd24": "1be40ad9-5e8b-4433-8749-4a068474285a"
+      }
     }
   ],
   "SceneProperties": {
@@ -6236,17 +6415,14 @@
       "CustomBounds": false
     },
     "GameObjectSystems": {
-      "Sandbox.MovieMaker.MovieRecorderSystem": {
-        "DisableClientRecording": false
+      "Sandbox.Clutter.ClutterGridSystem": {
+        "Storage": {
+          "$blob": "ce6922af-e250-4e8a-a73c-7cae5e756f93"
+        }
       },
       "Sandbox.SelectionSetsSystem": {
         "Data": {
           "SelectionSets": []
-        }
-      },
-      "Sandbox.Clutter.ClutterGridSystem": {
-        "Storage": {
-          "$blob": "ce6922af-e250-4e8a-a73c-7cae5e756f93"
         }
       }
     }

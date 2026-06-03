@@ -103,6 +103,11 @@ public sealed partial class Player : Component, Component.IDamageable
 	}
 
 	private SoundHandle _dmgSound;
+	/// <summary>Minimum seconds between damage sounds of the same type to avoid fire-tick spam.</summary>
+	private float _nextBurnSoundTime;
+	private float _nextPainSoundTime;
+	private const float BurnSoundInterval  = 0.75f;
+	private const float PainSoundInterval  = 0.25f;
 
 	[Rpc.Broadcast( NetFlags.HostOnly | NetFlags.Reliable )]
 	private void NotifyOnDamage( PlayerDamageParams args )
@@ -112,10 +117,26 @@ public sealed partial class Player : Component, Component.IDamageable
 
 		if ( IsLocalPlayer )
 		{
-			_dmgSound?.Stop();
-			_dmgSound = args.Tags.Contains( DamageTags.Shock )
-				? Sound.Play( "damage_taken_shock" )
-				: Sound.Play( "damage_taken_shot" );
+			var now = Time.Now;
+
+			if ( args.Tags.Contains( DamageTags.Burn ) )
+			{
+				// Fire ticks constantly — throttle heavily and don't stop the current pain sound
+				if ( now >= _nextBurnSoundTime )
+				{
+					_nextBurnSoundTime = now + BurnSoundInterval;
+					_dmgSound?.Stop();
+					_dmgSound = Sound.Play( "damage_taken_burn" );
+				}
+			}
+			else if ( now >= _nextPainSoundTime )
+			{
+				_nextPainSoundTime = now + PainSoundInterval;
+				_dmgSound?.Stop();
+				_dmgSound = args.Tags.Contains( DamageTags.Shock )
+					? Sound.Play( "damage_taken_shock" )
+					: Sound.Play( "damage_taken_shot" );
+			}
 		}
 	}
 

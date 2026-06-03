@@ -175,9 +175,6 @@ public sealed partial class ViewModel : WeaponModel, ICameraSetup
 			StartSounds( IncrementalReloadStartSounds, ref _reloadFinishSoundCts );
 
 		StartSounds( ReloadSoundEvents, ref _reloadSoundCts );
-
-		// Drop magazine after MagazineDropTime seconds (cancels if reload is cancelled)
-		DoDropMagazine( _reloadSoundCts?.Token ?? default );
 	}
 
 	public void OnIncrementalReload()

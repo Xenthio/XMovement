@@ -47,8 +47,7 @@ public sealed class FirePropExtension : Component, IPropExtension
 		if ( IsProxy ) return;
 		if ( !prop.IsValid() ) return;
 
-		// FireComponent lives on the ignite prefab GO, not on prop.GameObject.
-		// Use Prop.IsOnFire (set by Prop.Ignite()) as the canonical burning check.
+		// Use Prop.IsOnFire as the canonical burning check.
 		if ( !prop.IsOnFire ) return;
 
 		foreach ( var gib in gibs )

@@ -4,22 +4,23 @@
     "__version": 2,
     "Flags": 0,
     "Name": "weapon_smg1_wm",
-    "Position": "0,0,0",
+    "Position": "2.42999816,0,-4.54999876",
     "Rotation": "0,0,0,1",
     "Scale": "1,1,1",
     "Tags": "",
     "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "WorldModel",
         "__guid": "0062614d-cb8c-4caf-a40d-e1cf756e341d",
         "__enabled": true,
-        "Renderer": {
-          "_type": "component",
-          "component_id": "0da60c63-83d1-46c4-9b68-f11e4fbc8a8d",
-          "go": "10fff240-49ad-4df6-b0f4-072f74f7e064",
-          "component_type": "SkinnedModelRenderer"
-        },
+        "Flags": 0,
+        "DeploySound": null,
         "EjectBrass": {
           "_type": "gameobject",
           "prefab": "prefabs/effects/eject_rifle.prefab"
@@ -36,6 +37,18 @@
           "_type": "gameobject",
           "go": "f02432a0-5ff2-4e61-bfc2-258ad616ab08"
         },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Renderer": {
+          "_type": "component",
+          "component_id": "0da60c63-83d1-46c4-9b68-f11e4fbc8a8d",
+          "go": "10fff240-49ad-4df6-b0f4-072f74f7e064",
+          "component_type": "SkinnedModelRenderer"
+        },
         "TracerEffect": {
           "_type": "gameobject",
           "prefab": "prefabs/effects/tracer_9mm.prefab"
@@ -45,11 +58,71 @@
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "0da60c63-83d1-46c4-9b68-f11e4fbc8a8d",
         "__enabled": true,
-        "Model": "models/weapons/sbox_smg_mp5/w_mp5.vmdl",
+        "Flags": 0,
+        "AnimationGraph": null,
+        "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
         "CreateAttachments": true,
+        "CreateBoneObjects": false,
+        "LodOverride": null,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Materials": null,
+        "Model": "models/weapons/sbox_smg_mp5/w_mp5.vmdl",
+        "Morphs": {},
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
         "PlaybackRate": 1,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
-        "Tint": "1,1,1,1"
+        "Sequence": {
+          "Name": null,
+          "Looping": true,
+          "Blending": false
+        },
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "MagazineAnimator",
+        "__guid": "c452b021-ae7f-4d86-adb0-4546d92f8eda",
+        "__enabled": true,
+        "Flags": 0,
+        "GrabInsertTime": 0.73,
+        "GrabThrownTime": 0.23,
+        "HandBoneName": "hold_l",
+        "InsertCompleteTime": 1.2,
+        "InsertMagazinePrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/effects/magazine_mp5.prefab"
+        },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "ReleaseThrownTime": 0.57,
+        "ThrownMagazinePrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/effects/magazine_mp5.prefab"
+        }
       }
     ],
     "Children": [
@@ -61,7 +134,13 @@
         "Position": "0,0,0",
         "Rotation": "0,0,0,1",
         "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
         "Components": [],
         "Children": []
       },
@@ -73,17 +152,47 @@
         "Position": "0,0,0",
         "Rotation": "0,0,0,1",
         "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
         "Components": [],
         "Children": []
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
+    "__variables": []
   },
-  "ShowInMenu": false,
   "ResourceVersion": 2,
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "__references": [
-    "facepunch.w_mp5#145410",
-    "facepunch.rifle_muzzleflash#76090"
+    "facepunch.rifle_muzzleflash#76090",
+    "facepunch.w_mp5#145410"
   ],
   "__version": 2
 }

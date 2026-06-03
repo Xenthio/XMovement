@@ -35,23 +35,10 @@ public sealed class DamageInfo : Sandbox.DamageInfo
 
 	public bool IsGibType()
 	{
-		return Tags.HasAny( DamageTags.Crush, DamageTags.Explosion, DamageTags.GibAlways );
+		return DamageTags.IsGibType( Tags );
 	}
 }
 
-public static class DamageTags
-{
-	public const string Headshot = "head";
-	public const string Crush = "crush";
-	public const string Explosion = "explosion";
-	public const string Burn = "burn";
-	public const string Shock = "shock";
-	public const string Fall = "fall";
-	public const string GibAlways = "gib_always";
-	public const string FullSelfDamage = "full_self_damage";
-	public const string Melee = "melee";
-	public const string Bullet = "bullet";
-}
 
 public static class DamageExtensions
 {
