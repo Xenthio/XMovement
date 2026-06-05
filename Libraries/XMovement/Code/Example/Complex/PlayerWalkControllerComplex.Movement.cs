@@ -151,7 +151,7 @@ public partial class PlayerWalkControllerComplex : Component
 
 	public virtual float GetWishSpeed()
 	{
-		if ( IsCrouching ) return CrouchSpeed;
+		if ( Controller.IsOnGround && IsCrouching ) return CrouchSpeed;
 		if ( IsRunning ) return RunSpeed;
 		if ( IsWalking ) return WalkSpeed;
 		return DefaultSpeed;
