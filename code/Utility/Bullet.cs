@@ -87,8 +87,13 @@ public static class Bullet
 			.UseHitboxes()
 			.Run();
 
+		// Extract bone index from hitbox if available
+		int boneIndex = -1;
+		if ( tr.Hitbox != null && tr.Hitbox.Bone != null )
+			boneIndex = tr.Hitbox.Bone.Index;
+
 		// Impact effects + flyby sound — broadcast to all clients
-		BroadcastImpact( tr.EndPosition, tr.Hit, tr.Normal, tr.GameObject, tr.Surface, info.ImpactEffectOverride );
+		BroadcastImpact( tr.EndPosition, tr.Hit, tr.Normal, tr.GameObject, tr.Surface, info.ImpactEffectOverride, boneIndex );
 		if ( info.FlybySound.IsValid() )
 			BroadcastFlyby( info.FlybySound, info.Origin, tr.EndPosition, info.Attacker );
 
@@ -181,23 +186,26 @@ public static class Bullet
 		Vector3 normal,
 		GameObject hitObject,
 		Surface hitSurface,
-		GameObject impactOverride )
+		GameObject impactOverride,
+		int boneIndex = -1 )
 	{
 		if ( Application.IsDedicatedServer ) return;
 		if ( !hit || !hitObject.IsValid() ) return;
-		DoImpact( hitPoint, normal, hitObject, hitSurface, impactOverride );
+		DoImpact( hitPoint, normal, hitObject, hitSurface, impactOverride, boneIndex );
 	}
 
 	/// <summary>
 	/// Shared impact logic — spawns sound + decal with bone-closest parenting.
 	/// Called locally from both BroadcastImpact and SpawnImpactEffect after their RPC guards.
+	/// Tries to use hitbox bone mapping first, falls back to closest-bone-by-distance.
 	/// </summary>
 	static void DoImpact(
 		Vector3 hitPoint,
 		Vector3 normal,
 		GameObject hitObject,
 		Surface hitSurface,
-		GameObject impactOverride )
+		GameObject impactOverride,
+		int boneIndex = -1 )
 	{
 		// Impact sound
 		var bulletSound = hitSurface.IsValid()
@@ -222,18 +230,35 @@ public static class Bullet
 			StartEnabled = true
 		} );
 
-		// Bone-closest parenting on skinned meshes so decals follow ragdolls
+		// Bone parenting on skinned meshes so decals follow ragdolls
 		var skinned = hitObject.GetComponentInChildren<SkinnedModelRenderer>();
 		if ( skinned.IsValid() && skinned.CreateBoneObjects )
 		{
-			var bones = skinned.GetBoneTransforms( true );
-			var closestDist = float.MaxValue;
+			// Note this does require bone objects to be enabled on the skinned model renderer
 			GameObject closestBone = null;
-			for ( var i = 0; i < bones.Length; i++ )
+
+			// If we have a valid bone index from the hitbox, use that for accurate decal placement
+			if ( boneIndex >= 0 )
 			{
-				var dist = bones[i].Position.Distance( hitPoint );
-				if ( dist < closestDist ) { closestDist = dist; closestBone = skinned.GetBoneObject( i ); }
+				closestBone = skinned.GetBoneObject( boneIndex );
 			}
+
+			// Else we use the closest bone to the hit point which is less accurate
+			if ( !closestBone.IsValid() )
+			{
+				var bones = skinned.GetBoneTransforms( true );
+				var closestDist = float.MaxValue;
+				for ( var i = 0; i < bones.Length; i++ )
+				{
+					var dist = bones[i].Position.Distance( hitPoint );
+					if ( dist < closestDist )
+					{
+						closestDist = dist;
+						closestBone = skinned.GetBoneObject( i );
+					}
+				}
+			}
+
 			if ( closestBone.IsValid() )
 				impact.SetParent( closestBone, true );
 			else
