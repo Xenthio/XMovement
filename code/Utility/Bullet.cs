@@ -40,12 +40,6 @@ public struct BulletInfo
 	/// <summary>Impact particle prefab override. If null, falls back to per-surface impact prefabs.</summary>
 	public GameObject ImpactEffectOverride { get; set; }
 
-	/// <summary>
-	/// Sound to play for nearby players when the bullet whizzes past them.
-	/// Null = no flyby sound. Typically assigned from a weapon's FlybySound property.
-	/// </summary>
-	public SoundEvent FlybySound { get; set; }
-
 	/// <summary>Tags added to the DamageInfo produced by this bullet.</summary>
 	public TagSet DamageTags { get; set; }
 }
@@ -54,8 +48,14 @@ public struct BulletInfo
 /// Fires bullets. A static utility usable from weapons, NPCs, turrets, or anything else.
 /// All logic — trace, damage, impact effects, physics push — lives here, not in weapon classes.
 /// </summary>
-public static class Bullet
+public class Bullet
 {
+
+	/// <summary>
+	/// Sound to play for nearby players when the bullet whizzes past them.
+	/// </summary>
+	public static string FlybySound { get; } = "bullet_flyby";
+
 	/// <summary>
 	/// Fire one or more bullets described by <paramref name="info"/>.
 	/// Returns the trace result of the last pellet fired (useful for single-bullet callers).
@@ -92,28 +92,65 @@ public static class Bullet
 		if ( tr.Hitbox != null && tr.Hitbox.Bone != null )
 			boneIndex = tr.Hitbox.Bone.Index;
 
-		// Impact effects + flyby sound — broadcast to all clients
+		// Impact effects + flyby sound — run on client immediately for zero-delay feedback
 		BroadcastImpact( tr.EndPosition, tr.Hit, tr.Normal, tr.GameObject, tr.Surface, info.ImpactEffectOverride, boneIndex );
-		if ( info.FlybySound.IsValid() )
-			BroadcastFlyby( info.FlybySound, info.Origin, tr.EndPosition, info.Attacker );
+		BroadcastFlyby( info.Origin, tr.EndPosition, info.Attacker );
 
-		if ( !Networking.IsHost ) return tr;
-
-		// Impact push — physics impulse on hit body
-		if ( tr.Body.IsValid() && info.Force > 0f )
-			tr.Body.ApplyImpulseAt( tr.HitPosition, direction * info.Force * tr.Body.Mass );
-
-		// Note: damage is applied via TraceAttack ([Rpc.Host]) by the caller (e.g. BaseBulletWeapon.ShootBullet).
-		// Bullet.Fire only handles physics push and effect RPCs so callers keep full control over damage.
-
-		// Emit a gunshot sound stimulus so nearby NPCs react
-		NpcStimulusSystem.EmitSound( info.Origin, "gunshot", volume: 1f, source: info.Attacker );
-
-		// If we hit something biological, emit a blood splat
-		if ( tr.Hit && tr.GameObject.IsValid() && tr.GameObject.Tags.HasAny( "npc", "player" ) )
-			BloodSystem.Splat( tr.HitPosition, tr.Normal, tr.GameObject );
+		// Route host-side work — damage, physics push, stimuli, blood.
+		// Runs immediately on host; clients RPC to host via [Rpc.Host].
+		ApplyHit(
+			tr.Hit,
+			tr.HitPosition,
+			info.Origin,
+			direction * info.Force,
+			tr.Body,
+			tr.GameObject,
+			info.Attacker,
+			info.Weapon,
+			info.Damage,
+			info.DamageTags );
 
 		return tr;
+	}
+
+	[Rpc.Host( NetFlags.Unreliable | NetFlags.DiscardOnDelay )]
+	static void ApplyHit(
+		bool hit,
+		Vector3 hitPosition,
+		Vector3 origin,
+		Vector3 pushForce,
+		PhysicsBody body,
+		GameObject hitObject,
+		GameObject attacker,
+		GameObject weapon,
+		float damage,
+		TagSet damageTags )
+	{
+		// Physics push
+		if ( body.IsValid() && pushForce.LengthSquared > 0f )
+			body.ApplyImpulseAt( hitPosition, pushForce * body.Mass );
+
+		if ( !hit || !hitObject.IsValid() ) return;
+
+		// Damage
+		var damageable = hitObject.GetComponentInParent<Component.IDamageable>();
+		if ( damageable is not null )
+		{
+			var dmg = new DamageInfo( damage, attacker, weapon )
+			{
+				Position = hitPosition,
+				Origin   = origin,
+				Tags     = damageTags ?? new TagSet(),
+			};
+			damageable.Damage( dmg );
+		}
+
+		// Gunshot stimulus so nearby NPCs react
+		NpcStimulusSystem.EmitSound( origin, "gunshot", volume: 1f, source: attacker );
+
+		// Blood splat
+		if ( hitObject.Tags.HasAny( "npc", "player" ) )
+			BloodSystem.Splat( hitPosition, hitPosition - origin, hitObject );
 	}
 
 	/// <summary>
@@ -122,10 +159,9 @@ public static class Bullet
 	/// path to each listener's camera, clamped to the segment.
 	/// </summary>
 	[Rpc.Broadcast]
-	static void BroadcastFlyby( SoundEvent sound, Vector3 origin, Vector3 endPoint, GameObject attacker )
+	static void BroadcastFlyby( Vector3 origin, Vector3 endPoint, GameObject attacker )
 	{
 		if ( Application.IsDedicatedServer ) return;
-		if ( !sound.IsValid() ) return;
 
 		// Don't play for the shooter
 		if ( attacker.IsValid() && attacker.Network.Owner == Connection.Local ) return;
@@ -140,7 +176,7 @@ public static class Bullet
 		var t = MathX.Clamp( Vector3.Dot( cam - origin, dirN ), 70f, len );
 		var soundPos = origin + dirN * t;
 
-		Sound.Play( sound, soundPos );
+		Sound.Play( FlybySound, soundPos );
 	}
 
 	/// <summary>

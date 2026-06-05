@@ -43,7 +43,6 @@ public sealed class ShotgunWeapon : IronSightsWeapon
 				Attacker = Owner?.GameObject,
 				Weapon = GameObject,
 				ImpactEffectOverride = ImpactEffectOverride,
-				FlybySound = FlybySound,
 			} );
 			
 			_lastPelletHits.Add( tr.EndPosition );

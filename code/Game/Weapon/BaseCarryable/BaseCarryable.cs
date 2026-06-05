@@ -146,6 +146,13 @@ public partial class BaseCarryable : Component
 
 	protected override void OnEnabled()
 	{
+		// Always hide the standalone_wm (DroppedGameObject) whenever the weapon is equipped,
+		// regardless of whether the worldmodel prefab clone already exists.
+		// Without this, switching weapons re-enables standalone_wm via OnEnabled but
+		// CreateWorldModel returns early (WorldModel.IsValid()), leaving two visible models.
+		if ( DroppedGameObject.IsValid() )
+			DroppedGameObject.Enabled = false;
+
 		CreateWorldModel();
 	}
 

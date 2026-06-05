@@ -67,7 +67,6 @@ public sealed class PlayerInventory : Component, Local.IPlayerEvents
 
 	protected override void OnUpdate()
 	{
-		if ( IsProxy ) return;
 		if ( !Player.IsValid() ) return;
 
 		var renderer = Player?.WalkController?.BodyModelRenderer;
@@ -77,11 +76,14 @@ public sealed class PlayerInventory : Component, Local.IPlayerEvents
 		var currentWeapon = ActiveWeapon;
 		if ( currentWeapon.IsValid() )
 		{
+			// OnFrameUpdate runs for all clients so proxies get correct animations.
 			currentWeapon.OnFrameUpdate( Player );
+
+			// OnPlayerUpdate (input) only runs for the local owner.
 			if ( !IsProxy )
 				currentWeapon.OnPlayerUpdate( Player );
 
-			if ( renderer.IsValid() && currentWeapon.IsValid() )
+			if ( renderer.IsValid() )
 				renderer.Set( "holdtype", (int)currentWeapon.HoldType );
 		}
 		else
@@ -90,7 +92,9 @@ public sealed class PlayerInventory : Component, Local.IPlayerEvents
 				renderer.Set( "holdtype", (int)CitizenAnimationHelper.HoldTypes.None );
 		}
 
-		OnControl();
+		// Input handling only for local owner.
+		if ( !IsProxy )
+			OnControl();
 	}
 
 	void OnControl()

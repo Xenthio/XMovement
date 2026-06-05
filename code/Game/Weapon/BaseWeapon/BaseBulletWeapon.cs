@@ -27,9 +27,6 @@ public partial class BaseBulletWeapon : BaseWeapon
 	/// <summary>Impact particle override. Null = use per-surface defaults.</summary>
 	[Property, Group( "Effects" )] public GameObject ImpactEffectOverride { get; set; }
 
-	/// <summary>Sound played near players when the bullet flies past them. Null = no flyby.</summary>
-	[Property, Group( "Effects" )] public SoundEvent FlybySound { get; set; }
-
 	protected TimeSince TimeSinceShoot;
 
 	/// <summary>0 = no spread, 1 = full AimConeSpread.</summary>
@@ -59,7 +56,6 @@ public partial class BaseBulletWeapon : BaseWeapon
 			Attacker             = Owner?.GameObject,
 			Weapon               = GameObject,
 			ImpactEffectOverride = ImpactEffectOverride,
-			FlybySound           = FlybySound,
 		} );
 
 		// Weapon-side effects: sound, attack anim, muzzleflash, tracer (per-model muzzle)
