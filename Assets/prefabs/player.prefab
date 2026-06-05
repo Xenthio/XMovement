@@ -446,6 +446,28 @@
             },
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
+          },
+          {
+            "__type": "Sandbox.ModelHitboxes",
+            "__guid": "fbd4d931-e5f8-4ea7-b49e-4f93633f947a",
+            "__enabled": true,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "Renderer": {
+              "_type": "component",
+              "component_id": "bf49b09b-a944-49c3-a34e-5139c3266631",
+              "go": "657d0338-98b9-4460-b74f-4fc58b823095",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "Target": {
+              "_type": "gameobject",
+              "go": "df0069e0-452d-42e0-af9a-a56c27398cce"
+            }
           }
         ],
         "Children": [

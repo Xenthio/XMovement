@@ -82,7 +82,7 @@ public static class Bullet
 			.IgnoreGameObjectHierarchy( info.Attacker )
 			.IgnoreGameObjectHierarchy( info.Weapon )
 			.WithCollisionRules( "bullet" )
-			.WithoutTags( "playercontroller" )
+			.WithoutTags( "movement" )
 			.Radius( info.Radius )
 			.UseHitboxes()
 			.Run();
@@ -99,27 +99,12 @@ public static class Bullet
 
 		if ( !Networking.IsHost ) return tr;
 
-		// Impact push before the damage, so the prop gets the impulse and can pass it down to gibs.
-		// Physics push
+		// Impact push — physics impulse on hit body
 		if ( tr.Body.IsValid() && info.Force > 0f )
 			tr.Body.ApplyImpulseAt( tr.HitPosition, direction * info.Force * tr.Body.Mass );
 
-		// Damage
-		if ( tr.Hit && tr.GameObject.IsValid() )
-		{
-			var damageable = tr.GameObject.GetComponentInParent<Component.IDamageable>();
-			if ( damageable is not null )
-			{
-				var dmg = new DamageInfo( info.Damage, info.Attacker, info.Weapon )
-				{
-					Position = tr.HitPosition,
-					Origin   = info.Origin,
-					Tags     = info.DamageTags ?? new TagSet(),
-					Hitbox   = tr.Hitbox,
-				};
-				damageable.Damage( dmg );
-			}
-		}
+		// Note: damage is applied via TraceAttack ([Rpc.Host]) by the caller (e.g. BaseBulletWeapon.ShootBullet).
+		// Bullet.Fire only handles physics push and effect RPCs so callers keep full control over damage.
 
 		// Emit a gunshot sound stimulus so nearby NPCs react
 		NpcStimulusSystem.EmitSound( info.Origin, "gunshot", volume: 1f, source: info.Attacker );

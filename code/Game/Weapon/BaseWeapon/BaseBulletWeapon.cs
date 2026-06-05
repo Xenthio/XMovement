@@ -62,6 +62,10 @@ public partial class BaseBulletWeapon : BaseWeapon
 			FlybySound           = FlybySound,
 		} );
 
+		// Route damage through host via [Rpc.Host] TraceAttack — matching sandbox's pattern.
+		// Bullet.Fire runs on the owner client, so we can't apply damage inline there.
+		TraceAttack( TraceAttackInfo.From( tr, Damage ) );
+
 		// Weapon-side effects: sound, attack anim, muzzleflash, tracer (per-model muzzle)
 		BroadcastShootEffects( tr.EndPosition );
 
