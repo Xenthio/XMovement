@@ -107,6 +107,7 @@ public sealed class PlayerInventory : Component, Local.IPlayerEvents
 		if ( Input.Pressed( "SlotNext" ) || Input.MouseWheel.y < 0 ) SelectNext();
 		else if ( Input.Pressed( "SlotPrev" ) || Input.MouseWheel.y > 0 ) SelectPrev();
 
+		// Drop goes through host (same as sandbox's [Rpc.Host] DropActiveWeapon pattern)
 		if ( Input.Pressed( "Drop" ) && ActiveWeapon.IsValid() )
 			Drop( ActiveWeapon );
 	}
@@ -144,32 +145,28 @@ public sealed class PlayerInventory : Component, Local.IPlayerEvents
 		SwitchWeapon( all[(idx - 1 + all.Count) % all.Count] );
 	}
 
-	public async void SwitchWeapon( BaseCarryable weapon, bool force = false )
+	public void SwitchWeapon( BaseCarryable weapon, bool force = false )
 	{
-		if ( ActiveWeapon == weapon ) return;
+		// Weapon switching must go through the host since ActiveWeapon is [Sync(FromHost)].
+		// Non-host clients bounce via RPC; host executes directly.
+		if ( !Networking.IsHost )
+		{
+			HostSwitchWeapon( weapon, force );
+			return;
+		}
+
+		if ( ActiveWeapon == weapon && !force ) return;
 
 		var switchEvent = new PlayerSwitchWeaponEvent { Player = Player, From = ActiveWeapon, To = weapon };
 		Local.IPlayerEvents.PostToGameObject( Player.GameObject, e => e.OnSwitchWeapon( switchEvent ) );
 		Global.IPlayerEvents.Post( e => e.OnPlayerSwitchWeapon( switchEvent ) );
 		if ( switchEvent.Cancelled && !force ) return;
 
-		if ( ActiveWeapon.IsValid() )
-		{
-			ActiveWeapon.OnHolster();
-			if ( !force && ActiveWeapon.HolsterTime > 0 )
-				await Task.DelaySeconds( ActiveWeapon.HolsterTime );
-			ActiveWeapon.GameObject.Enabled = false;
-		}
-
 		ActiveWeapon = weapon;
-
-		if ( ActiveWeapon.IsValid() )
-		{
-			ActiveWeapon.GameObject.Enabled = true;
-			ActiveWeapon.SetDropped( false );
-			ActiveWeapon.OnDeploy();
-		}
 	}
+
+	[Rpc.Host]
+	private void HostSwitchWeapon( BaseCarryable weapon, bool force = false ) => SwitchWeapon( weapon, force );
 
 	public bool HasWeapon<T>() where T : BaseCarryable => GetWeapon<T>().IsValid();
 
@@ -437,6 +434,7 @@ public sealed class PlayerInventory : Component, Local.IPlayerEvents
 	{
 		if ( !weapon.IsValid() ) return;
 
+		// SwitchWeapon now routes through host internally, so this is fine to call from owner.
 		if ( ShouldAutoswitchTo( weapon ) )
 			SwitchWeapon( weapon );
 	}
