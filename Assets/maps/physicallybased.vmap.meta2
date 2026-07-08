@@ -1,0 +1,47 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "physicallybased",
+      "Type": "map",
+      "Org": "xenthio",
+      "Ident": "physicallybasedlights",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "baik.taverntable#10764",
+        "facepunch.ceiling_light#29026",
+        "facepunch.ceiling_plaster_01#17458",
+        "facepunch.floor_grass_a#18648",
+        "facepunch.floor_grass_dirt_blend_a#18649",
+        "facepunch.floor_grass_dirt_cliff_blend_a#18754",
+        "facepunch.floor_grass_dirt_leaves_blend_a#18755",
+        "facepunch.floor_grass_dirt_weed_blend_a#18756",
+        "facepunch.floor_grass_wet_cliff_a#18757",
+        "facepunch.floor_grass_wetdirt_blend_a#18652",
+        "facepunch.floor_tile_01#17343",
+        "facepunch.grass_clump_b#29063",
+        "facepunch.industrial_strip_light#27425",
+        "facepunch.plaster_hs_03#28801",
+        "facepunch.street_lamp_arm_short#33842",
+        "facepunch.street_lamp_light_unit#33845",
+        "facepunch.street_lamp_pole_tall#33848",
+        "facepunch.tree_oak_big_a#19393",
+        "facepunch.tree_oak_big_a#33690",
+        "facepunch.tree_oak_medium_a#19395",
+        "facepunch.tree_oak_small_a#29127",
+        "facepunch.wall_brick_new#18729",
+        "pxlq.candle#9809",
+        "tfassets.light_cone_farm_32#22752",
+        "tfassets.lightbulb001#22710"
+      ],
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "maps/physicallybased.vmap",
+        "ParentPackage": ""
+      }
+    }
+  }
+}

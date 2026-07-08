@@ -11,7 +11,11 @@ public partial class PlayerWalkControllerComplex : Component
 	[Property, InputAction, Feature( "Swimming" )] public string SwimUpAction { get; set; } = "Jump";
 	[Property, InputAction, Feature( "Swimming" )] public string SwimDownAction { get; set; } = "";
 	private bool IsSwimming => WaterLevel > 0.5f;
-	float WaterLevel = 0;
+	/// <summary>
+	/// Current water level as a fraction of player height (0 = dry, 1 = fully submerged).
+	/// Use this to drive drowning, breathing UI, or other water-aware systems.
+	/// </summary>
+	public float WaterLevel { get; private set; } = 0;
 	public virtual void CheckWater()
 	{
 		if ( !EnableSwimming ) { WaterLevel = 0; return; }

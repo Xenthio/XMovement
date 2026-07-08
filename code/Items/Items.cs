@@ -1,7 +1,10 @@
 /// <summary>
-/// Health pickup. Equivalent to item_healthkit / item_healthvial from Source.
+/// Health pickup. Equivalent to item_healthkit from Source.
 /// Heals the player on touch if they aren't already at max health.
 /// </summary>
+[Entity( "item_healthkit" ), PropModel( "models/props/health_pickup/health_pickup.vmdl" )]
+[TriggerBox( cz: 10, sx: 20, sy: 20, sz: 20 )]
+[Title( "Health Kit" ), Category( "Items" ), Icon( "medical_services" )]
 public class ItemHealth : BaseItem
 {
 	[Property] public float HealAmount { get; set; } = 25f;
@@ -18,8 +21,31 @@ public class ItemHealth : BaseItem
 }
 
 /// <summary>
+/// Health vial pickup. Equivalent to item_healthvial from Source.
+/// Small heal (10 hp) with faster respawn.
+/// </summary>
+[Entity( "item_healthvial" ), PropModel( "models/props/health_pickup/health_pickup.vmdl" )]
+[TriggerBox( cz: 10, sx: 20, sy: 20, sz: 20 )]
+[Title( "Health Vial" ), Category( "Items" ), Icon( "vaccines" )]
+public class ItemHealthVial : BaseItem
+{
+	[Property] public float HealAmount { get; set; } = 10f;
+
+	protected override bool OnPickup( Player player )
+	{
+		if ( player.Health >= player.MaxHealth ) return false;
+		player.Health = MathF.Min( player.Health + HealAmount, player.MaxHealth );
+		return true;
+	}
+}
+
+
+/// <summary>
 /// Armour/battery pickup. Equivalent to item_battery / item_suit from Source.
 /// </summary>
+[Entity( "item_battery" ), PropModel( "models/props/spraycans/paintbody.vmdl" )]
+[TriggerBox( cz: 10, sx: 24, sy: 24, sz: 20 )]
+[Title( "Battery" ), Category( "Items" ), Icon( "battery_full" )]
 public class ItemArmour : BaseItem
 {
 	[Property] public float ArmourAmount { get; set; } = 15f;

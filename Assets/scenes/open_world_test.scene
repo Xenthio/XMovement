@@ -1,0 +1,286 @@
+{
+  "__guid": "51064b3c-b3ae-4fc9-9cfa-f843f20ae5af",
+  "GameObjects": [
+    {
+      "__guid": "2a6d30e3-72bc-475e-a6a8-b5f2eed8fdfa",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [],
+      "Children": [
+        {
+          "__guid": "67f52160-4200-4cdd-8d98-35a87804a779",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "2D Skybox",
+          "Position": "-58.9832726,90.2213745,-0.971054077",
+          "Rotation": "0,0,0.707106769,0.707106769",
+          "Scale": "1,1,1",
+          "Tags": "skybox",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.SkyBox2D",
+              "__guid": "13a9d498-ea1b-4021-b15c-a07712b245d6",
+              "__enabled": true,
+              "Flags": 0,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "SkyIndirectLighting": false,
+              "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+              "Tint": "1,1,1,1"
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "34057900-4c72-42a4-8498-0b9087818689",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Sun",
+          "Position": "-99.0478363,77.8194046,35.1539993",
+          "Rotation": "-0.138405591,0.264914632,0.441895455,0.845808804",
+          "Scale": "1,1,1",
+          "Tags": "light_directional,light",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "1e06ac25-3f9d-443e-b3d7-4a8f8e2bafe4",
+              "__enabled": true,
+              "Flags": 0,
+              "Contribution": "Diffuse, Specular, Transmissive",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "1,0.96047,0.84186,1",
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "ShadowBias": 0.0005,
+              "ShadowCascadeCount": 4,
+              "ShadowCascadeSplitRatio": 0.91,
+              "ShadowHardness": 0,
+              "Shadows": true,
+              "SkyColor": "0.2532,0.32006,0.35349,1",
+              "Visualizer": {}
+            }
+          ],
+          "Children": []
+        },
+        {
+          "__guid": "fa19a0c5-6c3e-4827-b3f6-f002ac6a48da",
+          "__version": 2,
+          "Flags": 0,
+          "Name": "Probes",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkFlags": 0,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "355d10b3-e4bd-4bbb-818e-d825a7050689",
+              "__version": 2,
+              "Flags": 0,
+              "Name": "Big",
+              "Position": "95.4073944,220.19812,79.0289459",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkFlags": 0,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.EnvmapProbe",
+                  "__guid": "e3e916f8-2edf-401b-b58e-7bc01289b719",
+                  "__enabled": true,
+                  "Flags": 0,
+                  "__version": 1,
+                  "BakedTexture": "scenes/dev/test_scene_data/envmap/bake_703a78aa-5fcf-4de8-be79-dc3ea5e5df59.vtex",
+                  "Bounds": {
+                    "Mins": "-20091.877,-20216.6641,-1214.63794",
+                    "Maxs": "19901.0605,19776.2734,4301.45508"
+                  },
+                  "DelayBetweenUpdates": 0.1,
+                  "Feathering": 8,
+                  "FrameInterval": 5,
+                  "MaxDistance": 512,
+                  "Mode": "Baked",
+                  "MultiBounce": true,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Priority": 0,
+                  "Projection": "Sphere",
+                  "RenderExcludeTags": "",
+                  "Resolution": "Small",
+                  "Texture": null,
+                  "TintColor": "1,1,1,1",
+                  "UpdateStrategy": "OnEnabled",
+                  "ZFar": 4096,
+                  "ZNear": 16
+                },
+                {
+                  "__type": "Sandbox.IndirectLightVolume",
+                  "__guid": "85884ee9-781b-4717-b92d-6e5211254319",
+                  "__enabled": true,
+                  "Flags": 0,
+                  "Bounds": {
+                    "Mins": "-20091.877,-20216.6641,-1214.63757",
+                    "Maxs": "19901.0605,19776.2734,4301.45459"
+                  },
+                  "Contrast": 1,
+                  "DistanceTexture": "scenes/dev/test_scene_data/ddgi/big_distance_17b27708-cfb3-4433-9bc5-ce31d6c3657f.vtex",
+                  "InsideGeometry": "Relocate",
+                  "IrradianceTexture": "scenes/dev/test_scene_data/ddgi/big_irradiance_17b27708-cfb3-4433-9bc5-ce31d6c3657f.vtex",
+                  "NormalBias": 5,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "ProbeDensity": 15,
+                  "RelocationTexture": "scenes/dev/test_scene_data/ddgi/big_relocation_17b27708-cfb3-4433-9bc5-ce31d6c3657f.vtex",
+                  "RenderExcludeTags": ""
+                }
+              ],
+              "Children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "a7934d9f-f175-46e3-8856-2e5b2966c110",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "Terrain",
+      "Position": "-20000,-20000,-5184",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.Terrain",
+          "__guid": "9c137daa-02af-461b-9cfb-0a6f2537e7ae",
+          "__enabled": true,
+          "Flags": 0,
+          "__version": 1,
+          "ClipMapLodExtentTexels": 256,
+          "ClipMapLodLevels": 6,
+          "ColliderFlags": 0,
+          "Elasticity": null,
+          "EnableCollision": true,
+          "Friction": null,
+          "IsTrigger": false,
+          "MaterialOverride": null,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnObjectTriggerEnter": null,
+          "OnObjectTriggerExit": null,
+          "OnTriggerEnter": null,
+          "OnTriggerExit": null,
+          "RenderType": "Off",
+          "RollingResistance": null,
+          "Static": true,
+          "Storage": "materials/terrain/terrain_benchmark.terrain",
+          "SubdivisionFactor": 1,
+          "SubdivisionLodCount": 3,
+          "Surface": null,
+          "SurfaceVelocity": "0,0,0",
+          "TerrainHeight": 40000,
+          "TerrainSize": 40000
+        }
+      ],
+      "Children": []
+    }
+  ],
+  "SceneProperties": {
+    "NetworkInterpolation": true,
+    "TimeScale": 1,
+    "WantsSystemScene": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": false,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": "",
+      "DeferGeneration": false,
+      "CustomBounds": false
+    },
+    "GameObjectSystems": {
+      "Sandbox.Clutter.ClutterGridSystem": {
+        "Storage": {
+          "$blob": "fffe5d10-92c3-44c6-b25b-c219783f288b"
+        }
+      },
+      "Sandbox.SelectionSetsSystem": {
+        "Data": {
+          "SelectionSets": []
+        }
+      }
+    }
+  },
+  "ResourceVersion": 3,
+  "Title": null,
+  "Description": null,
+  "__references": [],
+  "__version": 3
+}
