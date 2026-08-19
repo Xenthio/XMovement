@@ -1,6 +1,6 @@
 ﻿{
   "RootObject": {
-    "__guid": "77b9436c-80ea-465f-94a4-c23acf49feb9",
+    "__guid": "49395a7f-ec2c-45d2-a6d1-232d184bb59f",
     "__version": 2,
     "Flags": 0,
     "Name": "item_battery",
@@ -17,7 +17,7 @@
     "Components": [
       {
         "__type": "ItemArmour",
-        "__guid": "93709496-35fc-4f0c-bd00-5a0be5700cb3",
+        "__guid": "47b23393-02c4-4f9e-b8ee-463bf7bd3367",
         "__enabled": true,
         "Flags": 0,
         "OnComponentDestroy": null,
@@ -29,7 +29,7 @@
       },
       {
         "__type": "Sandbox.Prop",
-        "__guid": "246d9246-410f-4620-8a0f-93da8dfd5eee",
+        "__guid": "da8c0070-527f-4ea4-85b7-6f5726d5f24a",
         "__enabled": true,
         "Flags": 0,
         "OnComponentDestroy": null,
@@ -50,7 +50,7 @@
       },
       {
         "__type": "Sandbox.BoxCollider",
-        "__guid": "3c81ae2d-6bc0-4b6d-b392-c1a6f026803e",
+        "__guid": "bc809aaf-8023-4eb7-a30a-75ed4d990c48",
         "__enabled": true,
         "Flags": 0,
         "OnComponentDestroy": null,

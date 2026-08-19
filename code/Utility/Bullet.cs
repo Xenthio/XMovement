@@ -234,6 +234,8 @@ public class Bullet
 			: null;
 		if ( bulletSound.IsValid() ) Sound.Play( bulletSound, hitPoint );
 
+		var rot = Rotation.LookAt( normal * -1f, Vector3.Random );
+
 		// Particle impact effect (override, then surface lookup)
 		var particlePrefab = impactOverride;
 		if ( !particlePrefab.IsValid() && hitSurface.IsValid() )
@@ -242,14 +244,14 @@ public class Bullet
 				?? hitSurface.GetBaseSurface()?.PrefabCollection.BulletImpact;
 		}
 
-		if ( !particlePrefab.IsValid() ) return;
-
-		var rot = Rotation.LookAt( normal * -1f, Vector3.Random );
-		var particleImpact = particlePrefab.Clone( new CloneConfig
+		if ( particlePrefab.IsValid() )
 		{
-			Transform    = new Transform( hitPoint, rot ),
-			StartEnabled = true
-		} );
+			var particleImpact = particlePrefab.Clone( new CloneConfig
+			{
+				Transform    = new Transform( hitPoint, rot ),
+				StartEnabled = true
+			} );
+		}
 
 		
 		// Decal impact (override, then surface lookup)
@@ -260,51 +262,52 @@ public class Bullet
 				?? hitSurface.GetBaseSurface()?.PrefabCollection.BulletImpactDecal;
 		}
 
-		if ( !decalPrefab.IsValid() ) return;
- 
-		var decalImpact = decalPrefab.Clone( new CloneConfig
-		{
-			Transform    = new Transform( hitPoint, rot ),
-			StartEnabled = true
-		} );
-
-		// Bone parenting on skinned meshes so decals follow ragdolls
-		var skinned = hitObject.GetComponentInChildren<SkinnedModelRenderer>();
-		if ( skinned.IsValid() && skinned.CreateBoneObjects )
-		{
-			// Note this does require bone objects to be enabled on the skinned model renderer
-			GameObject closestBone = null;
-
-			// If we have a valid bone index from the hitbox, use that for accurate decal placement
-			if ( boneIndex >= 0 )
+		if ( decalPrefab.IsValid() )
+		{ 
+			var decalImpact = decalPrefab.Clone( new CloneConfig
 			{
-				closestBone = skinned.GetBoneObject( boneIndex );
-			}
+				Transform    = new Transform( hitPoint, rot ),
+				StartEnabled = true
+			} );
 
-			// Else we use the closest bone to the hit point which is less accurate
-			if ( !closestBone.IsValid() )
+			// Bone parenting on skinned meshes so decals follow ragdolls
+			var skinned = hitObject.GetComponentInChildren<SkinnedModelRenderer>();
+			if ( skinned.IsValid() && skinned.CreateBoneObjects )
 			{
-				var bones = skinned.GetBoneTransforms( true );
-				var closestDist = float.MaxValue;
-				for ( var i = 0; i < bones.Length; i++ )
+				// Note this does require bone objects to be enabled on the skinned model renderer
+				GameObject closestBone = null;
+
+				// If we have a valid bone index from the hitbox, use that for accurate decal placement
+				if ( boneIndex >= 0 )
 				{
-					var dist = bones[i].Position.Distance( hitPoint );
-					if ( dist < closestDist )
+					closestBone = skinned.GetBoneObject( boneIndex );
+				}
+
+				// Else we use the closest bone to the hit point which is less accurate
+				if ( !closestBone.IsValid() )
+				{
+					var bones = skinned.GetBoneTransforms( true );
+					var closestDist = float.MaxValue;
+					for ( var i = 0; i < bones.Length; i++ )
 					{
-						closestDist = dist;
-						closestBone = skinned.GetBoneObject( i );
+						var dist = bones[i].Position.Distance( hitPoint );
+						if ( dist < closestDist )
+						{
+							closestDist = dist;
+							closestBone = skinned.GetBoneObject( i );
+						}
 					}
 				}
-			}
 
-			if ( closestBone.IsValid() )
-				decalImpact.SetParent( closestBone, true );
+				if ( closestBone.IsValid() )
+					decalImpact.SetParent( closestBone, true );
+				else
+					decalImpact.SetParent( hitObject, true );
+			}
 			else
+			{
 				decalImpact.SetParent( hitObject, true );
-		}
-		else
-		{
-			decalImpact.SetParent( hitObject, true );
+			}
 		}
 	}
 }
