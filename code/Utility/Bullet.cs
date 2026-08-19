@@ -234,18 +234,35 @@ public class Bullet
 			: null;
 		if ( bulletSound.IsValid() ) Sound.Play( bulletSound, hitPoint );
 
-		// Impact effect — override, then surface lookup
-		var prefab = impactOverride;
-		if ( !prefab.IsValid() && hitSurface.IsValid() )
+		// Particle impact effect (override, then surface lookup)
+		var particlePrefab = impactOverride;
+		if ( !particlePrefab.IsValid() && hitSurface.IsValid() )
 		{
-			prefab = hitSurface.PrefabCollection.BulletImpact
+			particlePrefab = hitSurface.PrefabCollection.BulletImpact
 				?? hitSurface.GetBaseSurface()?.PrefabCollection.BulletImpact;
 		}
 
-		if ( !prefab.IsValid() ) return;
+		if ( !particlePrefab.IsValid() ) return;
 
 		var rot = Rotation.LookAt( normal * -1f, Vector3.Random );
-		var impact = prefab.Clone( new CloneConfig
+		var particleImpact = particlePrefab.Clone( new CloneConfig
+		{
+			Transform    = new Transform( hitPoint, rot ),
+			StartEnabled = true
+		} );
+
+		
+		// Decal impact (override, then surface lookup)
+		var decalPrefab = impactOverride;
+		if ( !decalPrefab.IsValid() && hitSurface.IsValid() )
+		{
+			decalPrefab = hitSurface.PrefabCollection.BulletImpactDecal
+				?? hitSurface.GetBaseSurface()?.PrefabCollection.BulletImpactDecal;
+		}
+
+		if ( !decalPrefab.IsValid() ) return;
+ 
+		var decalImpact = decalPrefab.Clone( new CloneConfig
 		{
 			Transform    = new Transform( hitPoint, rot ),
 			StartEnabled = true
@@ -281,13 +298,13 @@ public class Bullet
 			}
 
 			if ( closestBone.IsValid() )
-				impact.SetParent( closestBone, true );
+				decalImpact.SetParent( closestBone, true );
 			else
-				impact.SetParent( hitObject, true );
+				decalImpact.SetParent( hitObject, true );
 		}
 		else
 		{
-			impact.SetParent( hitObject, true );
+			decalImpact.SetParent( hitObject, true );
 		}
 	}
 }

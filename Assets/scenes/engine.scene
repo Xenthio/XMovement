@@ -106,8 +106,6 @@
           "__enabled": true,
           "Flags": 0,
           "__version": 1,
-          "Filter": "Bilinear",
-          "Gamma": 2.2,
           "Mode": "Additive",
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
@@ -115,7 +113,7 @@
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
-          "Strength": 0.3,
+          "Strength": 0.6,
           "Threshold": 1,
           "Tint": "1,1,1,1"
         },
@@ -238,8 +236,14 @@
           "__guid": "aa100001-0000-0000-0000-000000000003",
           "__enabled": true,
           "Flags": 0,
-          "GibFireRadius": 128.0,
-          "GibFuelRange": "5,10"
+          "GibFireRadius": 128,
+          "GibFuelRange": "5,10",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
         },
         {
           "__type": "BuoyancyPropExtension",
@@ -273,12 +277,9 @@
       "CustomBounds": false
     },
     "GameObjectSystems": {
-      "Sandbox.MovieMaker.MovieRecorderSystem": {
-        "DisableClientRecording": false
-      },
       "Sandbox.Clutter.ClutterGridSystem": {
         "Storage": {
-          "$blob": "eebf950b-129c-4757-80cd-db7b51509810"
+          "$blob": "64db792e-5935-8fbc-8cfa-050cd49fa7fd"
         }
       },
       "Sandbox.SelectionSetsSystem": {

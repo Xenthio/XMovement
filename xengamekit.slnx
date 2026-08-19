@@ -8,6 +8,9 @@
     <Project Path="../../SteamLibrary/steamapps/common/sbox/addons/base/code/Base Library.csproj" />
   </Folder>
   <Folder Name="/Libraries/">
+    <Project Path="Libraries/PhysicalCameraKit/Code/physicalcamerakit.csproj" />
+    <Project Path="Libraries/PhysicalCameraKit/Editor/physicalcamerakit.editor.csproj" />
+    <Project Path="Libraries/PhysicalCameraKit/UnitTests/physicalcamerakit.unittest.csproj" />
     <Project Path="Libraries/XMovement/Code/xmovement.csproj" />
     <Project Path="Libraries/XMovement/Editor/xmovement.editor.csproj" />
     <Project Path="Libraries/XMovement/UnitTests/xmovement.unittest.csproj" />
