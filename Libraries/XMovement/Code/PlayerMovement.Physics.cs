@@ -13,6 +13,11 @@ public partial class PlayerMovement : Component
 	[Range( 0, 50 )]
 	[Property] public float StepHeight { get; set; } = 18.0f;
 
+	[Property] public bool TreatSteepLowSlopesAsWalkable { get; set; } = false;
+
+	[Range( 0.5f, 18.0f )]
+	[Property] public float SteepSlopeProbeDistance { get; set; } = 12.0f;
+
 	[Range( 0, 90 )]
 	[Property] public float GroundAngle { get; set; } = 45.5734f;
 
@@ -46,6 +51,8 @@ public partial class PlayerMovement : Component
 	public bool IsOnGround { get; set; }
 
 	public Vector3 PreviousPosition { get; set; }
+	private float? _steepSlopeBaseHeight;
+	private bool _touchedSteepSlopeThisMove;
 
 	public GameObject PreviousGroundObject { get; set; }
 	public GameObject GroundObject { get; set; }
@@ -215,6 +222,9 @@ public partial class PlayerMovement : Component
 		var mover = new CharacterControllerHelper( BuildTrace( pos, pos ), pos, delta );
 		mover.Bounce = Bounciness;
 		mover.MaxStandableAngle = GroundAngle;
+		mover.TreatSteepLowSlopesAsWalkable = TreatSteepLowSlopesAsWalkable;
+		mover.SteepSlopeProbeDistance = SteepSlopeProbeDistance;
+		mover.SteepSlopeRiseLimit = GetSteepSlopeRiseLimit( pos.z, StepHeight );
 
 		if ( step && IsOnGround )
 		{
@@ -224,6 +234,9 @@ public partial class PlayerMovement : Component
 		{
 			mover.TryMove( Time.Delta );
 		}
+
+		if ( step && IsOnGround && mover.TouchedSteepSlope && !_steepSlopeBaseHeight.HasValue )
+			_steepSlopeBaseHeight = pos.z;
 
 		WorldPosition = mover.Position;
 	}
@@ -236,6 +249,9 @@ public partial class PlayerMovement : Component
 
 
 		var pos = GameObject.WorldPosition;
+		_touchedSteepSlopeThisMove = false;
+		if ( !TreatSteepLowSlopesAsWalkable )
+			_steepSlopeBaseHeight = null;
 
 		Velocity *= WorldScale;
 
@@ -246,6 +262,9 @@ public partial class PlayerMovement : Component
 		var mover = new CharacterControllerHelper( BuildTrace( pos, pos ), pos, Velocity );
 		mover.Bounce = Bounciness;
 		mover.MaxStandableAngle = GroundAngle;
+		mover.TreatSteepLowSlopesAsWalkable = TreatSteepLowSlopesAsWalkable;
+		mover.SteepSlopeProbeDistance = SteepSlopeProbeDistance;
+		mover.SteepSlopeRiseLimit = GetSteepSlopeRiseLimit( pos.z, StepHeight * WorldScale.z );
 
 		if ( step && IsOnGround )
 		{
@@ -256,12 +275,24 @@ public partial class PlayerMovement : Component
 			mover.TryMove( Time.Delta );
 		}
 
+		if ( step && IsOnGround && mover.TouchedSteepSlope && !_steepSlopeBaseHeight.HasValue )
+			_steepSlopeBaseHeight = pos.z;
+		_touchedSteepSlopeThisMove = mover.TouchedSteepSlope;
+
 		WorldPosition = mover.Position;
 		Velocity = mover.Velocity;
 		Velocity -= BaseVelocity;
 		Velocity -= PhysicsBodyVelocity;
 
 		Velocity /= WorldScale;
+	}
+
+	private float GetSteepSlopeRiseLimit( float currentHeight, float stepHeight )
+	{
+		if ( !_steepSlopeBaseHeight.HasValue )
+			return stepHeight;
+
+		return Math.Max( 0.0f, stepHeight - Math.Max( 0.0f, currentHeight - _steepSlopeBaseHeight.Value ) );
 	}
 
 	void CategorizePosition()
@@ -286,7 +317,15 @@ public partial class PlayerMovement : Component
 		// we didn't hit - or the ground is too steep to be ground
 		//
 
-		if ( IsOnGround && !pm.Hit || Vector3.GetAngle( Vector3.Up, pm.Normal ) > GroundAngle )
+		var groundAngle = Vector3.GetAngle( Vector3.Up, pm.Normal );
+		var withinSteepSlopeHeight = _steepSlopeBaseHeight.HasValue
+			&& WorldPosition.z - _steepSlopeBaseHeight.Value <= StepHeight * WorldScale.z + 0.03125f;
+		var walkableSteepSlope = TreatSteepLowSlopesAsWalkable
+			&& groundAngle > GroundAngle
+			&& groundAngle <= 90.0f
+			&& withinSteepSlopeHeight;
+
+		if ( (IsOnGround && !pm.Hit) || (groundAngle > GroundAngle && !walkableSteepSlope) )
 		{
 			ClearGround();
 
@@ -295,6 +334,9 @@ public partial class PlayerMovement : Component
 
 			return;
 		}
+
+		if ( groundAngle <= GroundAngle && !_touchedSteepSlopeThisMove )
+			_steepSlopeBaseHeight = null;
 
 		//
 		// we are on ground
@@ -422,6 +464,9 @@ public partial class PlayerMovement : Component
 
 		var mover = new CharacterControllerHelper( BuildTrace( pos, pos ), pos, delta );
 		mover.MaxStandableAngle = GroundAngle;
+		mover.TreatSteepLowSlopesAsWalkable = TreatSteepLowSlopesAsWalkable;
+		mover.SteepSlopeProbeDistance = SteepSlopeProbeDistance;
+		mover.SteepSlopeRiseLimit = GetSteepSlopeRiseLimit( pos.z, StepHeight );
 
 		if ( useStep )
 		{
@@ -431,6 +476,9 @@ public partial class PlayerMovement : Component
 		{
 			mover.TryMove( 1.0f );
 		}
+
+		if ( useStep && IsOnGround && mover.TouchedSteepSlope && !_steepSlopeBaseHeight.HasValue )
+			_steepSlopeBaseHeight = pos.z;
 
 		WorldPosition = mover.Position;
 	}
